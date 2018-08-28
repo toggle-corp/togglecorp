@@ -27,11 +27,11 @@ $color-text-label-on-light: rgba(0, 0, 0, .6);
 $color-text-label-on-dark: rgba(255, 255, 255, .5);
 $color-text-label: get-color($color-text-label-on-light, $color-text-label-on-dark);
 
-$color-primary-light: #1676d3;
+$color-primary-light: #000;
 $color-primary-dark: #4ce49c;
 $color-primary: get-color($color-primary-light, $color-primary-dark);
 
-$color-accent-light: #008975;
+$color-accent-light: #e74c3c;
 $color-accent-dark: #c34176;
 $color-accent: get-color($color-accent-light, $color-accent-dark);
 
@@ -51,7 +51,7 @@ $color-danger-light: #f44336;
 $color-danger-dark: #d3575e;
 $color-danger: get-color($color-danger-light, $color-danger-dark);
 
-$color-background-light: #e0e0e0;
+$color-background-light: #fff;
 $color-background-dark: #000;
 $color-background: get-color($color-background-light, $color-background-dark);
 

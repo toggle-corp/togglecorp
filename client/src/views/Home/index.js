@@ -4,6 +4,10 @@ import styles from './styles.scss';
 
 export default () => (
     <div className={styles.home}>
-        Home
+        <header>
+            <h1>
+                <span>Toggle</span><span>corp</span>
+            </h1>
+        </header>
     </div>
 );

@@ -2,8 +2,23 @@
 
 .home {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+    header {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        justify-content: center;
+
+        h1 {
+            text-transform: lowercase;
+            font-size: 64px;
+
+            span:last-child {
+                color: $color-accent;
+            }
+        }
+    }
 }

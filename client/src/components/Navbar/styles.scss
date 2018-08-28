@@ -11,4 +11,12 @@ $color-text-on-primary: get-text-color($color-primary);
     background-color: $color-navbar;
     padding: 0 $spacing-medium-alt;
     color: $color-text-on-navbar;
+
+    h1 {
+        font-size: $font-size-super-large;
+
+        span:last-child {
+            color: $color-accent;
+        }
+    }
 }

@@ -5,6 +5,8 @@ import styles from './styles.scss';
 
 export default ({ className }) => (
     <nav className={`${className} ${styles.navbar}`}>
-        Togglecorp
+        <h1>
+            <span>Toggle</span><span>corp</span>
+        </h1>
     </nav>
 );

@@ -8,7 +8,7 @@ import {
 import ExclusivelyPublicRoute from '#rscg/ExclusivelyPublicRoute';
 import PrivateRoute from '#rscg/PrivateRoute';
 
-import Navbar from '#components/Navbar';
+// import Navbar from '#components/Navbar';
 
 import {
     pathNames,
@@ -82,7 +82,7 @@ export default class Multiplexer extends React.PureComponent {
     render() {
         return (
             <Fragment>
-                <Navbar className="navbar" />
+                <div className="no-nav" />
                 <div className="main-content">
                     <Switch>
                         { this.renderRoutes() }
