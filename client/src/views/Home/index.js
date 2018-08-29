@@ -161,8 +161,9 @@ export default class Home extends React.PureComponent {
                 ))}
             </div>
         </section>
-
     )
+
+    renderTeam = () => null
 
     render() {
         return (
@@ -171,6 +172,7 @@ export default class Home extends React.PureComponent {
                 {this.renderHeader()}
                 {this.renderServices()}
                 {this.renderExpertise()}
+                {this.renderTeam()}
             </div>
         );
     }
