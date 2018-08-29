@@ -23,6 +23,20 @@ import tensorflowImg from '#resources/images/expertise/tensorflow.png';
 import gensimImg from '#resources/images/expertise/gensim.png';
 import rImg from '#resources/images/expertise/r.png';
 
+import aditya from '#resources/images/team/adi.jpg';
+import bibekDahal from '#resources/images/team/bibek.jpg';
+import ankit from '#resources/images/team/fh.jpg';
+import prabesh from '#resources/images/team/pprabesh.jpg';
+import safar from '#resources/images/team/safar.jpg';
+import navin from '#resources/images/team/navin.jpg';
+import pandey from '#resources/images/team/pandey.jpg';
+import shweta from '#resources/images/team/shweta.jpg';
+import ewan from '#resources/images/team/ewan.jpg';
+import kriti from '#resources/images/team/kriti.jpg';
+import nagma from '#resources/images/team/nagma.jpg';
+import sameer from '#resources/images/team/sameer.jpg';
+
+import TeamMembers from '../Team';
 
 import styles from './styles.scss';
 
@@ -87,6 +101,69 @@ const expertiseGroupList = [
             { id: 3, title: 'Gensim', image: gensimImg },
             { id: 4, title: 'R', image: rImg },
         ],
+    },
+];
+
+const teamMembers = [
+    {
+        id: 1,
+        name: 'Aditya Khatri',
+        image: aditya,
+    },
+    {
+        id: 2,
+        name: 'Ankit Mehta',
+        image: ankit,
+    },
+    {
+        id: 3,
+        name: 'Prabesh Pathak',
+        image: prabesh,
+    },
+    {
+        id: 4,
+        name: 'Bibek Dahal',
+        image: bibekDahal,
+    },
+    {
+        id: 5,
+        name: 'Navin Ayer',
+        image: navin,
+    },
+    {
+        id: 6,
+        name: 'Safar Ligal',
+        image: safar,
+    },
+    {
+        id: 7,
+        name: 'Sameer Shakten Rai',
+        image: sameer,
+    },
+    {
+        id: 8,
+        name: 'Nagma Mathema',
+        image: nagma,
+    },
+    {
+        id: 9,
+        name: 'Kriti Chhetri',
+        image: kriti,
+    },
+    {
+        id: 10,
+        name: 'Bibek Pandey',
+        image: pandey,
+    },
+    {
+        id: 11,
+        name: 'Ewan Oglethorpe',
+        image: ewan,
+    },
+    {
+        id: 12,
+        name: 'Shweta Khatri',
+        image: shweta,
     },
 ];
 
@@ -163,15 +240,28 @@ export default class Home extends React.PureComponent {
         </section>
     )
 
-    renderTeam = () => null
+    renderTeam = () => (
+        <section className={styles.team}>
+            <h2>
+                Our team
+            </h2>
+            <div className={styles.teamList}>
+                <TeamMembers
+                    members={teamMembers}
+                />
+            </div>
+        </section>
+    )
 
     render() {
         return (
             <div className={styles.home}>
+                {/*
                 {this.renderNav()}
                 {this.renderHeader()}
                 {this.renderServices()}
                 {this.renderExpertise()}
+                */}
                 {this.renderTeam()}
             </div>
         );

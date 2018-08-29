@@ -166,5 +166,18 @@
             }
         }
 
+        &.team {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+
+            h2 {
+                margin-bottom: 48px;
+                text-transform: initial;
+                font-size: 48px;
+            }
+        }
     }
 }
