@@ -1,0 +1,43 @@
+@import '~base-scss/base';
+
+.team {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
+    justify-content: space-around;
+
+    .member {
+        outline: none;
+        border: 0;
+        cursor: pointer;
+        text-decoration: none;
+        background-color: $color-accent;
+        margin: $spacing-medium;
+        padding: 0;
+        transform: rotateY(-180deg);
+        transition: .2s all ease-in-out;
+
+        img {
+            opacity: 0;
+            width: 120px;
+            height: 160px;
+            object-fit: cover;
+            object-position: center center;
+            transition: .2s all ease-in-out;
+        }
+
+        &.selected-member {
+            transform: rotateY(0deg);
+
+            img {
+                opacity: 1;
+            }
+        }
+
+        &.completed-member {
+            border: 1px solid $color-separator;
+            background-color: #f0f0f0;
+        }
+    }
+}

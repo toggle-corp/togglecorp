@@ -25,7 +25,7 @@ import rImg from '#resources/images/expertise/r.png';
 
 import aditya from '#resources/images/team/adi.jpg';
 import bibekDahal from '#resources/images/team/bibek.jpg';
-import ankit from '#resources/images/team/fh.jpg';
+import fh from '#resources/images/team/fh.jpg';
 import prabesh from '#resources/images/team/pprabesh.jpg';
 import safar from '#resources/images/team/safar.jpg';
 import navin from '#resources/images/team/navin.jpg';
@@ -35,6 +35,17 @@ import ewan from '#resources/images/team/ewan.jpg';
 import kriti from '#resources/images/team/kriti.jpg';
 import nagma from '#resources/images/team/nagma.jpg';
 import sameer from '#resources/images/team/sameer.jpg';
+
+import acaps from '#resources/images/clients/acaps.png';
+import danish from '#resources/images/clients/danish.jpg';
+import okular from '#resources/images/clients/okular.webp';
+import unhcr from '#resources/images/clients/unhcr.png';
+import dfid from '#resources/images/clients/dfid.png';
+import smtm from '#resources/images/clients/smtm.png';
+import idmc from '#resources/images/clients/idmc.png';
+import ocha from '#resources/images/clients/ocha.jpg';
+import ifrc from '#resources/images/clients/ifrc.png';
+import pin from '#resources/images/clients/pin.jpg';
 
 import TeamMembers from '../Team';
 
@@ -104,70 +115,147 @@ const expertiseGroupList = [
     },
 ];
 
+const clientList = [
+    {
+        id: 'okular',
+        title: 'Okular Analytics',
+        image: okular,
+    },
+    {
+        id: 'dfid',
+        title: 'DFID Nepal',
+        image: dfid,
+    },
+    {
+        id: 'acaps',
+        title: 'ACAPS',
+        image: acaps,
+    },
+    {
+        id: 'unhcr',
+        title: 'UNHCR',
+        image: unhcr,
+    },
+    {
+        id: 'pin',
+        title: 'PIN',
+        image: pin,
+    },
+    {
+        id: 'smtm',
+        title: 'SMTM Capital',
+        image: smtm,
+    },
+    {
+        id: 'idmc',
+        title: 'IDMC',
+        image: idmc,
+    },
+    {
+        id: 'ocha',
+        title: 'OCHA',
+        image: ocha,
+    },
+    {
+        id: 'ifrc',
+        title: 'IFRC',
+        image: ifrc,
+    },
+    {
+        id: 'danishRedCross',
+        title: 'Danish Red Cross',
+        image: danish,
+    },
+];
+
 const teamMembers = [
     {
         id: 1,
-        name: 'Aditya Khatri',
-        image: aditya,
+        name: 'Ankit Mehta',
+        image: fh,
+        designation: 'Co-founder / CEO',
     },
     {
         id: 2,
-        name: 'Ankit Mehta',
-        image: ankit,
+        name: 'Aditya Khatri',
+        image: aditya,
+        designation: 'Co-founder / Developer',
     },
     {
         id: 3,
         name: 'Prabesh Pathak',
         image: prabesh,
+        designation: 'Co-founder / Developer',
     },
     {
         id: 4,
         name: 'Bibek Dahal',
         image: bibekDahal,
-    },
-    {
-        id: 5,
-        name: 'Navin Ayer',
-        image: navin,
-    },
-    {
-        id: 6,
-        name: 'Safar Ligal',
-        image: safar,
-    },
-    {
-        id: 7,
-        name: 'Sameer Shakten Rai',
-        image: sameer,
-    },
-    {
-        id: 8,
-        name: 'Nagma Mathema',
-        image: nagma,
-    },
-    {
-        id: 9,
-        name: 'Kriti Chhetri',
-        image: kriti,
-    },
-    {
-        id: 10,
-        name: 'Bibek Pandey',
-        image: pandey,
+        designation: 'Co-founder / Developer',
     },
     {
         id: 11,
         name: 'Ewan Oglethorpe',
         image: ewan,
+        designation: 'Advisor',
+    },
+    {
+        id: 5,
+        name: 'Navin Ayer',
+        image: navin,
+        designation: 'Developer',
+    },
+    {
+        id: 6,
+        name: 'Safar Ligal',
+        image: safar,
+        designation: 'Developer',
+    },
+    {
+        id: 7,
+        name: 'Sameer Shakten Rai',
+        image: sameer,
+        designation: 'Developer',
+    },
+    {
+        id: 10,
+        name: 'Bibek Pandey',
+        image: pandey,
+        designation: 'Developer',
+    },
+    {
+        id: 8,
+        name: 'Nagma Mathema',
+        image: nagma,
+        designation: 'Analyst',
+    },
+    {
+        id: 9,
+        name: 'Kriti Chhetri',
+        image: kriti,
+        designation: 'Analyst',
     },
     {
         id: 12,
         name: 'Shweta Khatri',
         image: shweta,
+        designation: 'Analyst',
     },
 ];
 
 export default class Home extends React.PureComponent {
+    handleDownButtonClick = () => {
+        const servicesContainer = document.getElementsByClassName(styles.services)[0];
+
+        if (servicesContainer) {
+            servicesContainer.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+                inline: 'nearest',
+            });
+        }
+    }
+
     renderNav = () => (
         <nav>
             <ul>
@@ -194,12 +282,20 @@ export default class Home extends React.PureComponent {
                     </p>
                 </div>
             </div>
-            <div className={styles.rightBlock} />
+            <div className={styles.rightBlock} >
+                <button
+                    className={`
+                        ${styles.downButton}
+                        ion-ios-arrow-down
+                    `}
+                    onClick={this.handleDownButtonClick}
+                />
+            </div>
         </section>
     )
 
     renderServices = () => (
-        <section className={styles.services}>
+        <section className={styles.services} >
             <h2>
                 What we do
             </h2>
@@ -228,6 +324,7 @@ export default class Home extends React.PureComponent {
                 {expertiseGroupList.map(eg => (
                     <div key={eg.id} className={styles.expertiseGroup}>
                         <ul>
+                            <h3 className={styles.groupTitle}>{eg.title}</h3>
                             {eg.items.map(e => (
                                 <li key={e.id}>
                                     <img src={e.image} alt={e.title} />
@@ -240,14 +337,59 @@ export default class Home extends React.PureComponent {
         </section>
     )
 
+    renderClients = () => (
+        <section className={styles.clients} >
+            <h2>
+                Organizations we have worked with
+            </h2>
+            <div className={styles.clientList}>
+                {clientList.map(sl => (
+                    <div key={sl.id} className={styles.client}>
+                        <img src={sl.image} alt={sl.title} />
+                    </div>
+                ))}
+            </div>
+        </section>
+    )
+
     renderTeam = () => (
         <section className={styles.team}>
             <h2>
                 Our team
             </h2>
-            <div className={styles.teamList}>
-                <TeamMembers
-                    members={teamMembers}
+            <TeamMembers
+                members={teamMembers}
+                className={styles.teamList}
+            />
+        </section>
+    )
+
+    renderContact = () => (
+        <section className={styles.contact} >
+            <div className={styles.contactInfo}>
+                <h2>Contact Us</h2>
+                <p>
+                    <i className="fa fa-envelope" />
+                    <a href="mailto:info@togglecorp.com">
+                        info@togglecorp.com
+                    </a>
+                </p>
+                <p>
+                    <i className="fa fa-phone" />
+                    +977-9841969697, +977-9841919399
+                </p>
+                <p>
+                    <i className="fa fa-map-o" />
+                    Pulchowk, Patan, Nepal
+                </p>
+            </div>
+            <div className={styles.theMap}>
+                <iframe
+                    title="map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1485.5855254843193!2d85.31556386076223!3d27.675954023000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19cc62b59c8f%3A0xe38fc6d7cff6e8e8!2sTogglecorp!5e0!3m2!1sen!2snp!4v1481449564568"
+                    frameBorder="0"
+                    style={{ border: 0 }}
+                    allowFullScreen
                 />
             </div>
         </section>
@@ -256,13 +398,13 @@ export default class Home extends React.PureComponent {
     render() {
         return (
             <div className={styles.home}>
-                {/*
-                {this.renderNav()}
+                {/* this.renderNav() */}
                 {this.renderHeader()}
                 {this.renderServices()}
                 {this.renderExpertise()}
-                */}
+                {this.renderClients()}
                 {this.renderTeam()}
+                {this.renderContact()}
             </div>
         );
     }

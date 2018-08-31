@@ -1,43 +1,82 @@
 @import '~base-scss/base';
 
-.team {
+.members{
     display: flex;
     flex-wrap: wrap;
-    width: 80%;
-    margin: auto;
     justify-content: space-around;
+    margin: auto;
+    max-width: 1080px;
 
     .member {
+        @include shadow-medium;
+        position: relative;
+        margin: 10px 8px;
         outline: none;
         border: 0;
+        border-radius: 5px;
         cursor: pointer;
-        text-decoration: none;
-        background-color: $color-accent;
-        margin: $spacing-medium;
         padding: 0;
-        transform: rotateY(-180deg);
-        transition: .2s all ease-in-out;
+        height: 320px;
+        overflow: hidden;
 
-        img {
-            opacity: 0;
-            width: 120px;
-            height: 160px;
+        .image {
+            transition: 10s transform ease-in-out;
+            width: 160px;
+            height: 100%;
             object-fit: cover;
-            object-position: center center;
-            transition: .2s all ease-in-out;
+            object-position: center bottom;
         }
 
-        &.selected-member {
-            transform: rotateY(0deg);
+        .description {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            transition: .2s bottom ease-in-out;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            background-color: rgba(255, 255, 255, .9);
+            padding: 0 8px 4px 8px;
+            width: 100%;
+            height: 70px;
 
-            img {
-                opacity: 1;
+            .name {
+                padding: $spacing-small 0;
+                color: $color-text-label;
+                font-weight: $font-weight-bold;
+            }
+
+            .designation {
+                transition: .2s .2s opacity ease-in-out;
+                opacity: 0;
+            }
+
+            .links {
+                transition: .2s .2s opacity ease-in-out;
+                opacity: 0;
+                padding: 2px 0;
             }
         }
 
-        &.completed-member {
-            border: 1px solid $color-separator;
-            background-color: #f0f0f0;
+        &:hover {
+            .image {
+                transform: scale(1.1);
+            }
+
+            .description {
+                bottom: 0;
+
+                .name {
+                    color: $color-text;
+                }
+
+                .designation {
+                    opacity: 1;
+                }
+
+                .links {
+                    opacity: 1;
+                }
+            }
         }
     }
 }
