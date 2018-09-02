@@ -1,0 +1,20 @@
+sudo: required
+
+services:
+    - docker
+
+before_install:
+    - sudo pip install --upgrade awscli
+    - sudo pip install --upgrade awsebcli
+
+    - ./deploy/scripts/build_client.sh
+
+before_script:
+    - echo 'before_script'
+
+script:
+    - ./deploy/travis/deploy_client.sh
+
+after_success:
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - docker push devtc/togglecorp:client-latest
