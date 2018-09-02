@@ -39,8 +39,10 @@ import nagma from '#resources/images/team/nagma.jpg';
 import sameer from '#resources/images/team/sameer.jpg';
 
 import acaps from '#resources/images/clients/acaps.png';
+import acled from '#resources/images/clients/acled.png';
+import wvi from '#resources/images/clients/wvi.png';
 import okular from '#resources/images/clients/okular.png';
-import danish from '#resources/images/clients/danish.jpg';
+import danish from '#resources/images/clients/danish.png';
 import cyclical from '#resources/images/clients/cyclical.png';
 import unhcr from '#resources/images/clients/unhcr.png';
 import dfid from '#resources/images/clients/dfid.png';
@@ -170,6 +172,16 @@ const clientList = [
         id: 'acaps',
         title: 'ACAPS',
         image: acaps,
+    },
+    {
+        id: 'acled',
+        title: 'ACLED',
+        image: acled,
+    },
+    {
+        id: 'wvi',
+        title: 'World Vision',
+        image: wvi,
     },
     {
         id: 'unhcr',
@@ -411,7 +423,11 @@ export default class Home extends React.PureComponent {
                         <ul>
                             {eg.items.map(e => (
                                 <li key={e.id}>
-                                    <img src={e.image} alt={e.title} />
+                                    <img
+                                        src={e.image}
+                                        alt={e.title}
+                                        title={e.title}
+                                    />
                                 </li>
                             ))}
                         </ul>
@@ -432,7 +448,11 @@ export default class Home extends React.PureComponent {
             <div className={styles.clientList}>
                 {clientList.map(sl => (
                     <div key={sl.id} className={styles.client}>
-                        <img src={sl.image} alt={sl.title} />
+                        <img
+                            src={sl.image}
+                            alt={sl.title}
+                            title={sl.title}
+                        />
                     </div>
                 ))}
             </div>
@@ -493,8 +513,8 @@ export default class Home extends React.PureComponent {
             <div className={styles.home}>
                 {this.renderHeader()}
                 {this.renderServices()}
-                {this.renderClients()}
                 {this.renderExpertise()}
+                {this.renderClients()}
                 {this.renderTeam()}
                 {this.renderContact()}
             </div>
