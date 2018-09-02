@@ -205,6 +205,12 @@
 
                         ul {
                             flex-direction: row;
+                            flex-wrap: wrap;
+                            justify-content: center;
+
+                            li {
+                                padding: 12px;
+                            }
                         }
                     }
 
@@ -226,6 +232,15 @@
             text-align: center;
             text-transform: initial;
             font-size: 48px;
+
+            @media screen and (max-width: 720px) {
+                margin: 12px 0;
+                padding-bottom: 12px;
+            }
+        }
+
+        @media screen and (max-width: 720px) {
+            padding: 24px 0;
         }
 
         &.services {
@@ -297,6 +312,11 @@
                 .client-list {
                     .client {
                         padding: 8px 12px;
+
+                        img {
+                            width: 150px;
+                            height: 90px;
+                        }
                     }
                 }
             }
