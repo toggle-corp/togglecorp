@@ -28,7 +28,7 @@ export default class TeamMembers extends React.PureComponent {
             <div className={classNames.join(' ')} >
                 {members.map(m => (
                     <div
-                        key={m.key}
+                        key={m.id}
                         className={styles.member}
                     >
                         <img
@@ -40,7 +40,24 @@ export default class TeamMembers extends React.PureComponent {
                             <div className={styles.name}>{m.name}</div>
                             <div className={styles.designation}>{m.designation}</div>
                             <div className={styles.links}>
-                                <span className={`${styles.link} fa fa-linkedin`} />
+                                {m.linkedin &&
+                                <a
+                                    href={m.linkedin}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <span className={`${styles.link} fa fa-linkedin`} />
+                                </a>
+                                }
+                                {m.github &&
+                                <a
+                                    href={m.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <span className={`${styles.link} fa fa-github`} />
+                                </a>
+                                }
                             </div>
                         </div>
                     </div>

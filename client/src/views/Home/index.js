@@ -1,4 +1,5 @@
 import React from 'react';
+import AnchorLink from '#components/AnchorLink';
 
 import seImg from '#resources/images/services/se.png';
 import dsImg from '#resources/images/services/ds.png';
@@ -24,6 +25,7 @@ import gensimImg from '#resources/images/expertise/gensim.png';
 import rImg from '#resources/images/expertise/r.png';
 
 import aditya from '#resources/images/team/adi.jpg';
+import uddhab from '#resources/images/team/uddhab.jpg';
 import bibekDahal from '#resources/images/team/bibek.jpg';
 import fh from '#resources/images/team/fh.jpg';
 import prabesh from '#resources/images/team/pprabesh.jpg';
@@ -37,20 +39,53 @@ import nagma from '#resources/images/team/nagma.jpg';
 import sameer from '#resources/images/team/sameer.jpg';
 
 import acaps from '#resources/images/clients/acaps.png';
+import okular from '#resources/images/clients/okular.png';
 import danish from '#resources/images/clients/danish.jpg';
-import okular from '#resources/images/clients/okular.webp';
+import cyclical from '#resources/images/clients/cyclical.png';
 import unhcr from '#resources/images/clients/unhcr.png';
 import dfid from '#resources/images/clients/dfid.png';
 import smtm from '#resources/images/clients/smtm.png';
 import idmc from '#resources/images/clients/idmc.png';
-import ocha from '#resources/images/clients/ocha.jpg';
+import ocha from '#resources/images/clients/ocha.png';
 import ifrc from '#resources/images/clients/ifrc.png';
-import pin from '#resources/images/clients/pin.jpg';
+import pin from '#resources/images/clients/pin.png';
 
 import TeamMembers from '../Team';
 
 import styles from './styles.scss';
 
+const linkList = [
+    {
+        id: 'home',
+        sectionTitle: 'Home',
+        sectionLink: 'home',
+    },
+    {
+        id: 'services',
+        sectionTitle: 'Services',
+        sectionLink: 'services',
+    },
+    {
+        id: 'clients',
+        sectionTitle: 'Clients',
+        sectionLink: 'clients',
+    },
+    {
+        id: 'expertise',
+        sectionTitle: 'Expertise',
+        sectionLink: 'expertise',
+    },
+    {
+        id: 'team',
+        sectionTitle: 'Team',
+        sectionLink: 'team',
+    },
+    {
+        id: 'contact',
+        sectionTitle: 'Contact',
+        sectionLink: 'contact',
+    },
+];
 
 const serviceList = [
     {
@@ -117,14 +152,19 @@ const expertiseGroupList = [
 
 const clientList = [
     {
+        id: 'dfid',
+        title: 'DFID Nepal',
+        image: dfid,
+    },
+    {
         id: 'okular',
         title: 'Okular Analytics',
         image: okular,
     },
     {
-        id: 'dfid',
-        title: 'DFID Nepal',
-        image: dfid,
+        id: 'cyclical',
+        title: 'Cyclical Insights',
+        image: cyclical,
     },
     {
         id: 'acaps',
@@ -168,84 +208,112 @@ const clientList = [
     },
 ];
 
-const teamMembers = [
+const teamList = [
     {
         id: 1,
         name: 'Ankit Mehta',
         image: fh,
         designation: 'Co-founder / CEO',
+        linkedin: 'https://www.linkedin.com/in/frozenhelium',
+        github: 'https://github.com/FrozenHelium',
     },
     {
         id: 2,
         name: 'Aditya Khatri',
         image: aditya,
         designation: 'Co-founder / Developer',
+        linkedin: 'https://www.linkedin.com/in/adityakhatri47',
+        github: 'https://github.com/AdityaKhatri',
     },
     {
         id: 3,
         name: 'Prabesh Pathak',
         image: prabesh,
         designation: 'Co-founder / Developer',
+        linkedin: 'https://www.linkedin.com/in/prabesh-pathak-423202a9',
+        github: 'https://github.com/pprabesh',
     },
     {
         id: 4,
         name: 'Bibek Dahal',
         image: bibekDahal,
         designation: 'Co-founder / Developer',
+        linkedin: 'https://www.linkedin.com/in/bibek-dahal',
+        github: 'https://github.com/bibekdahal',
     },
     {
         id: 11,
         name: 'Ewan Oglethorpe',
         image: ewan,
         designation: 'Advisor',
+        linkedin: 'https://www.linkedin.com/in/ewan-oglethorpe-b5b12349',
+        github: 'https://github.com/eoglethorpe',
     },
     {
         id: 5,
         name: 'Navin Ayer',
         image: navin,
         designation: 'Developer',
+        linkedin: 'https://www.linkedin.com/in/navin-ayer-6453b8b4',
+        github: 'https://github.com/thenav56',
     },
     {
         id: 6,
         name: 'Safar Ligal',
         image: safar,
         designation: 'Developer',
-    },
-    {
-        id: 7,
-        name: 'Sameer Shakten Rai',
-        image: sameer,
-        designation: 'Developer',
-    },
-    {
-        id: 10,
-        name: 'Bibek Pandey',
-        image: pandey,
-        designation: 'Developer',
-    },
-    {
-        id: 8,
-        name: 'Nagma Mathema',
-        image: nagma,
-        designation: 'Analyst',
+        linkedin: 'https://www.linkedin.com/in/safar-ligal',
+        github: 'https://github.com/tnagorra',
     },
     {
         id: 9,
         name: 'Kriti Chhetri',
         image: kriti,
         designation: 'Analyst',
+        linkedin: 'https://www.linkedin.com/in/kriti-chhetri-61270214b/',
+    },
+    {
+        id: 7,
+        name: 'Sameer Shakten Rai',
+        image: sameer,
+        designation: 'Developer',
+        linkedin: 'https://www.linkedin.com/in/sameer-rai-512956132/',
+        github: 'https://github.com/samshara',
+    },
+    {
+        id: 10,
+        name: 'Bibek Pandey',
+        image: pandey,
+        designation: 'Developer',
+        linkedin: 'https://www.linkedin.com/in/bibek-pandey-023879b1/',
+        github: 'https://github.com/bewakes',
     },
     {
         id: 12,
         name: 'Shweta Khatri',
         image: shweta,
         designation: 'Analyst',
+        linkedin: 'https://www.linkedin.com/in/shweta-khatri-3a3a67161/',
+    },
+    {
+        id: 8,
+        name: 'Nagma Mathema',
+        image: nagma,
+        designation: 'Analyst',
+        linkedin: 'https://www.linkedin.com/in/nagma-mathema-831b7a70/',
+    },
+    {
+        id: 13,
+        name: 'Uddhab Adhikari',
+        image: uddhab,
+        designation: 'Project Manager',
+        linkedin: 'https://www.linkedin.com/in/uddhab-adhikari-79886521/',
     },
 ];
 
 export default class Home extends React.PureComponent {
-    handleDownButtonClick = () => {
-        const servicesContainer = document.getElementsByClassName(styles.services)[0];
+    handleDownButtonClick = (section) => {
+        const servicesContainer = document.getElementsByClassName(styles[section])[0];
 
         if (servicesContainer) {
             servicesContainer.scrollIntoView({
@@ -256,19 +324,11 @@ export default class Home extends React.PureComponent {
         }
     }
 
-    renderNav = () => (
-        <nav>
-            <ul>
-                <li> home </li>
-                <li> products </li>
-                <li> blog </li>
-                <li> contact </li>
-            </ul>
-        </nav>
-    )
-
     renderHeader = () => (
-        <section className={styles.header}>
+        <section
+            id="home"
+            className={styles.header}
+        >
             <div className={styles.leftBlock}>
                 <div className={styles.titleBlock}>
                     <p className={styles.preMessage}>
@@ -283,19 +343,41 @@ export default class Home extends React.PureComponent {
                 </div>
             </div>
             <div className={styles.rightBlock} >
+                <nav>
+                    <ul>
+                        {linkList.map(link => (
+                            <li key={link.id}>
+                                <AnchorLink
+                                    href={`#${link.sectionLink}`}
+                                >
+                                    {link.sectionTitle}
+                                </AnchorLink>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
                 <button
                     className={`
                         ${styles.downButton}
                         ion-ios-arrow-down
                     `}
-                    onClick={this.handleDownButtonClick}
+                    onClick={() => this.handleDownButtonClick('services')}
+                />
+            </div>
+            <div className={styles.bottomBlock}>
+                <button
+                    className={`${styles.downButton} ion-ios-arrow-down`}
+                    onClick={() => this.handleDownButtonClick('services')}
                 />
             </div>
         </section>
     )
 
     renderServices = () => (
-        <section className={styles.services} >
+        <section
+            id="services"
+            className={styles.services}
+        >
             <h2>
                 What we do
             </h2>
@@ -316,7 +398,10 @@ export default class Home extends React.PureComponent {
     )
 
     renderExpertise = () => (
-        <section className={styles.expertise}>
+        <section
+            id="expertise"
+            className={styles.expertise}
+        >
             <h2>
                 Our expertise
             </h2>
@@ -324,7 +409,6 @@ export default class Home extends React.PureComponent {
                 {expertiseGroupList.map(eg => (
                     <div key={eg.id} className={styles.expertiseGroup}>
                         <ul>
-                            <h3 className={styles.groupTitle}>{eg.title}</h3>
                             {eg.items.map(e => (
                                 <li key={e.id}>
                                     <img src={e.image} alt={e.title} />
@@ -338,9 +422,12 @@ export default class Home extends React.PureComponent {
     )
 
     renderClients = () => (
-        <section className={styles.clients} >
+        <section
+            id="clients"
+            className={styles.clients}
+        >
             <h2>
-                Organizations we have worked with
+                {'Organizations we\'ve worked with'}
             </h2>
             <div className={styles.clientList}>
                 {clientList.map(sl => (
@@ -353,19 +440,25 @@ export default class Home extends React.PureComponent {
     )
 
     renderTeam = () => (
-        <section className={styles.team}>
+        <section
+            id="team"
+            className={styles.team}
+        >
             <h2>
                 Our team
             </h2>
             <TeamMembers
-                members={teamMembers}
+                members={teamList}
                 className={styles.teamList}
             />
         </section>
     )
 
     renderContact = () => (
-        <section className={styles.contact} >
+        <section
+            id="contact"
+            className={styles.contact}
+        >
             <div className={styles.contactInfo}>
                 <h2>Contact Us</h2>
                 <p>
@@ -398,11 +491,10 @@ export default class Home extends React.PureComponent {
     render() {
         return (
             <div className={styles.home}>
-                {/* this.renderNav() */}
                 {this.renderHeader()}
                 {this.renderServices()}
-                {this.renderExpertise()}
                 {this.renderClients()}
+                {this.renderExpertise()}
                 {this.renderTeam()}
                 {this.renderContact()}
             </div>
