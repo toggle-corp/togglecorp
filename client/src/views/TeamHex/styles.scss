@@ -1,0 +1,53 @@
+@import '~base-scss/base';
+
+.members{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateX(84px);
+    margin: auto;
+
+    .row {
+        display: flex;
+
+        .member {
+            outline: none;
+            border: 0;
+            cursor: pointer;
+            text-decoration: none;
+            padding: 4px;
+
+            .image {
+                @include shadow-large;
+                transition: .2s all ease-in-out;
+                width: 160px;
+                height: 200px;
+                object-fit: cover;
+                object-position: center center;
+                margin: -28px 0;
+                clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            }
+
+            .add-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: -28px 0;
+                background-color: $color-accent;
+                width: 160px;
+                height: 200px;
+                clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+
+                .add-icon {
+                    font-size: 48px;
+                    color: white;
+                }
+            }
+
+        }
+
+        &:nth-child(even) {
+            transform: translateX(-84px);
+        }
+    }
+}

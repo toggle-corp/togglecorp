@@ -58,37 +58,13 @@ body {
         text-transform: uppercase;
         font-weight: $font-weight-light;
     }
-
-    :global {
-        .navbar {
-            position: relative;
-            z-index: 1;
-            height: $height-navbar;
-        }
-
-        .main-content {
-            position: relative;
-            perspective: 1000px;
-            background-color: $color-background;
-            padding: $spacing-small-alt;
-            height: calc(100vh - #{$height-navbar});
-            overflow-y: auto;
-        }
-
-        .no-nav + .main-content {
-            padding: 0;
-            height: 100vh;
-        }
-    }
 }
 
-%main-content {
-    // @frozenhelium
-    transform-origin: bottom;
-    border: $width-separator-thin solid $color-separator-alt;
-    background-color: $color-background-alt;
-    height: 100%;
-    animation: slide-in $duration-slow ease forwards;
+:global {
+    .main-content {
+        height: 100vh;
+        overflow-y: auto;
+    }
 }
 
 %accent-color-link {
@@ -99,16 +75,3 @@ body {
         text-decoration: underline;
     }
 }
-
-@keyframes slide-in {
-    from {
-        transform: rotateX(1deg);
-        opacity: .5;
-    }
-
-    to {
-        transform: none;
-        opacity: 1;
-    }
-}
-
