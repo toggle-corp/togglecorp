@@ -41,6 +41,11 @@
             width: 100vw;
             min-height: 95vh;
 
+            .particle-text {
+                width: 100%;
+                height: 100%;
+            }
+
             .left-block {
                 display: flex;
                 align-items: center;

@@ -8096,6 +8096,10 @@ parseurl@~1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.2.tgz#fc289d4ed8993119460c156253262cdc8de65bf3"
 
+particles-renderer@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/particles-renderer/-/particles-renderer-1.0.7.tgz#7fba238f9ce44bbc41d32a012816585b4c339161"
+
 pascalcase@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/pascalcase/-/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"

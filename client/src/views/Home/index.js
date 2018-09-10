@@ -52,6 +52,8 @@ import ocha from '#resources/images/clients/ocha.png';
 import ifrc from '#resources/images/clients/ifrc.png';
 import pin from '#resources/images/clients/pin.png';
 
+import ParticleText from '#components/ParticleText';
+
 import TeamMembers from '../Team';
 
 import styles from './styles.scss';
@@ -341,6 +343,8 @@ export default class Home extends React.PureComponent {
             id="home"
             className={styles.header}
         >
+            <ParticleText className={styles.particleText} />
+            {/*
             <div className={styles.leftBlock}>
                 <div className={styles.titleBlock}>
                     <p className={styles.preMessage}>
@@ -382,6 +386,7 @@ export default class Home extends React.PureComponent {
                     onClick={() => this.handleDownButtonClick('services')}
                 />
             </div>
+            */}
         </section>
     )
 
