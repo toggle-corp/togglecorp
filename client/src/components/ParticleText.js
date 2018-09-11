@@ -1,9 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import { ParticlesRenderer, ParticleProps } from 'particles-renderer';
+import { ParticlesRenderer } from 'particles-renderer';
 
+const propTypes = {
+    className: PropTypes.string.isRequired,
+};
 
 export default class ParticleText extends React.PureComponent {
+    static propTypes = propTypes;
+
     constructor(props) {
         super(props);
         this.canvasRef = React.createRef();
@@ -40,15 +46,17 @@ export default class ParticleText extends React.PureComponent {
         const rendererProps = {
             fps: 60,
             bgColor: 'white',
+            particlesSpacing: 5,
             width,
             height,
         };
         const particleProps = {
             color: 'rgb(231, 76, 60)',
+            restless: false,
         };
         this.renderer = new ParticlesRenderer(canvas, rendererProps, particleProps);
-        this.renderer.renderTextParticles('TC', 'Helvetica', 160);
-        this.renderer.animate();
+        this.renderer.renderTextParticles('TC', 'Helvetica', 200);
+        this.renderer.start();
     }
 
     render() {

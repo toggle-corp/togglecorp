@@ -344,7 +344,6 @@ export default class Home extends React.PureComponent {
             className={styles.header}
         >
             <ParticleText className={styles.particleText} />
-            {/*
             <div className={styles.leftBlock}>
                 <div className={styles.titleBlock}>
                     <p className={styles.preMessage}>
@@ -386,7 +385,6 @@ export default class Home extends React.PureComponent {
                     onClick={() => this.handleDownButtonClick('services')}
                 />
             </div>
-            */}
         </section>
     )
 
