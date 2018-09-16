@@ -1,12 +1,15 @@
 import { compose, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from '#redux/middlewares/logger';
+import { reducersToSync } from '#config/store';
+import { createActionSyncMiddleware } from '#rsu/redux-sync';
 import reducer from '#redux/reducers';
 
 const prepareStore = () => {
     // Invoke refresh access token every 10m
     const middleware = [
         logger,
+        createActionSyncMiddleware(reducersToSync),
         thunk,
     ];
 

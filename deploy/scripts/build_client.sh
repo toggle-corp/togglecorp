@@ -19,5 +19,4 @@ cp ${CLIENT_DIR}/src/vendor/react-store/stylesheets/_user-imports-sample.scss ${
 git clone https://github.com/toggle-corp/ravl.git ${CLIENT_DIR}/src/vendor/ravl
 git --git-dir=${CLIENT_DIR}/src/vendor/ravl/.git --no-pager show --pretty=fuller --quiet
 
-docker pull devtc/togglecorp:client-latest
 docker build --cache-from devtc/togglecorp:client-latest --tag devtc/togglecorp:client-latest ${CLIENT_DIR}

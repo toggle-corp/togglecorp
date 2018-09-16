@@ -1,0 +1,334 @@
+[
+    {
+        "model": "member.MemberUrlType",
+        "pk": 1,
+        "fields": {
+            "name": "github"
+        }
+    },
+    {
+        "model": "member.MemberUrlType",
+        "pk": 2,
+        "fields": {
+            "name": "linkedin"
+        }
+    },
+
+    {
+        "model": "member.Member",
+        "pk": 1,
+        "fields": {
+            "name": "Ankit Mehta",
+            "image": "member/image/ankit.jpg",
+            "designation": "Co-founder / CEO"
+        }
+    },
+    {
+        "model": "member.Member",
+        "pk": 2,
+        "fields": {
+            "name": "Aditya Khatri",
+            "image": "member/image/aditya.jpg",
+            "designation": "Co-founder / Developer"
+        }
+    },
+    {
+        "model": "member.Member",
+        "pk": 3,
+        "fields": {
+            "name": "Prabesh Pathak",
+            "image": "member/image/prabesh.jpg",
+            "designation": "Co-founder / Developer"
+        }
+    },
+    {
+        "model": "member.Member",
+        "pk": 4,
+        "fields": {
+            "name": "Bibek Dahal",
+            "image": "member/image/bibekd.jpg",
+            "designation": "Co-founder / Developer"
+        }
+    },
+    {
+        "model": "member.Member",
+        "pk": 5,
+        "fields": {
+            "name": "Ewan Oglethorpe",
+            "image": "member/image/ewan.jpg",
+            "designation": "Advisor"
+        }
+    },
+    {
+        "model": "member.Member",
+        "pk": 6,
+        "fields": {
+            "name": "Navin Ayer",
+            "image": "member/image/navin.jpg",
+            "designation": "Developer"
+        }
+    },
+    {
+        "model": "member.Member",
+        "pk": 7,
+        "fields": {
+            "name": "Safar Ligal",
+            "image": "member/image/safar.jpg",
+            "designation": "Developer"
+        }
+    },
+    {
+        "model": "member.Member",
+        "pk": 8,
+        "fields": {
+            "name": "Kriti Chhetri",
+            "image": "member/image/kriti.jpg",
+            "designation": "Analyst"
+        }
+    },
+    {
+        "model": "member.Member",
+        "pk": 9,
+        "fields": {
+            "name": "Sameer Shakten Rai",
+            "image": "member/image/sameer.jpg",
+            "designation": "Developer"
+        }
+    },
+    {
+        "model": "member.Member",
+        "pk": 10,
+        "fields": {
+            "name": "Bibek Pandey",
+            "image": "member/image/bibek.jpg",
+            "designation": "Developer"
+        }
+    },
+    {
+        "model": "member.Member",
+        "pk": 11,
+        "fields": {
+            "name": "Shweta Khatri",
+            "image": "member/image/shweta.jpg",
+            "designation": "Analyst"
+        }
+    },
+    {
+        "model": "member.Member",
+        "pk": 12,
+        "fields": {
+            "name": "Nagma Mathema",
+            "image": "member/image/nagma.jpg",
+            "designation": "Analyst"
+        }
+    },
+    {
+        "model": "member.Member",
+        "pk": 13,
+        "fields": {
+            "name": "Uddhab Adhikari",
+            "image": "member/image/uddhab.jpg",
+            "designation": "Project Manager"
+        }
+    },
+
+    {
+        "model": "member.MemberUrl",
+        "pk": 1,
+        "fields": {
+            "url": "https://github.com/FrozenHelium",
+            "type": 1,
+            "member": 1
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 2,
+        "fields": {
+            "url": "https://github.com/AdityaKhatri",
+            "type": 1,
+            "member": 2
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 3,
+        "fields": {
+            "url": "https://github.com/pprabesh",
+            "type": 1,
+            "member": 3
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 4,
+        "fields": {
+            "url": "https://github.com/bibekdahal",
+            "type": 1,
+            "member": 4
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 5,
+        "fields": {
+            "url": "https://github.com/eoglethorpe",
+            "type": 1,
+            "member": 5
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 6,
+        "fields": {
+            "url": "https://github.com/thenav56",
+            "type": 1,
+            "member": 6
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 7,
+        "fields": {
+            "url": "https://github.com/tnagorra",
+            "type": 1,
+            "member": 7
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 8,
+        "fields": {
+            "url": "https://github.com/samshara",
+            "type": 1,
+            "member": 9
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 9,
+        "fields": {
+            "url": "https://github.com/bewakes",
+            "type": 1,
+            "member": 10
+        }
+    },
+
+    {
+        "model": "member.MemberUrl",
+        "pk": 10,
+        "fields": {
+            "url": "https://www.linkedin.com/in/frozenhelium",
+            "type": 2,
+            "member": 1
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 11,
+        "fields": {
+            "url": "https://www.linkedin.com/in/adityakhatri47",
+            "type": 2,
+            "member": 2
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 12,
+        "fields": {
+            "url": "https://www.linkedin.com/in/prabesh-pathak-423202a9",
+            "type": 2,
+            "member": 3
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 13,
+        "fields": {
+            "url": "https://www.linkedin.com/in/bibek-dahal",
+            "type": 2,
+            "member": 4
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 14,
+        "fields": {
+            "url": "https://www.linkedin.com/in/ewan-oglethorpe-b5b12349",
+            "type": 2,
+            "member": 5
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 15,
+        "fields": {
+            "url": "https://www.linkedin.com/in/navin-ayer-6453b8b4",
+            "type": 2,
+            "member": 6
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 16,
+        "fields": {
+            "url": "https://www.linkedin.com/in/safar-ligal",
+            "type": 2,
+            "member": 7
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 17,
+        "fields": {
+            "url": "https://www.linkedin.com/in/kriti-chhetri-61270214b/",
+            "type": 2,
+            "member": 8
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 18,
+        "fields": {
+            "url": "https://www.linkedin.com/in/sameer-rai-512956132/",
+            "type": 2,
+            "member": 9
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 19,
+        "fields": {
+            "url": "https://www.linkedin.com/in/bibek-pandey-023879b1/",
+            "type": 2,
+            "member": 10
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 20,
+        "fields": {
+            "url": "https://www.linkedin.com/in/shweta-khatri-3a3a67161/",
+            "type": 2,
+            "member": 11
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 21,
+        "fields": {
+            "url": "https://www.linkedin.com/in/nagma-mathema-831b7a70/",
+            "type": 2,
+            "member": 12
+        }
+    },
+    {
+        "model": "member.MemberUrl",
+        "pk": 22,
+        "fields": {
+            "url": "https://www.linkedin.com/in/uddhab-adhikari-79886521/",
+            "type": 2,
+            "member": 13
+        }
+    }
+]

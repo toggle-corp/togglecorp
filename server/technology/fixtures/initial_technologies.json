@@ -1,0 +1,166 @@
+[
+    {
+        "model": "technology.TechnologySection",
+        "pk": 1,
+        "fields": {
+            "name": "Web server"
+        }
+    },
+    {
+        "model": "technology.TechnologySection",
+        "pk": 2,
+        "fields": {
+            "name": "Frontend"
+        }
+    },
+    {
+        "model": "technology.TechnologySection",
+        "pk": 3,
+        "fields": {
+            "name": "Visualization"
+        }
+    },
+    {
+        "model": "technology.TechnologySection",
+        "pk": 4,
+        "fields": {
+            "name": "Data Analysis and Machine Learning"
+        }
+    },
+
+    {
+        "model": "technology.Technology",
+        "pk": 1,
+        "fields": {
+            "name": "Django",
+            "section": 1,
+            "image": "technology/image/TODO"
+        }
+    },
+    {
+        "model": "technology.Technology",
+        "pk": 2,
+        "fields": {
+            "name": "Postgres",
+            "section": 1,
+            "image": "technology/image/TODO"
+        }
+    },
+    {
+        "model": "technology.Technology",
+        "pk": 3,
+        "fields": {
+            "name": "Docker",
+            "section": 1,
+            "image": "technology/image/TODO"
+        }
+    },
+    {
+        "model": "technology.Technology",
+        "pk": 4,
+        "fields": {
+            "name": "AWS",
+            "section": 1,
+            "image": "technology/image/TODO"
+        }
+    },
+    {
+        "model": "technology.Technology",
+        "pk": 2,
+        "fields": {
+            "name": "React",
+            "section": 2,
+            "image": "technology/image/TODO"
+        }
+    },
+    {
+        "model": "technology.Technology",
+        "pk": 3,
+        "fields": {
+            "name": "Vue.js",
+            "section": 2,
+            "image": "technology/image/TODO"
+        }
+    },
+    {
+        "model": "technology.Technology",
+        "pk": 4,
+        "fields": {
+            "name": "Jquery",
+            "section": 2,
+            "image": "technology/image/TODO"
+        }
+    },
+    {
+        "model": "technology.Technology",
+        "pk": 5,
+        "fields": {
+            "name": "Sass",
+            "section": 2,
+            "image": "technology/image/TODO"
+        }
+    },
+    {
+        "model": "technology.Technology",
+        "pk": 3,
+        "fields": {
+            "name": "D3.js",
+            "section": 3,
+            "image": "technology/image/TODO"
+        }
+    },
+    {
+        "model": "technology.Technology",
+        "pk": 4,
+        "fields": {
+            "name": "Mapbox",
+            "section": 3,
+            "image": "technology/image/TODO"
+        }
+    },
+    {
+        "model": "technology.Technology",
+        "pk": 5,
+        "fields": {
+            "name": "Leaflet",
+            "section": 3,
+            "image": "technology/image/TODO"
+        }
+    },
+    {
+        "model": "technology.Technology",
+        "pk": 4,
+        "fields": {
+            "name": "scikit-learn",
+            "section": 4,
+            "image": "technology/image/TODO"
+        }
+    },
+    {
+        "model": "technology.Technology",
+        "pk": 5,
+        "fields": {
+            "name": "TensorFlow",
+            "section": 4,
+            "image": "technology/image/TODO"
+        }
+    },
+    {
+        "model": "technology.Technology",
+        "pk": 6,
+        "fields": {
+            "name": "Gensim",
+            "section": 4,
+            "image": "technology/image/TODO"
+        }
+    },
+    {
+        "model": "technology.Technology",
+        "pk": 7,
+        "fields": {
+            "name": "R",
+            "section": 4,
+            "image": "technology/image/TODO"
+        }
+    }
+]

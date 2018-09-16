@@ -7,5 +7,8 @@ const storeConfig = {
     storage: localforage,
 };
 
+export const reducersToSync = [
+    'domainData',
+];
 
 export default storeConfig;
