@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import AnchorLink from '#components/AnchorLink';
 
 import seImg from '#resources/images/services/se.png';
@@ -52,7 +54,20 @@ import ocha from '#resources/images/clients/ocha.png';
 import ifrc from '#resources/images/clients/ifrc.png';
 import pin from '#resources/images/clients/pin.png';
 
+import {
+    membersSelector,
+    clientsSelector,
+    technologiesSelector,
+
+    setMembersAction,
+    setClientsAction,
+    setTechnologiesAction,
+} from '#redux';
 import TeamMembers from '../Team';
+
+import MembersGetRequest from './requests/MembersGetRequest';
+import ClientsGetRequest from './requests/ClientsGetRequest';
+import TechnologiesGetRequest from './requests/TechnologiesGetRequest';
 
 import styles from './styles.scss';
 
@@ -323,7 +338,64 @@ const teamList = [
     },
 ];
 
+const propTypes = {
+    /* eslint-disable react/forbid-prop-types */
+    members: PropTypes.array.isRequired,
+    clients: PropTypes.array.isRequired,
+    technologies: PropTypes.array.isRequired,
+    /* eslint-disable react/forbid-prop-types */
+    setMembers: PropTypes.func.isRequired,
+    setClients: PropTypes.func.isRequired,
+    setTechnologies: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state, props) => ({
+    members: membersSelector(state, props),
+    clients: clientsSelector(state, props),
+    technologies: technologiesSelector(state, props),
+});
+
+const mapDispatchToProps = dispatch => ({
+    setMembers: params => dispatch(setMembersAction(params)),
+    setClients: params => dispatch(setClientsAction(params)),
+    setTechnologies: params => dispatch(setTechnologiesAction(params)),
+});
+
+
+@connect(mapStateToProps, mapDispatchToProps)
 export default class Home extends React.PureComponent {
+    static propTypes = propTypes;
+
+    constructor(props) {
+        super(props);
+
+        // Requests
+        this.membersGetRequest = new MembersGetRequest({
+            setState: v => this.setState(v),
+            setMembers: this.props.setMembers,
+        });
+        this.clientsGetRequest = new ClientsGetRequest({
+            setState: v => this.setState(v),
+            setClients: this.props.setClients,
+        });
+        this.technologiesGetRequest = new TechnologiesGetRequest({
+            setState: v => this.setState(v),
+            setTechnologies: this.props.setTechnologies,
+        });
+    }
+
+    componentDidMount() {
+        this.membersGetRequest.init().start();
+        this.clientsGetRequest.init().start();
+        this.technologiesGetRequest.init().start();
+    }
+
+    componentWillUnmount() {
+        this.membersGetRequest.stop();
+        this.clientsGetRequest.stop();
+        this.technologiesGetRequest.stop();
+    }
+
     handleDownButtonClick = (section) => {
         const servicesContainer = document.getElementsByClassName(styles[section])[0];
 
@@ -509,6 +581,16 @@ export default class Home extends React.PureComponent {
     )
 
     render() {
+        const {
+            members,
+            clients,
+            technologies,
+        } = this.props;
+
+        console.warn(members);
+        console.warn(clients);
+        console.warn(technologies);
+
         return (
             <div className={styles.home}>
                 {this.renderHeader()}

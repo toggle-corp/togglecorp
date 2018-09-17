@@ -7,14 +7,18 @@ before_install:
     - sudo pip install --upgrade awscli
     - sudo pip install --upgrade awsebcli
 
+    - docker pull devtc/togglecorp:client-latest || true
+    - docker pull devtc/togglecorp:server-latest || true
     - ./deploy/scripts/build_client.sh
+    - ./deploy/scripts/build_server.sh
 
 before_script:
     - echo 'before_script'
 
 script:
-    - ./deploy/travis/deploy_client.sh
+    - ./deploy/travis/deploy.sh
 
 after_success:
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
     - docker push devtc/togglecorp:client-latest
+    - docker push devtc/togglecorp:server-latest

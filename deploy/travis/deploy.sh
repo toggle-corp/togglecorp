@@ -71,3 +71,7 @@ echo "::::::  >> Removing Previous Builds Files [js, css] From S3 Bucket [$TOGGL
         --metadata-directive REPLACE --cache-control max-age=0,no-cache,no-store,must-revalidate --content-type application/javascript --acl public-read
     # S3 website settings config
     aws s3 website s3://$TOGGLECORP_S3_BUCKET --index-document index.html --error-document index.html
+
+echo "Push Server Release"
+docker tag devtc/togglecorp:server-latest devtc/togglecorp:server-release
+docker push devtc/togglecorp:server-release

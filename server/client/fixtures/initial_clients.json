@@ -1,0 +1,119 @@
+[
+    {
+        "model": "client.Client",
+        "pk": 1,
+        "fields": {
+            "name": "DFID Nepal",
+            "url": "TODO: url",
+            "image": "client/image/dfid.png"
+        }
+    },
+    {
+        "model": "client.Client",
+        "pk": 2,
+        "fields": {
+            "name": "Okular Analytics",
+            "url": "TODO: url",
+            "image": "client/image/okular.webp"
+        }
+    },
+    {
+        "model": "client.Client",
+        "pk": 3,
+        "fields": {
+            "name": "Cyclical Insights",
+            "url": "TODO: url",
+            "image": "client/image/cyclical.png"
+        }
+    },
+    {
+        "model": "client.Client",
+        "pk": 4,
+        "fields": {
+            "name": "ACAPS",
+            "url": "TODO: url",
+            "image": "client/image/acaps.png"
+        }
+    },
+    {
+        "model": "client.Client",
+        "pk": 5,
+        "fields": {
+            "name": "ACLED",
+            "url": "TODO: url",
+            "image": "client/image/acled.png"
+        }
+    },
+    {
+        "model": "client.Client",
+        "pk": 6,
+        "fields": {
+            "name": "World Vision",
+            "url": "TODO: url",
+            "image": "client/image/wvi.png"
+        }
+    },
+    {
+        "model": "client.Client",
+        "pk": 7,
+        "fields": {
+            "name": "UNHCR",
+            "url": "TODO: url",
+            "image": "client/image/unhcr.png"
+        }
+    },
+    {
+        "model": "client.Client",
+        "pk": 8,
+        "fields": {
+            "name": "PIN",
+            "url": "TODO: url",
+            "image": "client/image/pin.png"
+        }
+    },
+    {
+        "model": "client.Client",
+        "pk": 9,
+        "fields": {
+            "name": "SMTM Capital",
+            "url": "TODO: url",
+            "image": "client/image/smtm.png"
+        }
+    },
+    {
+        "model": "client.Client",
+        "pk": 10,
+        "fields": {
+            "name": "IDMC",
+            "url": "TODO: url",
+            "image": "client/image/idmc.png"
+        }
+    },
+    {
+        "model": "client.Client",
+        "pk": 11,
+        "fields": {
+            "name": "OCHA",
+            "url": "TODO: url",
+            "image": "client/image/ocha.png"
+        }
+    },
+    {
+        "model": "client.Client",
+        "pk": 12,
+        "fields": {
+            "name": "IFRC",
+            "url": "TODO: url",
+            "image": "client/image/ifrc.png"
+        }
+    },
+    {
+        "model": "client.Client",
+        "pk": 13,
+        "fields": {
+            "name": "Danish Red Cross",
+            "url": "TODO: url",
+            "image": "client/image/danish.png"
+        }
+    }
+]
