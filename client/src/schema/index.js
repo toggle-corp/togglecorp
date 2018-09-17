@@ -79,6 +79,7 @@ const userDefinedSchemas = [];
         fields: {
             id: { type: 'uint', required: true },
             name: { type: 'string', required: true },
+            technologies: { type: 'array.technology', required: true },
         },
     };
     userDefinedSchemas.push({ name, schema });
@@ -94,7 +95,6 @@ const userDefinedSchemas = [];
             name: { type: 'string', required: true },
             url: { type: 'string', required: true },
             image: { type: 'string', required: true },
-            section: { type: 'technologySection', required: true },
         },
     };
     userDefinedSchemas.push({ name, schema });

@@ -33,6 +33,7 @@
         "pk": 1,
         "fields": {
             "name": "Django",
+            "url": "https://www.djangoproject.com/",
             "section": 1,
             "image": "technology/image/django.png"
         }
@@ -42,6 +43,7 @@
         "pk": 2,
         "fields": {
             "name": "Postgres",
+            "url": "https://www.postgresql.org/",
             "section": 1,
             "image": "technology/image/postgres.png"
         }
@@ -51,6 +53,7 @@
         "pk": 3,
         "fields": {
             "name": "Docker",
+            "url": "https://www.docker.com/",
             "section": 1,
             "image": "technology/image/docker.png"
         }
@@ -60,6 +63,7 @@
         "pk": 4,
         "fields": {
             "name": "AWS",
+            "url": "https://aws.amazon.com/",
             "section": 1,
             "image": "technology/image/aws.png"
         }
@@ -69,6 +73,7 @@
         "pk": 5,
         "fields": {
             "name": "React",
+            "url": "https://reactjs.org/",
             "section": 2,
             "image": "technology/image/react.png"
         }
@@ -78,6 +83,7 @@
         "pk": 6,
         "fields": {
             "name": "Vue.js",
+            "url": "https://vuejs.org/",
             "section": 2,
             "image": "technology/image/vue.png"
         }
@@ -87,6 +93,7 @@
         "pk": 7,
         "fields": {
             "name": "Jquery",
+            "url": "https://jquery.com/",
             "section": 2,
             "image": "technology/image/jquery.png"
         }
@@ -96,6 +103,7 @@
         "pk": 8,
         "fields": {
             "name": "Sass",
+            "url": "https://sass-lang.com/",
             "section": 2,
             "image": "technology/image/sass.png"
         }
@@ -105,6 +113,7 @@
         "pk": 9,
         "fields": {
             "name": "D3.js",
+            "url": "https://d3js.org/",
             "section": 3,
             "image": "technology/image/d3.png"
         }
@@ -114,6 +123,7 @@
         "pk": 10,
         "fields": {
             "name": "Mapbox",
+            "url": "https://www.mapbox.com/",
             "section": 3,
             "image": "technology/image/mapbox.png"
         }
@@ -123,6 +133,7 @@
         "pk": 11,
         "fields": {
             "name": "Leaflet",
+            "url": "https://leafletjs.com/",
             "section": 3,
             "image": "technology/image/leaflet.png"
         }
@@ -132,6 +143,7 @@
         "pk": 12,
         "fields": {
             "name": "scikit-learn",
+            "url": "http://scikit-learn.org/",
             "section": 4,
             "image": "technology/image/scikit.png"
         }
@@ -141,6 +153,7 @@
         "pk": 13,
         "fields": {
             "name": "TensorFlow",
+            "url": "https://www.tensorflow.org/",
             "section": 4,
             "image": "technology/image/tensorflow.png"
         }
@@ -150,6 +163,7 @@
         "pk": 14,
         "fields": {
             "name": "Gensim",
+            "url": "https://radimrehurek.com/gensim/",
             "section": 4,
             "image": "technology/image/gensim.png"
         }
@@ -159,6 +173,7 @@
         "pk": 15,
         "fields": {
             "name": "R",
+            "url": "https://www.r-project.org/",
             "section": 4,
             "image": "technology/image/r.png"
         }

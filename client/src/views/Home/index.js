@@ -7,67 +7,20 @@ import seImg from '#resources/images/services/se.png';
 import dsImg from '#resources/images/services/ds.png';
 import csImg from '#resources/images/services/cs.png';
 
-import djangoImg from '#resources/images/expertise/django.png';
-import postgresImg from '#resources/images/expertise/postgres.png';
-import dockerImg from '#resources/images/expertise/docker.png';
-import awsImg from '#resources/images/expertise/aws.png';
-
-import reactImg from '#resources/images/expertise/react.png';
-import vueImg from '#resources/images/expertise/vue.png';
-import jqueryImg from '#resources/images/expertise/jquery.png';
-import sassImg from '#resources/images/expertise/sass.png';
-
-import d3Img from '#resources/images/expertise/d3.png';
-import mapboxImg from '#resources/images/expertise/mapbox.png';
-import leafletImg from '#resources/images/expertise/leaflet.png';
-
-import scikitImg from '#resources/images/expertise/scikit.png';
-import tensorflowImg from '#resources/images/expertise/tensorflow.png';
-import gensimImg from '#resources/images/expertise/gensim.png';
-import rImg from '#resources/images/expertise/r.png';
-
-import aditya from '#resources/images/team/adi.jpg';
-import uddhab from '#resources/images/team/uddhab.jpg';
-import bibekDahal from '#resources/images/team/bibek.jpg';
-import fh from '#resources/images/team/fh.jpg';
-import prabesh from '#resources/images/team/pprabesh.jpg';
-import safar from '#resources/images/team/safar.jpg';
-import navin from '#resources/images/team/navin.jpg';
-import pandey from '#resources/images/team/pandey.jpg';
-import shweta from '#resources/images/team/shweta.jpg';
-import ewan from '#resources/images/team/ewan.jpg';
-import kriti from '#resources/images/team/kriti.jpg';
-import nagma from '#resources/images/team/nagma.jpg';
-import sameer from '#resources/images/team/sameer.jpg';
-
-import acaps from '#resources/images/clients/acaps.png';
-import acled from '#resources/images/clients/acled.png';
-import wvi from '#resources/images/clients/wvi.png';
-import okular from '#resources/images/clients/okular.png';
-import danish from '#resources/images/clients/danish.png';
-import cyclical from '#resources/images/clients/cyclical.png';
-import unhcr from '#resources/images/clients/unhcr.png';
-import dfid from '#resources/images/clients/dfid.png';
-import smtm from '#resources/images/clients/smtm.png';
-import idmc from '#resources/images/clients/idmc.png';
-import ocha from '#resources/images/clients/ocha.png';
-import ifrc from '#resources/images/clients/ifrc.png';
-import pin from '#resources/images/clients/pin.png';
-
 import {
     membersSelector,
     clientsSelector,
-    technologiesSelector,
+    technologySectionsSelector,
 
     setMembersAction,
     setClientsAction,
-    setTechnologiesAction,
+    setTechnologySectionsAction,
 } from '#redux';
-import TeamMembers from '../Team';
+import TeamMembers from './Team';
 
 import MembersGetRequest from './requests/MembersGetRequest';
 import ClientsGetRequest from './requests/ClientsGetRequest';
-import TechnologiesGetRequest from './requests/TechnologiesGetRequest';
+import TechnologySectionsGetRequest from './requests/TechnologySectionsGetRequest';
 
 import styles from './styles.scss';
 
@@ -125,240 +78,27 @@ const serviceList = [
     },
 ];
 
-const expertiseGroupList = [
-    {
-        id: 'server',
-        title: 'Web server',
-        items: [
-            { id: 1, title: 'Django', image: djangoImg },
-            { id: 2, title: 'Postgres', image: postgresImg },
-            { id: 3, title: 'Docker', image: dockerImg },
-            { id: 4, title: 'AWS', image: awsImg },
-        ],
-    },
-    {
-        id: 'frontend',
-        title: 'Frontend',
-        items: [
-            { id: 1, title: 'React', image: reactImg },
-            { id: 2, title: 'Vue.js', image: vueImg },
-            { id: 3, title: 'Jquery', image: jqueryImg },
-            { id: 4, title: 'Sass', image: sassImg },
-        ],
-    },
-    {
-        id: 'viz',
-        title: 'Visualization',
-        items: [
-            { id: 1, title: 'D3.js', image: d3Img },
-            { id: 2, title: 'Mapbox', image: mapboxImg },
-            { id: 3, title: 'Leaflet', image: leafletImg },
-        ],
-    },
-    {
-        id: 'ds',
-        title: 'Data Analysis and Machine Learning',
-        items: [
-            { id: 1, title: 'scikit-learn', image: scikitImg },
-            { id: 2, title: 'TensorFlow', image: tensorflowImg },
-            { id: 3, title: 'Gensim', image: gensimImg },
-            { id: 4, title: 'R', image: rImg },
-        ],
-    },
-];
-
-const clientList = [
-    {
-        id: 'dfid',
-        title: 'DFID Nepal',
-        image: dfid,
-    },
-    {
-        id: 'okular',
-        title: 'Okular Analytics',
-        image: okular,
-    },
-    {
-        id: 'cyclical',
-        title: 'Cyclical Insights',
-        image: cyclical,
-    },
-    {
-        id: 'acaps',
-        title: 'ACAPS',
-        image: acaps,
-    },
-    {
-        id: 'acled',
-        title: 'ACLED',
-        image: acled,
-    },
-    {
-        id: 'wvi',
-        title: 'World Vision',
-        image: wvi,
-    },
-    {
-        id: 'unhcr',
-        title: 'UNHCR',
-        image: unhcr,
-    },
-    {
-        id: 'pin',
-        title: 'PIN',
-        image: pin,
-    },
-    {
-        id: 'smtm',
-        title: 'SMTM Capital',
-        image: smtm,
-    },
-    {
-        id: 'idmc',
-        title: 'IDMC',
-        image: idmc,
-    },
-    {
-        id: 'ocha',
-        title: 'OCHA',
-        image: ocha,
-    },
-    {
-        id: 'ifrc',
-        title: 'IFRC',
-        image: ifrc,
-    },
-    {
-        id: 'danishRedCross',
-        title: 'Danish Red Cross',
-        image: danish,
-    },
-];
-
-const teamList = [
-    {
-        id: 1,
-        name: 'Ankit Mehta',
-        image: fh,
-        designation: 'Co-founder / CEO',
-        linkedin: 'https://www.linkedin.com/in/frozenhelium',
-        github: 'https://github.com/FrozenHelium',
-    },
-    {
-        id: 2,
-        name: 'Aditya Khatri',
-        image: aditya,
-        designation: 'Co-founder / Developer',
-        linkedin: 'https://www.linkedin.com/in/adityakhatri47',
-        github: 'https://github.com/AdityaKhatri',
-    },
-    {
-        id: 3,
-        name: 'Prabesh Pathak',
-        image: prabesh,
-        designation: 'Co-founder / Developer',
-        linkedin: 'https://www.linkedin.com/in/prabesh-pathak-423202a9',
-        github: 'https://github.com/pprabesh',
-    },
-    {
-        id: 4,
-        name: 'Bibek Dahal',
-        image: bibekDahal,
-        designation: 'Co-founder / Developer',
-        linkedin: 'https://www.linkedin.com/in/bibek-dahal',
-        github: 'https://github.com/bibekdahal',
-    },
-    {
-        id: 11,
-        name: 'Ewan Oglethorpe',
-        image: ewan,
-        designation: 'Advisor',
-        linkedin: 'https://www.linkedin.com/in/ewan-oglethorpe-b5b12349',
-        github: 'https://github.com/eoglethorpe',
-    },
-    {
-        id: 5,
-        name: 'Navin Ayer',
-        image: navin,
-        designation: 'Developer',
-        linkedin: 'https://www.linkedin.com/in/navin-ayer-6453b8b4',
-        github: 'https://github.com/thenav56',
-    },
-    {
-        id: 6,
-        name: 'Safar Ligal',
-        image: safar,
-        designation: 'Developer',
-        linkedin: 'https://www.linkedin.com/in/safar-ligal',
-        github: 'https://github.com/tnagorra',
-    },
-    {
-        id: 9,
-        name: 'Kriti Chhetri',
-        image: kriti,
-        designation: 'Analyst',
-        linkedin: 'https://www.linkedin.com/in/kriti-chhetri-61270214b/',
-    },
-    {
-        id: 7,
-        name: 'Sameer Shakten Rai',
-        image: sameer,
-        designation: 'Developer',
-        linkedin: 'https://www.linkedin.com/in/sameer-rai-512956132/',
-        github: 'https://github.com/samshara',
-    },
-    {
-        id: 10,
-        name: 'Bibek Pandey',
-        image: pandey,
-        designation: 'Developer',
-        linkedin: 'https://www.linkedin.com/in/bibek-pandey-023879b1/',
-        github: 'https://github.com/bewakes',
-    },
-    {
-        id: 12,
-        name: 'Shweta Khatri',
-        image: shweta,
-        designation: 'Analyst',
-        linkedin: 'https://www.linkedin.com/in/shweta-khatri-3a3a67161/',
-    },
-    {
-        id: 8,
-        name: 'Nagma Mathema',
-        image: nagma,
-        designation: 'Analyst',
-        linkedin: 'https://www.linkedin.com/in/nagma-mathema-831b7a70/',
-    },
-    {
-        id: 13,
-        name: 'Uddhab Adhikari',
-        image: uddhab,
-        designation: 'Project Manager',
-        linkedin: 'https://www.linkedin.com/in/uddhab-adhikari-79886521/',
-    },
-];
-
 const propTypes = {
     /* eslint-disable react/forbid-prop-types */
     members: PropTypes.array.isRequired,
     clients: PropTypes.array.isRequired,
-    technologies: PropTypes.array.isRequired,
+    technologySections: PropTypes.array.isRequired,
     /* eslint-disable react/forbid-prop-types */
     setMembers: PropTypes.func.isRequired,
     setClients: PropTypes.func.isRequired,
-    setTechnologies: PropTypes.func.isRequired,
+    setTechnologySections: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, props) => ({
     members: membersSelector(state, props),
     clients: clientsSelector(state, props),
-    technologies: technologiesSelector(state, props),
+    technologySections: technologySectionsSelector(state, props),
 });
 
 const mapDispatchToProps = dispatch => ({
     setMembers: params => dispatch(setMembersAction(params)),
     setClients: params => dispatch(setClientsAction(params)),
-    setTechnologies: params => dispatch(setTechnologiesAction(params)),
+    setTechnologySections: params => dispatch(setTechnologySectionsAction(params)),
 });
 
 
@@ -378,22 +118,22 @@ export default class Home extends React.PureComponent {
             setState: v => this.setState(v),
             setClients: this.props.setClients,
         });
-        this.technologiesGetRequest = new TechnologiesGetRequest({
+        this.technologySectionsGetRequest = new TechnologySectionsGetRequest({
             setState: v => this.setState(v),
-            setTechnologies: this.props.setTechnologies,
+            setTechnologySections: this.props.setTechnologySections,
         });
     }
 
     componentDidMount() {
         this.membersGetRequest.init().start();
         this.clientsGetRequest.init().start();
-        this.technologiesGetRequest.init().start();
+        this.technologySectionsGetRequest.init().start();
     }
 
     componentWillUnmount() {
         this.membersGetRequest.stop();
         this.clientsGetRequest.stop();
-        this.technologiesGetRequest.stop();
+        this.technologySectionsGetRequest.stop();
     }
 
     handleDownButtonClick = (section) => {
@@ -490,16 +230,22 @@ export default class Home extends React.PureComponent {
                 Our expertise
             </h2>
             <div className={styles.expertiseGroupList}>
-                {expertiseGroupList.map(eg => (
+                {this.props.technologySections.map(eg => (
                     <div key={eg.id} className={styles.expertiseGroup}>
                         <ul>
-                            {eg.items.map(e => (
+                            {eg.technologies.map(e => (
                                 <li key={e.id}>
-                                    <img
-                                        src={e.image}
-                                        alt={e.title}
-                                        title={e.title}
-                                    />
+                                    <a
+                                        href={e.url}
+                                        rel="noopener noreferrer"
+                                        target="_blank"
+                                    >
+                                        <img
+                                            src={e.image}
+                                            alt={e.name}
+                                            title={e.name}
+                                        />
+                                    </a>
                                 </li>
                             ))}
                         </ul>
@@ -518,12 +264,12 @@ export default class Home extends React.PureComponent {
                 {'Organizations we\'ve worked with'}
             </h2>
             <div className={styles.clientList}>
-                {clientList.map(sl => (
+                {this.props.clients.map(sl => (
                     <div key={sl.id} className={styles.client}>
                         <img
                             src={sl.image}
-                            alt={sl.title}
-                            title={sl.title}
+                            alt={sl.name}
+                            title={sl.name}
                         />
                     </div>
                 ))}
@@ -540,7 +286,7 @@ export default class Home extends React.PureComponent {
                 Our team
             </h2>
             <TeamMembers
-                members={teamList}
+                members={this.props.members}
                 className={styles.teamList}
             />
         </section>
@@ -584,10 +330,10 @@ export default class Home extends React.PureComponent {
         const {
             members,
             clients,
-            technologies,
         } = this.props;
 
-        console.warn(technologies);
+        console.warn(members);
+        console.warn(clients);
 
         return (
             <div className={styles.home}>

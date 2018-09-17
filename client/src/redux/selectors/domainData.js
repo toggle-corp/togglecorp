@@ -9,6 +9,6 @@ export const clientsSelector = ({ domainData }) => (
     domainData.clients || emptyList
 );
 
-export const technologiesSelector = ({ domainData }) => (
-    domainData.technologies || emptyList
+export const technologySectionsSelector = ({ domainData }) => (
+    domainData.technologySections || emptyList
 );

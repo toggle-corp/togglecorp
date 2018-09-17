@@ -9,7 +9,7 @@ from rest_framework import routers
 
 from member.views import MemberViewSet
 from client.views import ClientViewSet
-from technology.views import TechnologyViewSet
+from technology.views import TechnologyViewSet, TechnologySectionViewSet
 
 
 router = routers.DefaultRouter()
@@ -17,6 +17,11 @@ router = routers.DefaultRouter()
 router.register(r'members', MemberViewSet, base_name='member')
 router.register(r'clients', ClientViewSet, base_name='client')
 router.register(r'technologies', TechnologyViewSet, base_name='technology')
+router.register(
+    r'technology-sections',
+    TechnologySectionViewSet,
+    base_name='technology-section'
+)
 
 
 # Versioning : (v1|v2|v3)
