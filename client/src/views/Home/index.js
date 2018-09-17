@@ -587,8 +587,6 @@ export default class Home extends React.PureComponent {
             technologies,
         } = this.props;
 
-        console.warn(members);
-        console.warn(clients);
         console.warn(technologies);
 
         return (

@@ -36,10 +36,10 @@ const setMembers = (state, { members }) => {
     return update(state, settings);
 };
 
-const setClients = (state, { clientws }) => {
+const setClients = (state, { clients }) => {
     const settings = {
-        clientws: { $auto: {
-            $set: clientws,
+        clients: { $auto: {
+            $set: clients,
         } },
     };
     return update(state, settings);
