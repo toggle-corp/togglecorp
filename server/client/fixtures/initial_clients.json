@@ -5,7 +5,7 @@
         "fields": {
             "name": "DFID Nepal",
             "url": "TODO: url",
-            "image": "client/image/TODO_IMAGE"
+            "image": "client/image/dfid.png"
         }
     },
     {
@@ -14,7 +14,7 @@
         "fields": {
             "name": "Okular Analytics",
             "url": "TODO: url",
-            "image": "client/image/TODO_IMAGE"
+            "image": "client/image/okular.webp"
         }
     },
     {
@@ -23,7 +23,7 @@
         "fields": {
             "name": "Cyclical Insights",
             "url": "TODO: url",
-            "image": "client/image/TODO_IMAGE"
+            "image": "client/image/cyclical.png"
         }
     },
     {
@@ -32,7 +32,7 @@
         "fields": {
             "name": "ACAPS",
             "url": "TODO: url",
-            "image": "client/image/TODO_IMAGE"
+            "image": "client/image/acaps.png"
         }
     },
     {
@@ -41,7 +41,7 @@
         "fields": {
             "name": "ACLED",
             "url": "TODO: url",
-            "image": "client/image/TODO_IMAGE"
+            "image": "client/image/acled.png"
         }
     },
     {
@@ -50,7 +50,7 @@
         "fields": {
             "name": "World Vision",
             "url": "TODO: url",
-            "image": "client/image/TODO_IMAGE"
+            "image": "client/image/wvi.png"
         }
     },
     {
@@ -59,7 +59,7 @@
         "fields": {
             "name": "UNHCR",
             "url": "TODO: url",
-            "image": "client/image/TODO_IMAGE"
+            "image": "client/image/unhcr.png"
         }
     },
     {
@@ -68,7 +68,7 @@
         "fields": {
             "name": "PIN",
             "url": "TODO: url",
-            "image": "client/image/TODO_IMAGE"
+            "image": "client/image/pin.png"
         }
     },
     {
@@ -77,7 +77,7 @@
         "fields": {
             "name": "SMTM Capital",
             "url": "TODO: url",
-            "image": "client/image/TODO_IMAGE"
+            "image": "client/image/smtm.png"
         }
     },
     {
@@ -86,7 +86,7 @@
         "fields": {
             "name": "IDMC",
             "url": "TODO: url",
-            "image": "client/image/TODO_IMAGE"
+            "image": "client/image/idmc.png"
         }
     },
     {
@@ -95,7 +95,7 @@
         "fields": {
             "name": "OCHA",
             "url": "TODO: url",
-            "image": "client/image/TODO_IMAGE"
+            "image": "client/image/ocha.png"
         }
     },
     {
@@ -104,7 +104,7 @@
         "fields": {
             "name": "IFRC",
             "url": "TODO: url",
-            "image": "client/image/TODO_IMAGE"
+            "image": "client/image/ifrc.png"
         }
     },
     {
@@ -113,7 +113,7 @@
         "fields": {
             "name": "Danish Red Cross",
             "url": "TODO: url",
-            "image": "client/image/TODO_IMAGE"
+            "image": "client/image/danish.png"
         }
     }
 ]

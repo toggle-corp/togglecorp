@@ -19,7 +19,7 @@
         "pk": 1,
         "fields": {
             "name": "Ankit Mehta",
-            "image": "member/image/ankit.jpg",
+            "image": "member/image/fh.jpg",
             "designation": "Co-founder / CEO"
         }
     },
@@ -28,7 +28,7 @@
         "pk": 2,
         "fields": {
             "name": "Aditya Khatri",
-            "image": "member/image/aditya.jpg",
+            "image": "member/image/adi.jpg",
             "designation": "Co-founder / Developer"
         }
     },
@@ -37,7 +37,7 @@
         "pk": 3,
         "fields": {
             "name": "Prabesh Pathak",
-            "image": "member/image/prabesh.jpg",
+            "image": "member/image/pprabesh.jpg",
             "designation": "Co-founder / Developer"
         }
     },
@@ -46,7 +46,7 @@
         "pk": 4,
         "fields": {
             "name": "Bibek Dahal",
-            "image": "member/image/bibekd.jpg",
+            "image": "member/image/bibek.jpg",
             "designation": "Co-founder / Developer"
         }
     },
@@ -100,7 +100,7 @@
         "pk": 10,
         "fields": {
             "name": "Bibek Pandey",
-            "image": "member/image/bibek.jpg",
+            "image": "member/image/pandey.jpg",
             "designation": "Developer"
         }
     },
