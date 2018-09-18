@@ -3,23 +3,21 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AnchorLink from '#components/AnchorLink';
 
-import seImg from '#resources/images/services/se.png';
-import dsImg from '#resources/images/services/ds.png';
-import csImg from '#resources/images/services/cs.png';
-
 import {
-    membersSelector,
-    clientsSelector,
-    technologySectionsSelector,
-
     setMembersAction,
     setClientsAction,
+    setServicesAction,
     setTechnologySectionsAction,
 } from '#redux';
-import TeamMembers from './Team';
+
+import Services from './Services';
+import Expertise from './Expertise';
+import Clients from './Clients';
+import Team from './Team';
 
 import MembersGetRequest from './requests/MembersGetRequest';
 import ClientsGetRequest from './requests/ClientsGetRequest';
+import ServicesGetRequest from './requests/ServicesGetRequest';
 import TechnologySectionsGetRequest from './requests/TechnologySectionsGetRequest';
 
 import styles from './styles.scss';
@@ -57,52 +55,22 @@ const linkList = [
     },
 ];
 
-const serviceList = [
-    {
-        id: 'se',
-        title: 'Software Engineering',
-        description: 'We design and develop systems of various complexities that run on web, mobile and desktop platforms.',
-        image: seImg,
-    },
-    {
-        id: 'ds',
-        title: 'Data Science',
-        description: 'We specialize in data analysis and visualization using statistics and machine learning technologies.',
-        image: dsImg,
-    },
-    {
-        id: 'cs',
-        title: 'Consultancy',
-        description: 'We provide consultancy services regarding software architecture design, database design, programming practices and various technologies.',
-        image: csImg,
-    },
-];
-
 const propTypes = {
-    /* eslint-disable react/forbid-prop-types */
-    members: PropTypes.array.isRequired,
-    clients: PropTypes.array.isRequired,
-    technologySections: PropTypes.array.isRequired,
-    /* eslint-disable react/forbid-prop-types */
     setMembers: PropTypes.func.isRequired,
     setClients: PropTypes.func.isRequired,
+    setServices: PropTypes.func.isRequired,
     setTechnologySections: PropTypes.func.isRequired,
 };
-
-const mapStateToProps = (state, props) => ({
-    members: membersSelector(state, props),
-    clients: clientsSelector(state, props),
-    technologySections: technologySectionsSelector(state, props),
-});
 
 const mapDispatchToProps = dispatch => ({
     setMembers: params => dispatch(setMembersAction(params)),
     setClients: params => dispatch(setClientsAction(params)),
+    setServices: params => dispatch(setServicesAction(params)),
     setTechnologySections: params => dispatch(setTechnologySectionsAction(params)),
 });
 
 
-@connect(mapStateToProps, mapDispatchToProps)
+@connect(undefined, mapDispatchToProps)
 export default class Home extends React.PureComponent {
     static propTypes = propTypes;
 
@@ -118,6 +86,10 @@ export default class Home extends React.PureComponent {
             setState: v => this.setState(v),
             setClients: this.props.setClients,
         });
+        this.servicesGetRequest = new ServicesGetRequest({
+            setState: v => this.setState(v),
+            setServices: this.props.setServices,
+        });
         this.technologySectionsGetRequest = new TechnologySectionsGetRequest({
             setState: v => this.setState(v),
             setTechnologySections: this.props.setTechnologySections,
@@ -127,12 +99,14 @@ export default class Home extends React.PureComponent {
     componentDidMount() {
         this.membersGetRequest.init().start();
         this.clientsGetRequest.init().start();
+        this.servicesGetRequest.init().start();
         this.technologySectionsGetRequest.init().start();
     }
 
     componentWillUnmount() {
         this.membersGetRequest.stop();
         this.clientsGetRequest.stop();
+        this.servicesGetRequest.stop();
         this.technologySectionsGetRequest.stop();
     }
 
@@ -197,101 +171,6 @@ export default class Home extends React.PureComponent {
         </section>
     )
 
-    renderServices = () => (
-        <section
-            id="services"
-            className={styles.services}
-        >
-            <h2>
-                What we do
-            </h2>
-            <div className={styles.serviceList}>
-                {serviceList.map(sl => (
-                    <div key={sl.id} className={styles.service}>
-                        <img src={sl.image} alt={sl.title} />
-                        <h3>
-                            {sl.title}
-                        </h3>
-                        <p>
-                            {sl.description}
-                        </p>
-                    </div>
-                ))}
-            </div>
-        </section>
-    )
-
-    renderExpertise = () => (
-        <section
-            id="expertise"
-            className={styles.expertise}
-        >
-            <h2>
-                Our expertise
-            </h2>
-            <div className={styles.expertiseGroupList}>
-                {this.props.technologySections.map(eg => (
-                    <div key={eg.id} className={styles.expertiseGroup}>
-                        <ul>
-                            {eg.technologies.map(e => (
-                                <li key={e.id}>
-                                    <a
-                                        href={e.url}
-                                        rel="noopener noreferrer"
-                                        target="_blank"
-                                    >
-                                        <img
-                                            src={e.image}
-                                            alt={e.name}
-                                            title={e.name}
-                                        />
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                ))}
-            </div>
-        </section>
-    )
-
-    renderClients = () => (
-        <section
-            id="clients"
-            className={styles.clients}
-        >
-            <h2>
-                {'Organizations we\'ve worked with'}
-            </h2>
-            <div className={styles.clientList}>
-                {this.props.clients.map(sl => (
-                    <div key={sl.id} className={styles.client}>
-                        <img
-                            src={sl.image}
-                            alt={sl.name}
-                            title={sl.name}
-                        />
-                    </div>
-                ))}
-            </div>
-        </section>
-    )
-
-    renderTeam = () => (
-        <section
-            id="team"
-            className={styles.team}
-        >
-            <h2>
-                Our team
-            </h2>
-            <TeamMembers
-                members={this.props.members}
-                className={styles.teamList}
-            />
-        </section>
-    )
-
     renderContact = () => (
         <section
             id="contact"
@@ -327,21 +206,13 @@ export default class Home extends React.PureComponent {
     )
 
     render() {
-        const {
-            members,
-            clients,
-        } = this.props;
-
-        console.warn(members);
-        console.warn(clients);
-
         return (
             <div className={styles.home}>
                 {this.renderHeader()}
-                {this.renderServices()}
-                {this.renderExpertise()}
-                {this.renderClients()}
-                {this.renderTeam()}
+                <Services />
+                <Expertise />
+                <Clients />
+                <Team />
                 {this.renderContact()}
             </div>
         );

@@ -6,6 +6,7 @@ import initialDomainDataState from '../initial-state/domainData';
 
 export const SET_MEMBERS = 'domainData/SET_MEMBERS';
 export const SET_CLIENTS = 'domainData/SET_CLIENTS';
+export const SET_SERVICES = 'domainData/SET_SERVICES';
 export const SET_TECHNOLOGY_SECTIONS = 'domainData/SET_TECHNOLOGY_SECTIONS';
 
 
@@ -19,6 +20,11 @@ export const setMembersAction = members => ({
 export const setClientsAction = clients => ({
     type: SET_CLIENTS,
     clients,
+});
+
+export const setServicesAction = services => ({
+    type: SET_SERVICES,
+    services,
 });
 
 export const setTechnologySectionsAction = technologySections => ({
@@ -46,6 +52,15 @@ const setClients = (state, { clients }) => {
     return update(state, settings);
 };
 
+const setServices = (state, { services }) => {
+    const settings = {
+        services: { $autoArray: {
+            $set: services,
+        } },
+    };
+    return update(state, settings);
+};
+
 const setTechnologySections = (state, { technologySections }) => {
     const settings = {
         technologySections: { $autoArray: {
@@ -58,6 +73,7 @@ const setTechnologySections = (state, { technologySections }) => {
 const reducers = {
     [SET_MEMBERS]: setMembers,
     [SET_CLIENTS]: setClients,
+    [SET_SERVICES]: setServices,
     [SET_TECHNOLOGY_SECTIONS]: setTechnologySections,
 };
 

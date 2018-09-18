@@ -15,7 +15,7 @@ services:
             - ./server/:/code
             - media:/media
         ports:
-            - '8005:8005'
+            - '8006:8006'
         depends_on:
             - db
 
@@ -27,7 +27,7 @@ services:
         volumes:
             - ./client/:/code
         ports:
-            - '5000:5000'
+            - '3006:3006'
 
 volumes:
   media:

@@ -5,7 +5,7 @@ export const GET = 'GET';
 // ENDPOINTS
 
 export const wsEndpoint = !process.env.REACT_APP_API_END
-    ? 'http://localhost:8005/api/v1'
+    ? 'http://localhost:8006/api/v1'
     : `${process.env.REACT_APP_API_END}/api/v1`;
 
 

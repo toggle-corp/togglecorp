@@ -16,6 +16,9 @@ class Member(models.Model):
     image = models.FileField(upload_to='member/image/')
     designation = models.CharField(max_length=255)
 
+    class Meta:
+        ordering = ('id',)
+
     def __str__(self):
         return '{} ({})'.format(self.name, self.designation)
 

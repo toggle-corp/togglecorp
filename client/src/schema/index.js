@@ -4,6 +4,23 @@ const basicTypeSchemas = basicTypes.map(entry => ({ name: entry.doc.name, schema
 
 const userDefinedSchemas = [];
 
+//  Service Scheme
+{
+    const name = 'service';
+    const schema = {
+        doc: {
+            name: 'Service',
+        },
+        fields: {
+            id: { type: 'uint', required: true },
+            title: { type: 'string', required: true },
+            description: { type: 'string' },
+            image: { type: 'string' },
+        },
+    };
+    userDefinedSchemas.push({ name, schema });
+}
+
 // Member Scheme
 {
     const name = 'memberUrlType';

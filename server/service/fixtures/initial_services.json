@@ -1,0 +1,29 @@
+[
+    {
+        "model": "service.Service",
+        "pk": 1,
+        "fields": {
+            "title": "Software Engineering",
+            "description": "We design and develop systems of various complexities that run on web, mobile and desktop platforms.",
+            "image": "service/image/se.png"
+        }
+    },
+    {
+        "model": "service.Service",
+        "pk": 2,
+        "fields": {
+            "title": "Data Science",
+            "description": "We specialize in data analysis and visualization using statistics and machine learning technologies.",
+            "image": "service/image/ds.png"
+        }
+    },
+    {
+        "model": "service.Service",
+        "pk": 3,
+        "fields": {
+            "title": "Consultancy",
+            "description": "We provide consultancy services regarding software architecture design, database design, programming practices and various technologies.",
+            "image": "service/image/cs.png"
+        }
+    }
+]
