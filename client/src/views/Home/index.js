@@ -209,10 +209,18 @@ export default class Home extends React.PureComponent {
         return (
             <div className={styles.home}>
                 {this.renderHeader()}
-                <Services />
-                <Expertise />
-                <Clients />
-                <Team />
+                <Services
+                    className={styles.services}
+                />
+                <Expertise
+                    className={styles.expertise}
+                />
+                <Clients
+                    className={styles.clients}
+                />
+                <Team
+                    className={styles.team}
+                />
                 {this.renderContact()}
             </div>
         );

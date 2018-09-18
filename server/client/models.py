@@ -7,5 +7,8 @@ class Client(models.Model):
     url = models.URLField(max_length=255)
     image = models.FileField(upload_to='client/image/')
 
+    class Meta:
+        ordering = ('id',)
+
     def __str__(self):
         return self.name

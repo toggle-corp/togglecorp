@@ -7,26 +7,33 @@ import { technologySectionsSelector } from '#redux';
 import styles from './styles.scss';
 
 const propTypes = {
-    /* eslint-disable-next-line react/forbid-prop-types */
-    technologySections: PropTypes.array.isRequired,
+    className: PropTypes.string,
+    technologySections: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 const mapStateToProps = (state, props) => ({
     technologySections: technologySectionsSelector(state, props),
 });
 
+const defaultProps = {
+    className: '',
+};
 
 @connect(mapStateToProps)
 export default class Expertise extends React.PureComponent {
     static propTypes = propTypes;
+    static defaultProps = defaultProps;
 
     render() {
-        const { technologySections } = this.props;
+        const {
+            className,
+            technologySections,
+        } = this.props;
 
         return (
             <section
                 id="expertise"
-                className={styles.expertise}
+                className={className}
             >
                 <h2>
                     Our expertise

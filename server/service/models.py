@@ -6,5 +6,8 @@ class Service(models.Model):
     description = models.TextField()
     image = models.FileField(upload_to='service/image/')
 
+    class Meta:
+        ordering = ('id',)
+
     def __str__(self):
         return self.title

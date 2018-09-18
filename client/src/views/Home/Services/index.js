@@ -7,6 +7,7 @@ import { servicesSelector } from '#redux';
 import styles from './styles.scss';
 
 const propTypes = {
+    className: PropTypes.string,
     services: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
@@ -14,17 +15,24 @@ const mapStateToProps = (state, props) => ({
     services: servicesSelector(state, props),
 });
 
+const defaultProps = {
+    className: '',
+};
 
 @connect(mapStateToProps)
 export default class Services extends React.PureComponent {
     static propTypes = propTypes;
+    static defaultProps = defaultProps;
 
     render() {
-        const { services } = this.props;
+        const {
+            className,
+            services,
+        } = this.props;
         return (
             <section
                 id="services"
-                className={styles.services}
+                className={className}
             >
                 <h2>
                     What we do

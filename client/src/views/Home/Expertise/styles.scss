@@ -1,97 +1,60 @@
 @import '~base-scss/base';
 
-section {
+.expertise-group-list {
     display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-    z-index: 10;
-    background-color: #ffffff;
-    padding: 48px 0;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: 20px;
 
-    &:nth-child(even) {
-        background-color: #f5f5f5;
-    }
-
-    h2 {
-        margin: 48px 0;
-        padding-bottom: 24px;
-        text-align: center;
-        text-transform: initial;
-        font-size: 48px;
-
-        @media screen and (max-width: 720px) {
-            margin: 12px 0;
-            padding-bottom: 12px;
-        }
-    }
-
-    @media screen and (max-width: 720px) {
-        padding: 24px 0;
-    }
-
-    &.expertise {
+    .expertise-group {
         display: flex;
         align-items: center;
         flex-direction: column;
-        justify-content: center;
-        min-height: 80vh;
+        text-align: center;
 
-        .expertise-group-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            font-size: 20px;
+        ul {
+            margin: 0;
+            padding: 24px 48px;
+            width: 360px;
 
-            .expertise-group {
+            li {
+                padding: 16px 0;
+                list-style: none;
+
+                img {
+                    width: 144px;
+                    height: 64px;
+                    object-fit: contain;
+                    object-position: center;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 1460px) {
+        .expertise-group {
+            ul {
+                width: 240px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 980px) {
+        .expertise-group {
+            ul {
+                padding: 24px;
+                width: 180px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 740px) {
+        .expertise-group {
+            ul {
                 display: flex;
-                align-items: center;
-                flex-direction: column;
-                text-align: center;
-
-                ul {
-                    margin: 0;
-                    padding: 24px 48px;
-                    width: 360px;
-
-                    li {
-                        padding: 16px 0;
-                        list-style: none;
-
-                        img {
-                            width: 144px;
-                            height: 64px;
-                            object-fit: contain;
-                            object-position: center;
-                        }
-                    }
-                }
-            }
-
-            @media screen and (max-width: 1460px) {
-                .expertise-group {
-                    ul {
-                        width: 240px;
-                    }
-                }
-            }
-
-            @media screen and (max-width: 980px) {
-                .expertise-group {
-                    ul {
-                        padding: 24px;
-                        width: 180px;
-                    }
-                }
-            }
-
-            @media screen and (max-width: 740px) {
-                .expertise-group {
-                    ul {
-                        display: flex;
-                        flex-wrap: wrap;
-                    }
-                }
+                flex-wrap: wrap;
             }
         }
     }
 }
+
