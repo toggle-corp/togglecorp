@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import ListView from '#rscv/List/ListView';
+
 import { clientsSelector } from '#redux';
 
 import styles from './styles.scss';
@@ -18,6 +20,29 @@ const mapStateToProps = (state, props) => ({
 const defaultProps = {
     className: '',
 };
+
+const keyExtractor = member => member.id;
+const rendererParams = (key, client) => ({ client });
+
+const Client = ({ client }) => (
+    <div key={client.id} className={styles.client}>
+        <a
+            href={client.url}
+            rel="noopener noreferrer"
+            target="_blank"
+        >
+            <img
+                src={client.image}
+                alt={client.name}
+                title={client.name}
+            />
+        </a>
+    </div>
+);
+Client.propTypes = {
+    client: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+};
+
 
 @connect(mapStateToProps)
 export default class Clients extends React.PureComponent {
@@ -38,23 +63,13 @@ export default class Clients extends React.PureComponent {
                 <h2>
                     {'Organizations we\'ve worked with'}
                 </h2>
-                <div className={styles.clientList}>
-                    {clients.map(sl => (
-                        <div key={sl.id} className={styles.client}>
-                            <a
-                                href={sl.url}
-                                rel="noopener noreferrer"
-                                target="_blank"
-                            >
-                                <img
-                                    src={sl.image}
-                                    alt={sl.name}
-                                    title={sl.name}
-                                />
-                            </a>
-                        </div>
-                    ))}
-                </div>
+                <ListView
+                    className={styles.clientList}
+                    data={clients}
+                    keyExtractor={keyExtractor}
+                    renderer={Client}
+                    rendererParams={rendererParams}
+                />
             </section>
         );
     }

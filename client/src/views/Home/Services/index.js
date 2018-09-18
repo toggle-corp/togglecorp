@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import ListView from '#rscv/List/ListView';
+
 import { servicesSelector } from '#redux';
 
 import styles from './styles.scss';
@@ -18,6 +20,25 @@ const mapStateToProps = (state, props) => ({
 const defaultProps = {
     className: '',
 };
+
+const keyExtractor = member => member.id;
+const rendererParams = (key, service) => ({ service });
+
+const Service = ({ service }) => (
+    <div key={service.id} className={styles.service}>
+        <img src={service.image} alt={service.title} />
+        <h3>
+            {service.title}
+        </h3>
+        <p>
+            {service.description}
+        </p>
+    </div>
+);
+Service.propTypes = {
+    service: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+};
+
 
 @connect(mapStateToProps)
 export default class Services extends React.PureComponent {
@@ -37,19 +58,13 @@ export default class Services extends React.PureComponent {
                 <h2>
                     What we do
                 </h2>
-                <div className={styles.serviceList}>
-                    {services.map(sl => (
-                        <div key={sl.id} className={styles.service}>
-                            <img src={sl.image} alt={sl.title} />
-                            <h3>
-                                {sl.title}
-                            </h3>
-                            <p>
-                                {sl.description}
-                            </p>
-                        </div>
-                    ))}
-                </div>
+                <ListView
+                    className={styles.serviceList}
+                    data={services}
+                    keyExtractor={keyExtractor}
+                    renderer={Service}
+                    rendererParams={rendererParams}
+                />
             </section>
         );
     }

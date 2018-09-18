@@ -2,7 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import ListView from '#rscv/List/ListView';
+
 import { membersSelector } from '#redux';
+
+import Member from './Member';
 
 import styles from './styles.scss';
 
@@ -19,56 +23,20 @@ const defaultProps = {
     className: '',
 };
 
+const keyExtractor = member => member.id;
+const rendererParams = (key, member) => ({ member });
+
 
 @connect(mapStateToProps)
 export default class Team extends React.PureComponent {
     static propTypes = propTypes;
     static defaultProps = defaultProps;
 
-    renderTeamMembers = ({
-        members,
-        className,
-    }) => (
-        <div className={className} >
-            {members.map(m => (
-                <div
-                    key={m.id}
-                    className={styles.member}
-                >
-                    <img
-                        className={styles.image}
-                        src={m.image}
-                        alt={m.name}
-                    />
-                    <div className={styles.description} >
-                        <div className={styles.name}>{m.name}</div>
-                        <div className={styles.designation}>{m.designation}</div>
-                        <div className={styles.links}>
-                            {
-                                m.membersUrls.map(url => (
-                                    <a
-                                        key={url.id}
-                                        href={url.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <span className={`${styles.link} fa fa-${url.type.name}`} />
-                                    </a>
-                                ))
-                            }
-                        </div>
-                    </div>
-                </div>
-            ))}
-        </div>
-    )
-
     render() {
         const {
             className,
             members,
         } = this.props;
-        const TeamMembers = this.renderTeamMembers;
 
         return (
             <section
@@ -78,9 +46,12 @@ export default class Team extends React.PureComponent {
                 <h2>
                     Our team
                 </h2>
-                <TeamMembers
-                    members={members}
+                <ListView
                     className={styles.members}
+                    data={members}
+                    keyExtractor={keyExtractor}
+                    renderer={Member}
+                    rendererParams={rendererParams}
                 />
             </section>
         );
