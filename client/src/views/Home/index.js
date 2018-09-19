@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AnchorLink from '#components/AnchorLink';
 
+import LoadingAnimation from '#rscv/LoadingAnimation';
+
 import {
     setMembersAction,
     setClientsAction,
@@ -34,14 +36,14 @@ const linkList = [
         sectionLink: 'services',
     },
     {
-        id: 'clients',
-        sectionTitle: 'Clients',
-        sectionLink: 'clients',
-    },
-    {
         id: 'expertise',
         sectionTitle: 'Expertise',
         sectionLink: 'expertise',
+    },
+    {
+        id: 'clients',
+        sectionTitle: 'Clients',
+        sectionLink: 'clients',
     },
     {
         id: 'team',
@@ -76,6 +78,13 @@ export default class Home extends React.PureComponent {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            serviceLoading: true,
+            clientLoading: true,
+            technologySectionLoading: true,
+            memberLoading: true,
+        };
 
         // Requests
         this.membersGetRequest = new MembersGetRequest({
@@ -206,6 +215,24 @@ export default class Home extends React.PureComponent {
     )
 
     render() {
+        const {
+            serviceLoading,
+            clientLoading,
+            technologySectionLoading,
+            memberLoading,
+        } = this.state;
+
+        const loading = serviceLoading ||
+            clientLoading ||
+            technologySectionLoading ||
+            memberLoading;
+
+        if (loading) {
+            return (
+                <LoadingAnimation large />
+            );
+        }
+
         return (
             <div className={styles.home}>
                 {this.renderHeader()}
