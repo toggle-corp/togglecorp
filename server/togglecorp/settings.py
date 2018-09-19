@@ -155,7 +155,7 @@ if os.environ.get('DJANGO_USE_S3', 'False').lower() == 'true':
 
     AWS_S3_FILE_OVERWRITE = False
     AWS_DEFAULT_ACL = 'private'
-    AWS_QUERYSTRING_AUTH = True
+    AWS_QUERYSTRING_AUTH = False
     AWS_S3_CUSTOM_DOMAIN = None
 
     # Static configuration
