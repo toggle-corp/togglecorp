@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'djangorestframework_camel_case',
     'corsheaders',
+    'storages',
 
     'client',
     'member',
@@ -142,12 +143,37 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = '/static'
+if os.environ.get('DJANGO_USE_S3', 'False').lower() == 'true':
+    # AWS S3 Bucket Credentials
+    AWS_STORAGE_BUCKET_NAME_STATIC = os.environ[
+        'DJANGO_AWS_STORAGE_BUCKET_NAME_STATIC']
+    AWS_STORAGE_BUCKET_NAME_MEDIA = os.environ[
+        'DJANGO_AWS_STORAGE_BUCKET_NAME_MEDIA']
+    AWS_ACCESS_KEY_ID = os.environ['S3_AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['S3_AWS_SECRET_ACCESS_KEY']
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = '/media'
+    AWS_S3_FILE_OVERWRITE = False
+    AWS_DEFAULT_ACL = 'private'
+    AWS_QUERYSTRING_AUTH = True
+    AWS_S3_CUSTOM_DOMAIN = None
 
+    # Static configuration
+    STATICFILES_LOCATION = 'server-static'
+    STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN,
+                                     STATICFILES_LOCATION)
+    STATICFILES_STORAGE = 'togglecorp.s3_storages.StaticStorage'
+
+    # Media configuration
+    MEDIAFILES_LOCATION = 'server-media'
+    MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+    DEFAULT_FILE_STORAGE = 'togglecorp.s3_storages.MediaStorage'
+
+else:
+    STATIC_URL = '/static/'
+    STATIC_ROOT = '/static'
+
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = '/media'
 
 # CORS CONFIGS
 CORS_ORIGIN_ALLOW_ALL = True
