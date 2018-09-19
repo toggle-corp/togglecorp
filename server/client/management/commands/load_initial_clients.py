@@ -17,7 +17,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         call_command('loaddata', 'initial_clients.json', app_label='client')
         for client in Client.objects.all():
-            image_name = client.image.path.split('/')[-1]
+            image_name = client.image.name.split('/')[-1]
             image_path = path_join(FIXTURE_IMAGE_PATH, image_name)
             with open(image_path, 'rb') as image:
                 client.image.save(image_name, File(image))

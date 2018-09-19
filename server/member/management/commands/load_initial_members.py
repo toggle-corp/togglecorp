@@ -17,7 +17,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         call_command('loaddata', 'initial_members.json', app_label='member')
         for member in Member.objects.all():
-            image_name = member.image.path.split('/')[-1]
+            image_name = member.image.name.split('/')[-1]
             image_path = path_join(FIXTURE_IMAGE_PATH, image_name)
             with open(image_path, 'rb') as image:
                 member.image.save(image_name, File(image))

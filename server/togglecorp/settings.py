@@ -151,6 +151,7 @@ if os.environ.get('DJANGO_USE_S3', 'False').lower() == 'true':
         'DJANGO_AWS_STORAGE_BUCKET_NAME_MEDIA']
     AWS_ACCESS_KEY_ID = os.environ['S3_AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['S3_AWS_SECRET_ACCESS_KEY']
+    AWS_S3_REGION_NAME = os.environ['S3_AWS_REGION_NAME']
 
     AWS_S3_FILE_OVERWRITE = False
     AWS_DEFAULT_ACL = 'private'
