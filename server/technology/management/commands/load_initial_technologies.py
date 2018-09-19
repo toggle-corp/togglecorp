@@ -24,7 +24,7 @@ class Command(BaseCommand):
             app_label='technology'
         )
         for technology in Technology.objects.all():
-            image_name = technology.image.path.split('/')[-1]
+            image_name = technology.image.name.split('/')[-1]
             image_path = path_join(FIXTURE_IMAGE_PATH, image_name)
             with open(image_path, 'rb') as image:
                 technology.image.save(image_name, File(image))

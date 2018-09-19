@@ -17,7 +17,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         call_command('loaddata', 'initial_services.json', app_label='service')
         for service in Service.objects.all():
-            image_name = service.image.path.split('/')[-1]
+            image_name = service.image.name.split('/')[-1]
             image_path = path_join(FIXTURE_IMAGE_PATH, image_name)
             with open(image_path, 'rb') as image:
                 service.image.save(image_name, File(image))
