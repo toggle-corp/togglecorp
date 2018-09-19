@@ -50,7 +50,7 @@ module.exports = (env) => {
         devtool: 'cheap-module-eval-source-map',
         devServer: {
             host: '0.0.0.0',
-            port: 5000,
+            port: 3006,
             overlay: true,
             watchOptions: {
                 ignored: /node_modules/,

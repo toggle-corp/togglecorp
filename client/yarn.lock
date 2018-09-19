@@ -1016,6 +1016,10 @@
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
 
+"@togglecorp/ravl@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@togglecorp/ravl/-/ravl-1.0.2.tgz#d1c6536369d0393c4db899bd9ec804c20d3ca7aa"
+
 "@types/node@*":
   version "10.9.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.9.2.tgz#f0ab8dced5cd6c56b26765e1c0d9e4fdcc9f2a00"

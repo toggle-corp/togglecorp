@@ -6,7 +6,9 @@ import initialDomainDataState from '../initial-state/domainData';
 
 export const SET_MEMBERS = 'domainData/SET_MEMBERS';
 export const SET_CLIENTS = 'domainData/SET_CLIENTS';
-export const SET_TECHNOLOGIES = 'domainData/SET_TECHNOLOGIES';
+export const SET_SERVICES = 'domainData/SET_SERVICES';
+export const SET_TECHNOLOGY_SECTIONS = 'domainData/SET_TECHNOLOGY_SECTIONS';
+
 
 // ACTION-CREATOR
 
@@ -20,45 +22,59 @@ export const setClientsAction = clients => ({
     clients,
 });
 
-export const setTechnologiesAction = technologies => ({
-    type: SET_TECHNOLOGIES,
-    technologies,
+export const setServicesAction = services => ({
+    type: SET_SERVICES,
+    services,
+});
+
+export const setTechnologySectionsAction = technologySections => ({
+    type: SET_TECHNOLOGY_SECTIONS,
+    technologySections,
 });
 
 // REDUCER
 
 const setMembers = (state, { members }) => {
     const settings = {
-        members: { $auto: {
+        members: { $autoArray: {
             $set: members,
         } },
     };
     return update(state, settings);
 };
 
-const setClients = (state, { clientws }) => {
+const setClients = (state, { clients }) => {
     const settings = {
-        clientws: { $auto: {
-            $set: clientws,
+        clients: { $autoArray: {
+            $set: clients,
         } },
     };
     return update(state, settings);
 };
 
-const setTechnologies = (state, { technologies }) => {
+const setServices = (state, { services }) => {
     const settings = {
-        technologies: { $auto: {
-            $set: technologies,
+        services: { $autoArray: {
+            $set: services,
         } },
     };
     return update(state, settings);
 };
 
+const setTechnologySections = (state, { technologySections }) => {
+    const settings = {
+        technologySections: { $autoArray: {
+            $set: technologySections,
+        } },
+    };
+    return update(state, settings);
+};
 
 const reducers = {
     [SET_MEMBERS]: setMembers,
     [SET_CLIENTS]: setClients,
-    [SET_TECHNOLOGIES]: setTechnologies,
+    [SET_SERVICES]: setServices,
+    [SET_TECHNOLOGY_SECTIONS]: setTechnologySections,
 };
 
 const reducer = createReducerWithMap(reducers, initialDomainDataState);

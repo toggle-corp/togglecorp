@@ -81,10 +81,10 @@
             }
 
             @keyframes oscillate {
-                0% { transform: translateY(0px); }
+                0% { transform: translateY(0); }
                 20% { transform: translateY(8px); }
                 40% { transform: translateY(20px); }
-                100% { transform: translateY(0px); }
+                100% { transform: translateY(0); }
             }
 
             .right-block {
@@ -249,37 +249,6 @@
             flex-direction: column;
             justify-content: center;
             min-height: 80vh;
-
-            .service-list {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-around;
-                font-size: 20px;
-
-                .service {
-                    display: flex;
-                    align-items: center;
-                    flex-direction: column;
-                    padding: 24px 48px;
-                    width: 360px;
-                    text-align: center;
-
-                    img {
-                        margin: 24px 0;
-                        height: 128px;
-                    }
-
-                    h3 {
-                        text-transform: capitalize;
-                    }
-
-                    p {
-                        line-height: 1.6;
-                        font-size: 0.8em;
-                        font-weight: $font-weight-light;
-                    }
-                }
-            }
         }
 
         &.clients {
@@ -288,38 +257,6 @@
             flex-direction: column;
             justify-content: center;
             min-height: 60vh;
-
-            .client-list {
-                display: flex;
-                align-items: center;
-                flex-wrap: wrap;
-                justify-content: space-around;
-                max-width: 920px;
-
-                .client {
-                    padding: 36px 24px;
-
-                    img {
-                        width: 180px;
-                        height: 120px;
-                        object-fit: contain;
-                        object-position: center center;
-                    }
-                }
-            }
-
-            @media screen and (max-width: 720px) {
-                .client-list {
-                    .client {
-                        padding: 8px 12px;
-
-                        img {
-                            width: 150px;
-                            height: 90px;
-                        }
-                    }
-                }
-            }
         }
 
         &.expertise {
@@ -328,68 +265,6 @@
             flex-direction: column;
             justify-content: center;
             min-height: 80vh;
-
-            .expertise-group-list {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-around;
-                font-size: 20px;
-
-                .expertise-group {
-                    display: flex;
-                    align-items: center;
-                    flex-direction: column;
-                    text-align: center;
-
-                    .group-title {
-                        display: none;
-                        text-align: center;
-                        text-transform: capitalize;
-                    }
-
-                    ul {
-                        margin: 0;
-                        padding: 24px 48px;
-                        width: 360px;
-
-                        li {
-                            padding: 16px 0;
-                            list-style: none;
-
-                            img {
-                                width: 144px;
-                                height: 64px;
-                                object-fit: contain;
-                                object-position: center;
-                            }
-                        }
-                    }
-                }
-
-                @media screen and (max-width: 1460px) {
-                    .expertise-group {
-                        ul {
-                            width: 240px;
-                        }
-                    }
-                }
-                @media screen and (max-width: 980px) {
-                    .expertise-group {
-                        ul {
-                            padding: 24px;
-                            width: 180px;
-                        }
-                    }
-                }
-                @media screen and (max-width: 740px) {
-                    .expertise-group {
-                        ul {
-                            display: flex;
-                            flex-wrap: wrap;
-                        }
-                    }
-                }
-            }
         }
 
         &.team {

@@ -4,7 +4,7 @@
         "pk": 1,
         "fields": {
             "name": "DFID Nepal",
-            "url": "TODO: url",
+            "url": "https://www.gov.uk/world/organisations/dfid-nepal",
             "image": "client/image/dfid.png"
         }
     },
@@ -13,8 +13,8 @@
         "pk": 2,
         "fields": {
             "name": "Okular Analytics",
-            "url": "TODO: url",
-            "image": "client/image/okular.webp"
+            "url": "https://www.okular-analytics.com/",
+            "image": "client/image/okular.png"
         }
     },
     {
@@ -22,7 +22,7 @@
         "pk": 3,
         "fields": {
             "name": "Cyclical Insights",
-            "url": "TODO: url",
+            "url": "https://cyclical.io/",
             "image": "client/image/cyclical.png"
         }
     },
@@ -31,7 +31,7 @@
         "pk": 4,
         "fields": {
             "name": "ACAPS",
-            "url": "TODO: url",
+            "url": "https://www.acaps.org/",
             "image": "client/image/acaps.png"
         }
     },
@@ -40,7 +40,7 @@
         "pk": 5,
         "fields": {
             "name": "ACLED",
-            "url": "TODO: url",
+            "url": "https://www.acleddata.com/",
             "image": "client/image/acled.png"
         }
     },
@@ -48,8 +48,8 @@
         "model": "client.Client",
         "pk": 6,
         "fields": {
-            "name": "World Vision",
-            "url": "TODO: url",
+            "name": "World Vision Nepal",
+            "url": "https://www.wvi.org/nepal",
             "image": "client/image/wvi.png"
         }
     },
@@ -58,7 +58,7 @@
         "pk": 7,
         "fields": {
             "name": "UNHCR",
-            "url": "TODO: url",
+            "url": "http://www.unhcr.org/",
             "image": "client/image/unhcr.png"
         }
     },
@@ -67,7 +67,7 @@
         "pk": 8,
         "fields": {
             "name": "PIN",
-            "url": "TODO: url",
+            "url": "https://www.clovekvtisni.cz/en/what-we-do/humanitarian-aid-and-development/nepal",
             "image": "client/image/pin.png"
         }
     },
@@ -76,7 +76,7 @@
         "pk": 9,
         "fields": {
             "name": "SMTM Capital",
-            "url": "TODO: url",
+            "url": "https://www.smtmcapital.com.np/",
             "image": "client/image/smtm.png"
         }
     },
@@ -85,7 +85,7 @@
         "pk": 10,
         "fields": {
             "name": "IDMC",
-            "url": "TODO: url",
+            "url": "http://www.internal-displacement.org/",
             "image": "client/image/idmc.png"
         }
     },
@@ -94,7 +94,7 @@
         "pk": 11,
         "fields": {
             "name": "OCHA",
-            "url": "TODO: url",
+            "url": "https://www.unocha.org/",
             "image": "client/image/ocha.png"
         }
     },
@@ -103,7 +103,7 @@
         "pk": 12,
         "fields": {
             "name": "IFRC",
-            "url": "TODO: url",
+            "url": "https://media.ifrc.org/ifrc/",
             "image": "client/image/ifrc.png"
         }
     },
@@ -112,7 +112,7 @@
         "pk": 13,
         "fields": {
             "name": "Danish Red Cross",
-            "url": "TODO: url",
+            "url": "https://www.ifrc.org/en/what-we-do/where-we-work/europe/danish-red-cross/",
             "image": "client/image/danish.png"
         }
     }

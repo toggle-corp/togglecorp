@@ -1,7 +1,8 @@
 const initialDomainDataState = {
     members: [],
     clients: [],
-    technologies: [],
+    services: [],
+    technologySections: [],
 };
 
 export default initialDomainDataState;

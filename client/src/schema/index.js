@@ -1,12 +1,25 @@
-import dict from '#ravl/schema';
-import attachValidator from '#ravl/attachValidator';
+import Dict, { basicTypes } from '@togglecorp/ravl';
 
-// ATTACHING BEHAVIORS
-attachValidator(dict);
-
-// ATTACHING USER DEFINED SCHEMAS
+const basicTypeSchemas = basicTypes.map(entry => ({ name: entry.doc.name, schema: entry }));
 
 const userDefinedSchemas = [];
+
+//  Service Scheme
+{
+    const name = 'service';
+    const schema = {
+        doc: {
+            name: 'Service',
+        },
+        fields: {
+            id: { type: 'uint', required: true },
+            title: { type: 'string', required: true },
+            description: { type: 'string' },
+            image: { type: 'string' },
+        },
+    };
+    userDefinedSchemas.push({ name, schema });
+}
 
 // Member Scheme
 {
@@ -83,6 +96,7 @@ const userDefinedSchemas = [];
         fields: {
             id: { type: 'uint', required: true },
             name: { type: 'string', required: true },
+            technologies: { type: 'array.technology', required: true },
         },
     };
     userDefinedSchemas.push({ name, schema });
@@ -98,13 +112,15 @@ const userDefinedSchemas = [];
             name: { type: 'string', required: true },
             url: { type: 'string', required: true },
             image: { type: 'string', required: true },
-            section: { type: 'technologySection', required: true },
         },
     };
     userDefinedSchemas.push({ name, schema });
 }
 
+const dict = new Dict();
+
 [
+    ...basicTypeSchemas,
     ...userDefinedSchemas,
 ].forEach(({ name, schema }) => dict.put(name, schema));
 
