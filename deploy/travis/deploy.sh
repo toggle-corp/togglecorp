@@ -3,6 +3,7 @@
 : '
 Dependent Env Variables
  - TOGGLECORP_RC_BRANCH
+ - REACT_APP_API_END
 
  - AWS Related
      - AWS_ACCESS_KEY_ID
@@ -48,7 +49,7 @@ echo "::::::  >> Generating React Builds"
     python -c "import fcntl; fcntl.fcntl(1, fcntl.F_SETFL, 0)"
 
     echo "
-    # React env variables goes here
+    REACT_APP_API_END=${REACT_APP_API_END}
     " > ${CLIENT_DIR}/.env
 
     docker run -t -v ${CLIENT_BUILD_DIR}:/code/build --env-file=${CLIENT_DIR}/.env \
