@@ -12,7 +12,7 @@ CLIENT_DIR=${ROOT_DIR}/client
 
 mkdir -p ${CLIENT_DIR}/src/vendor
 
-git clone https://github.com/toggle-corp/react-store.git ${CLIENT_DIR}/src/vendor/react-store
+git clone --branch=togglecorp https://github.com/toggle-corp/react-store.git ${CLIENT_DIR}/src/vendor/react-store
 git --git-dir=${CLIENT_DIR}/src/vendor/react-store/.git --no-pager show --pretty=fuller --quiet
 cp ${CLIENT_DIR}/src/vendor/react-store/stylesheets/_user-imports-sample.scss ${CLIENT_DIR}/src/vendor/react-store/stylesheets/_user-imports.scss
 

@@ -15,6 +15,7 @@ class Member(models.Model):
     name = models.CharField(max_length=255)
     image = models.FileField(upload_to='member/image/')
     designation = models.CharField(max_length=255)
+    hidden = models.BooleanField(default=False, help_text='Don\'t show this user')
 
     class Meta:
         ordering = ('id',)
