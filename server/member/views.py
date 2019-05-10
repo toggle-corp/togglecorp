@@ -5,5 +5,7 @@ from .serializers import MemberSerializer
 
 
 class MemberViewSet(viewsets.ModelViewSet):
-    queryset = Member.objects.all()
     serializer_class = MemberSerializer
+
+    def get_queryset(self):
+        return Member.objects.filter(hidden=False)

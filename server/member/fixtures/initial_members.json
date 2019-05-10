@@ -122,15 +122,6 @@
             "designation": "Analyst"
         }
     },
-    {
-        "model": "member.Member",
-        "pk": 13,
-        "fields": {
-            "name": "Uddhab Adhikari",
-            "image": "member/image/uddhab.jpg",
-            "designation": "Project Manager"
-        }
-    },
 
     {
         "model": "member.MemberUrl",

@@ -11,7 +11,9 @@ class MemberUrlInline(admin.TabularInline):
 @admin.register(Member)
 class MemberAdmin(admin.ModelAdmin):
     inlines = (MemberUrlInline,)
-    fields = ('name', 'image', 'image_tag', 'designation')
+    list_display = ('name', 'designation', 'hidden')
+    fields = ('name', 'image', 'image_tag', 'designation', 'hidden')
+    list_filter = ('designation', 'hidden',)
     readonly_fields = ('image_tag',)
 
     def image_tag(self, instance):
