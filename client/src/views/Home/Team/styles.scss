@@ -1,9 +1,24 @@
 @import '~base-scss/base';
 
-.members {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: auto;
-    max-width: 920px;
+.team-section{
+    position: relative;
+    background-color: #707070;
+    overflow: hidden;
+
+    .overlay-block{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        img{
+            opacity: 0.5;
+            width: 100%;
+        }
+    }
+    .members {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
 }

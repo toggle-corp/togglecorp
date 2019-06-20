@@ -17,17 +17,19 @@ const tsRendererParams = (key, technologySection) => ({ technologySection });
 
 const Technology = ({ technology }) => (
     <li>
-        <a
-            href={technology.url}
-            rel="noopener noreferrer"
-            target="_blank"
-        >
-            <img
-                src={technology.image}
-                alt={technology.name}
-                title={technology.name}
-            />
-        </a>
+        <div className={styles.listInner}>
+            <a
+                href={technology.url}
+                rel="noopener noreferrer"
+                target="_blank"
+            >
+                <img
+                    src={technology.image}
+                    alt={technology.name}
+                    title={technology.name}
+                />
+            </a>
+        </div>
     </li>
 );
 Technology.propTypes = {
@@ -79,18 +81,20 @@ export default class Expertise extends React.PureComponent {
         return (
             <section
                 id="expertise"
-                className={className}
+                className={`${className} ${styles.expertiseSection}`}
             >
-                <h2>
-                    Our expertise
-                </h2>
-                <ListView
-                    className={styles.expertiseGroupList}
-                    data={technologySections}
-                    keyExtractor={keyExtractor}
-                    renderer={TechnologySection}
-                    rendererParams={tsRendererParams}
-                />
+                <div className={styles.containerBlock}>
+                    <h2>
+                        Our expertise
+                    </h2>
+                    <ListView
+                        className={styles.expertiseGroupList}
+                        data={technologySections}
+                        keyExtractor={keyExtractor}
+                        renderer={TechnologySection}
+                        rendererParams={tsRendererParams}
+                    />
+                </div>
             </section>
         );
     }

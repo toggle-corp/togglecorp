@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import clientsOverlay from '#resources/img/spikes-building-bg.png';
 
 import ListView from '#rscv/List/ListView';
 
@@ -26,17 +27,19 @@ const rendererParams = (key, client) => ({ client });
 
 const Client = ({ client }) => (
     <div key={client.id} className={styles.client}>
-        <a
-            href={client.url}
-            rel="noopener noreferrer"
-            target="_blank"
-        >
-            <img
-                src={client.image}
-                alt={client.name}
-                title={client.name}
-            />
-        </a>
+        <div className={styles.clientInner}>
+            <a
+                href={client.url}
+                rel="noopener noreferrer"
+                target="_blank"
+            >
+                <img
+                    src={client.image}
+                    alt={client.name}
+                    title={client.name}
+                />
+            </a>
+        </div>
     </div>
 );
 Client.propTypes = {
@@ -58,18 +61,23 @@ export default class Clients extends React.PureComponent {
         return (
             <section
                 id="clients"
-                className={className}
+                className={`${className} ${styles.clientsSection}`}
             >
-                <h2>
-                    {'Organizations we\'ve worked with'}
-                </h2>
-                <ListView
-                    className={styles.clientList}
-                    data={clients}
-                    keyExtractor={keyExtractor}
-                    renderer={Client}
-                    rendererParams={rendererParams}
-                />
+                <div className={styles.overlayBlock}>
+                    <img src={clientsOverlay} alt="spike background" />
+                </div>
+                <div className={styles.containerBlock}>
+                    <h2>
+                        {'Organizations we\'ve worked with'}
+                    </h2>
+                    <ListView
+                        className={styles.clientList}
+                        data={clients}
+                        keyExtractor={keyExtractor}
+                        renderer={Client}
+                        rendererParams={rendererParams}
+                    />
+                </div>
             </section>
         );
     }

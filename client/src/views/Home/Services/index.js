@@ -26,13 +26,15 @@ const rendererParams = (key, service) => ({ service });
 
 const Service = ({ service }) => (
     <div key={service.id} className={styles.service}>
-        <img src={service.image} alt={service.title} />
-        <h3>
-            {service.title}
-        </h3>
-        <p>
-            {service.description}
-        </p>
+        <div className={styles.servicesInner}>
+            <img src={service.image} alt={service.title} />
+            <h3>
+                {service.title}
+            </h3>
+            <p>
+                {service.description}
+            </p>
+        </div>
     </div>
 );
 Service.propTypes = {
@@ -50,21 +52,24 @@ export default class Services extends React.PureComponent {
             className,
             services,
         } = this.props;
+
         return (
             <section
                 id="services"
-                className={className}
+                className={`${className} ${styles.servicesSection}`}
             >
-                <h2>
-                    What we do
-                </h2>
-                <ListView
-                    className={styles.serviceList}
-                    data={services}
-                    keyExtractor={keyExtractor}
-                    renderer={Service}
-                    rendererParams={rendererParams}
-                />
+                <div className={styles.containerBlock}>
+                    <h2>
+                        What we do
+                    </h2>
+                    <ListView
+                        className={styles.serviceList}
+                        data={services}
+                        keyExtractor={keyExtractor}
+                        renderer={Service}
+                        rendererParams={rendererParams}
+                    />
+                </div>
             </section>
         );
     }

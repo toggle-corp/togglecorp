@@ -1,0 +1,21 @@
+@import '~base-scss/base';
+
+.menu-title{
+    position: relative;
+    color: #ffffff;
+    font-size: $font-size-extra-large;
+    font-weight: $font-weight-bold;
+    text-transform: capitalize;
+    &:before{
+        position: absolute;
+        display: block;
+        content: '';
+        bottom: -2px;
+        left: 0;
+        min-width: 100px;
+        width: 50%;
+        max-width: 70%;
+        height: 2px;
+        background-color: #f15928;
+    }
+}

@@ -35,6 +35,7 @@ export default class Member extends React.PureComponent {
 
         return (
             <div className={styles.member} >
+                <span className={styles.overlayMember} />
                 <img
                     className={styles.image}
                     src={member.image}

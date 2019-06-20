@@ -1,5 +1,8 @@
 @import '~base-scss/base';
 
+.expertise-section{
+    background-color: #464646;
+}
 .expertise-group-list {
     display: flex;
     flex-wrap: wrap;
@@ -14,18 +17,21 @@
 
         ul {
             margin: 0;
-            padding: 24px 48px;
-            width: 360px;
+            padding: 24px;
 
             li {
-                padding: 16px 0;
+                padding: 24px 0;
                 list-style: none;
-
-                img {
-                    width: 144px;
-                    height: 64px;
-                    object-fit: contain;
-                    object-position: center;
+                .list-inner{
+                    background-color: #363636;
+                    padding: 30px;
+                    
+                    img {
+                        width: 144px;
+                        height: 64px;
+                        object-fit: contain;
+                        object-position: center;
+                    }
                 }
             }
         }

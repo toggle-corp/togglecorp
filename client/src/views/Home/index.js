@@ -5,6 +5,11 @@ import AnchorLink from '#components/AnchorLink';
 
 import LoadingAnimation from '#rscv/LoadingAnimation';
 
+import logo from '#resources/img/logo-white-01.png';
+import Background from '#resources/img/header-bg.png';
+import scroll from '#resources/img/scroll-down.png';
+import overlay from '#resources/img/polka-bg.png';
+
 import {
     setMembersAction,
     setClientsAction,
@@ -16,6 +21,7 @@ import Services from './Services';
 import Expertise from './Expertise';
 import Clients from './Clients';
 import Team from './Team';
+import Footer from './Footer';
 
 import MembersGetRequest from './requests/MembersGetRequest';
 import ClientsGetRequest from './requests/ClientsGetRequest';
@@ -23,6 +29,7 @@ import ServicesGetRequest from './requests/ServicesGetRequest';
 import TechnologySectionsGetRequest from './requests/TechnologySectionsGetRequest';
 
 import styles from './styles.scss';
+// import ListView from 'src/vendor/react-store/components/View/List/ListView';
 
 const linkList = [
     {
@@ -135,21 +142,12 @@ export default class Home extends React.PureComponent {
         <section
             id="home"
             className={styles.header}
+            style={{ backgroundImage: `url(${Background})` }}
         >
-            <div className={styles.leftBlock}>
-                <div className={styles.titleBlock}>
-                    <p className={styles.preMessage}>
-                        Hi, we are
-                    </p>
-                    <h1>
-                        <span>Toggle</span><span>corp</span>
-                    </h1>
-                    <p className={styles.postMessage}>
-                        We build tech for your idea.
-                    </p>
-                </div>
+            <div className={styles.backgroundOverlay}>
+                <img src={overlay} alt="Polka Dots" />
             </div>
-            <div className={styles.rightBlock} >
+            <div className={styles.containerBlock}>
                 <nav>
                     <ul>
                         {linkList.map(link => (
@@ -163,19 +161,21 @@ export default class Home extends React.PureComponent {
                         ))}
                     </ul>
                 </nav>
-                <button
-                    className={`
-                        ${styles.downButton}
-                        ion-ios-arrow-down
-                    `}
-                    onClick={() => this.handleDownButtonClick('services')}
-                />
-            </div>
-            <div className={styles.bottomBlock}>
-                <button
-                    className={`${styles.downButton} ion-ios-arrow-down`}
-                    onClick={() => this.handleDownButtonClick('services')}
-                />
+                <div className={styles.titleBlock}>
+                    <div className={styles.siteBranding}>
+                        <img src={logo} alt="Togglecorp logo" />
+                    </div>
+                    <p className={styles.postMessage}>
+                        We build <span> tech</span> for your <span>ideas</span>
+                    </p>
+                </div>
+                <div className={styles.bottomBlock}>
+                    <AnchorLink
+                        href="#Home"
+                    >
+                        <img src={scroll} alt="Scroll Down" />
+                    </AnchorLink>
+                </div>
             </div>
         </section>
     )
@@ -199,7 +199,7 @@ export default class Home extends React.PureComponent {
                 </p>
                 <p>
                     <i className="fa fa-map-o" />
-                    Pulchowk, Patan, Nepal
+                    Jawalakhel, Patan, Nepal
                 </p>
             </div>
             <div className={styles.theMap}>
@@ -249,6 +249,9 @@ export default class Home extends React.PureComponent {
                     className={styles.team}
                 />
                 {this.renderContact()}
+                <Footer
+                    className={styles.footer}
+                />
             </div>
         );
     }
