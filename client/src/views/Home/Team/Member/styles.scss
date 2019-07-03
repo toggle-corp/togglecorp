@@ -31,7 +31,12 @@
         .links {
 
             .link {
+                transition: color 0.5s ease;
                 padding-right: $spacing-small;
+
+                &:hover{
+                    color: $color-background-dark;
+                }
             }
         }
     }

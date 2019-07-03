@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { _cs } from '@togglecorp/fujs';
 
 import ListView from '#rscv/List/ListView';
 import List from '#rscv/List';
@@ -81,7 +82,7 @@ export default class Expertise extends React.PureComponent {
         return (
             <section
                 id="expertise"
-                className={`${className} ${styles.expertiseSection}`}
+                className={_cs(className, styles.expertiseSection)}
             >
                 <div className={styles.containerBlock}>
                     <h2>

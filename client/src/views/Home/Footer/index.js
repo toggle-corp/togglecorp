@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { _cs } from '@togglecorp/fujs';
 
 import List from '#rscv/List';
 import footerOverlay from '#resources/img/polka-bg-footer.png';
@@ -94,7 +95,7 @@ export default class Footer extends React.PureComponent {
         return (
             <section
                 id="team"
-                className={`${className} ${styles.footerSection}`}
+                className={_cs(className, styles.footerSection)}
             >
                 <div className={styles.overlayBlock}>
                     <img src={footerOverlay} alt="abstract overlay" />
@@ -112,7 +113,7 @@ export default class Footer extends React.PureComponent {
                                 </span>
                             </p>
                             <p>
-                                <i className={`fa fa-envelope ${styles.mails}`} />
+                                <i className={_cs('fa fa-envelope', styles.mails)} />
                                 <span>
                                     <a href="mailto:info@togglecorp.com">
                                         info@togglecorp.com

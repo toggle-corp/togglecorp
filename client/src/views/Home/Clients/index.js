@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { _cs } from '@togglecorp/fujs';
+
 import clientsOverlay from '#resources/img/spikes-building-bg.png';
 
 import ListView from '#rscv/List/ListView';
@@ -61,7 +63,7 @@ export default class Clients extends React.PureComponent {
         return (
             <section
                 id="clients"
-                className={`${className} ${styles.clientsSection}`}
+                className={_cs(className, styles.clientsSection)}
             >
                 <div className={styles.overlayBlock}>
                     <img src={clientsOverlay} alt="spike background" />

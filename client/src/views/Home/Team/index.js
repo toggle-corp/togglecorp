@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import teamOverlay from '#resources/img/triangular-spikes-bg.png';
+import { _cs } from '@togglecorp/fujs';
 
+import teamOverlay from '#resources/img/triangular-spikes-bg.png';
 import ListView from '#rscv/List/ListView';
 
 import { membersSelector } from '#redux';
@@ -42,7 +43,7 @@ export default class Team extends React.PureComponent {
         return (
             <section
                 id="team"
-                className={`${className} ${styles.teamSection}`}
+                className={_cs(className, styles.teamSection)}
             >
                 <div className={styles.overlayBlock}>
                     <img src={teamOverlay} alt="abstract overlay" />

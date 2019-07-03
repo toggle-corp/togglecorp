@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { _cs } from '@togglecorp/fujs';
 
 import ListView from '#rscv/List/ListView';
 
@@ -56,7 +57,7 @@ export default class Services extends React.PureComponent {
         return (
             <section
                 id="services"
-                className={`${className} ${styles.servicesSection}`}
+                className={_cs(className, styles.servicesSection)}
             >
                 <div className={styles.containerBlock}>
                     <h2>

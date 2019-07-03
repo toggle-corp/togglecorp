@@ -1016,6 +1016,11 @@
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
 
+"@togglecorp/fujs@^1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@togglecorp/fujs/-/fujs-1.6.1.tgz#a6f93228563cd99491ba09cb8d841af44f503f11"
+  integrity sha512-WgdUxHoG+EOdah/R1hGaKs79ONz5o2ACJ5vsxk624WHNArdxwL3TOGw5KE8n8E3cQX3OjPDi12ms9x21220ruQ==
+
 "@togglecorp/ravl@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@togglecorp/ravl/-/ravl-1.0.2.tgz#d1c6536369d0393c4db899bd9ec804c20d3ca7aa"
