@@ -1,51 +1,58 @@
 @import '~base-scss/base';
-.services-section{
-    background: #3c3c3c; /*to be updated in CSS variables*/
+.services-section {
+    background: $color-background-alt;
 
-    h2{
-        color: #f15928; /*to be updated in CSS variables*/
-        display: block;
-        font-weight: $font-weight-bold;
+    .container-block{
+        justify-content: center;
+        padding: $spacing-super-large-alt 0;
+        min-height: 100vh;
     }
 
     .service-list {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
-        font-size: 20px;
+        justify-content: center;
+        font-size: $font-size-extra-large;
     
         .service {
             display: flex;
             align-items: center;
             flex-direction: column;
-            margin-bottom: 50px;
-            padding: 0 15px;
-            width: 360px;
-            text-align: center;
+            margin-bottom: $spacing-super-large-alt;
+            padding: 0 $spacing-medium-alt;
+            width: $width-login-form;
+            text-align: center;                                                                                                                                                                                                                                
+            
+            &:first-child{
+                padding-left: 0;
+            }
+            &:last-child{
+                padding-right: 0;
+            }
             
             .services-inner{
-                background-color: #252525;
-                padding: 30px;
-                color: #fff;
+                background-color: $color-background-overlay-dark;
+                padding: $spacing-extra-large-alt;
                 height: 100%;
+                color: $color-text;
             
     
                 img {
-                    margin: 24px 0;
+                    margin: $spacing-large-alt 0;
                     height: 128px;
                 }
         
                 h3 {
                     text-transform: capitalize;
+                    color: $color-text;
                     font-weight: $font-weight-bold;
-                    color: #fff;
                 }
         
                 p {
                     line-height: 1.6;
+                    color: $color-text;
                     font-size: 0.8em;
                     font-weight: $font-weight-light;
-                    color: #fff;
                 }
             }
         }

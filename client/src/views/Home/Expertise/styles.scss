@@ -1,30 +1,39 @@
 @import '~base-scss/base';
 
-.expertise-section{
-    background-color: #464646;
+.expertise-section {
+    background-color: $color-foreground-dark;
+
+    .container-block{
+        justify-content: center;
+        padding: $spacing-super-large-alt 0;
+        min-height: 100vh;
+    }
 }
+
 .expertise-group-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    font-size: 20px;
+    justify-content: center;
+    font-size: $font-size-extra-large;
 
     .expertise-group {
         display: flex;
         align-items: center;
         flex-direction: column;
+        padding: 0 $spacing-medium;
         text-align: center;
 
         ul {
             margin: 0;
-            padding: 24px;
+            padding: $spacing-large-alt;
 
             li {
-                padding: 24px 0;
+                padding: $spacing-large-alt 0;
                 list-style: none;
-                .list-inner{
-                    background-color: #363636;
-                    padding: 30px;
+
+                .list-inner {
+                    background-color: $color-background-dark-alt;
+                    padding: $spacing-extra-large-alt;
                     
                     img {
                         width: 144px;
@@ -39,6 +48,7 @@
 
     @media screen and (max-width: 1460px) {
         .expertise-group {
+
             ul {
                 width: 240px;
             }
@@ -47,8 +57,9 @@
 
     @media screen and (max-width: 980px) {
         .expertise-group {
+
             ul {
-                padding: 24px;
+                padding: $spacing-large-alt;
                 width: 180px;
             }
         }
@@ -56,6 +67,7 @@
 
     @media screen and (max-width: 740px) {
         .expertise-group {
+            
             ul {
                 display: flex;
                 flex-wrap: wrap;

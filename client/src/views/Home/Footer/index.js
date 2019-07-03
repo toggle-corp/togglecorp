@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import List from '#rscv/List';
 import footerOverlay from '#resources/img/polka-bg-footer.png';
 import AnchorLink from '#components/AnchorLink';
 
@@ -20,52 +21,68 @@ const defaultProps = {
 const footerMenuList = [
     {
         id: 1,
-        menuTitle: 'Home',
-        menuLink: 'home',
+        title: 'Home',
+        link: '#home',
     },
     {
         id: 2,
-        menuTitle: 'Services',
-        menuLink: 'services',
+        title: 'Services',
+        link: '#services',
     },
     {
         id: 3,
-        menuTitle: 'Expertise',
-        menuLink: 'expertise',
+        title: 'Expertise',
+        link: '#expertise',
     },
     {
         id: 4,
-        menuTitle: 'Clients',
-        menuLink: 'clients',
+        title: 'Clients',
+        link: '#clients',
     },
     {
         id: 5,
-        menuTitle: 'Team',
-        menuLink: 'team',
+        title: 'Team',
+        link: '#team',
     },
 ];
 
 const socialList = [
     {
         id: 1,
-        socialName: 'twitter',
-        socialLink: 'www.twitter.com',
-        socialIcon: 'fa fa-twitter',
+        name: 'twitter',
+        link: 'www.twitter.com',
+        icon: 'fa fa-twitter',
     },
     {
         id: 2,
-        socialName: 'facebook',
-        socialLink: 'www.facebook.com',
-        socialIcon: 'fa fa-facebook-f',
+        name: 'facebook',
+        link: 'www.facebook.com',
+        icon: 'fa fa-facebook-f',
     },
     {
         id: 3,
-        socialName: 'linkedin',
-        socialLink: 'www.linkedin.com',
-        socialIcon: 'fa fa-linkedin',
+        name: 'linkedin',
+        link: 'www.linkedin.com',
+        icon: 'fa fa-linkedin',
     },
 ];
-const rendererParams = (key, member) => ({ member });
+
+const footerMenuKeyExtractor = footerMenu => footerMenu.id;
+const footerMenuRendererParams = (key, footerMenu) => ({
+    children: footerMenu.title,
+    href: footerMenu.link,
+});
+
+const socialKeyExtractor = social => social.id;
+const socialRendererParams = (key, social) => ({ social });
+const socialRenderer = ({ social }) => (
+    <AnchorLink
+        href={social.link}
+    >
+        <i className={social.icon} />
+    </AnchorLink>
+);
+
 
 export default class Footer extends React.PureComponent {
     static propTypes = propTypes;
@@ -95,7 +112,7 @@ export default class Footer extends React.PureComponent {
                                 </span>
                             </p>
                             <p>
-                                <i className="fa fa-envelope" />
+                                <i className={`fa fa-envelope ${styles.mails}`} />
                                 <span>
                                     <a href="mailto:info@togglecorp.com">
                                         info@togglecorp.com
@@ -105,9 +122,6 @@ export default class Footer extends React.PureComponent {
                             <p>
                                 <i className="fa fa-mobile" />
                                 <span>
-                                    <a href="tel:+977-9841969697">
-                                        +977-9841969697
-                                    </a>
                                     <a href="tel:+977-9841919399">
                                         +977-9841919399
                                     </a>
@@ -119,15 +133,12 @@ export default class Footer extends React.PureComponent {
                                 title="Quick Links"
                             />
                             <ul>
-                                {footerMenuList.map(menuItem => (
-                                    <li key={menuItem.id}>
-                                        <AnchorLink
-                                            href={`#${menuItem.menuLink}`}
-                                        >
-                                            {menuItem.menuTitle}
-                                        </AnchorLink>
-                                    </li>
-                                ))}
+                                <List
+                                    data={footerMenuList}
+                                    keyExtractor={footerMenuKeyExtractor}
+                                    renderer={AnchorLink}
+                                    rendererParams={footerMenuRendererParams}
+                                />
                             </ul>
 
                         </div>
@@ -136,19 +147,19 @@ export default class Footer extends React.PureComponent {
                                 title="Follow US"
                             />
                             <ul className={styles.horizontalList}>
-                                {socialList.map(socialItem => (
-                                    <li key={socialItem.id}>
-                                        <AnchorLink
-                                            className={styles.socialStyle}
-                                            href={socialItem.socialList}
-                                        >
-                                            <i className={socialItem.socialIcon} />
-                                        </AnchorLink>
-                                    </li>
-                                ))}
+                                <List
+                                    className={styles.socialList}
+                                    data={socialList}
+                                    keyExtractor={socialKeyExtractor}
+                                    renderer={socialRenderer}
+                                    rendererParams={socialRendererParams}
+                                />
                             </ul>
                         </div>
                     </div>
+                </div>
+                <div className={styles.footNote}>
+                    ToggleCorp Solutions Pvt. Ltd | 2019
                 </div>
             </section>
         );

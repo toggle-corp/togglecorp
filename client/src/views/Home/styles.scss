@@ -8,21 +8,17 @@
     overflow: hidden;
 }
 
-
-
 section {
     display: flex;
+    position: relative;
     flex-direction: row;
     flex-grow: 1;
     z-index: 10;
-    padding: 48px 0;
-    position: relative;
-    background-repeat: no-repeat;
     background-position: center center;
+    background-repeat: no-repeat;
     background-size: cover;
 
     &.header {
-        display: flex;
         padding: 0;
         width: 100vw;
         min-height: 100vh;
@@ -41,21 +37,32 @@ section {
         .container-block {
 
             nav {
-                margin: 50px 0; /*to be updated as CSS variable*/
+                flex-shrink: 0;
+                margin: $spacing-super-large-alt 0; /*to be updated as CSS variable*/
+
                 ul {
                     display: flex;
                     justify-content: flex-start;
-                    color: $color-foreground-light-alt;
                     margin: 0;
                     padding: 0;
+                    color: $color-foreground-light-alt;
 
                     li {
-                        padding: 0 25px;
+                        padding: 0 $spacing-large-alt;
                         list-style: none;
-                        font-size: 18px;
+                        font-size: $font-size-large-alt;
+                        font-weight: $font-weight-bold;
 
-                        &:first-child{
+                        &:first-child {
                             padding-left: 0;
+                        }
+
+                        a{
+                            transition: color 0.5s ease;
+
+                            &:hover{
+                                color: $color-accent-light;
+                            }
                         }
                     }
                 }
@@ -64,32 +71,35 @@ section {
             .title-block {
                 display: flex;
                 flex-direction: column;
+                flex-grow: 1;
                 justify-content: center;
                 margin-top: 100px; /*to be updated as CSS variable*/
 
-                .site-branding{
+                .site-branding {
+                    margin: 0 auto;
                     width: 550px;
                     max-width: 100%;
-                    margin: 0 auto;
                     text-align: center;
 
-                    img{
+                    img {
                         max-width: 100%;
                     }
                 }
-                
+
                 .post-message {
                     margin: 4vh 0;
+                    text-align: center;
+                    word-spacing: $spacing-small;
+                    letter-spacing: $spacing-extra-small;
                     color: $color-foreground-light-alt;
+                    font-family: $font-family-handwritten;
                     font-size: 4vh;
                     font-weight: $font-weight-light;
-                    text-align: center;
-                    letter-spacing: $spacing-extra-small;
-                    word-spacing: $spacing-small;
                         
                     span {
                         text-transform: uppercase;
-                        color: #f15928; /*to be updated in CSS variables*/
+                        color: $color-accent-light;
+                        font-family: $font-family-sans-serif;
                         font-weight: $font-weight-bold;
                     }
                 }
@@ -107,20 +117,20 @@ section {
                 }
             }
 
-            .bottom-block{
-                margin-top: 50px;
-                text-align: center;
+            .bottom-block {
+                display: flex;
+                justify-content: center;
+                margin: $spacing-extra-large-alt 0;
 
-                img{
-                    width: 100px;
-                    max-width: 100%;
+                img {
+                    width: 20px;
                     animation-name: oscillate;
                     animation-duration: 3s;
                     animation-iteration-count: infinite;
                 }
             }
         }
-
+        
         @keyframes oscillate {
             0% { transform: translateY(0); }
             20% { transform: translateY(8px); }
@@ -164,12 +174,12 @@ section {
     }
 
     h2 {
-        margin: 30px 0;
-        padding-bottom: 24px;
+        margin: $spacing-extra-large-alt 0;
+        padding-bottom: $spacing-large-alt;
         text-align: center;
         text-transform: initial;
+        color: $color-accent-light;
         font-size: 48px;
-        color: #f15928;
         font-weight: $font-weight-bold;
 
         @media screen and (max-width: 720px) {
@@ -217,20 +227,37 @@ section {
     &.contact {
         display: flex;
         align-items: center;
+        flex-direction: column;
         flex-wrap: wrap;
-        justify-content: space-around;
-        min-height: 700px;
-        background-color: #818181;
-        color: #fff;
+        justify-content: stretch;
+        background-color:#5a5a5a;
+        min-height: 100vh;
+        color: $color-text;
+        
+        .container-block{
+            position: relative;
+            padding: $spacing-super-large-alt 0;
+        }
 
         a {
             text-transform: initial;
             color: $color-accent-light;
+
+            &:hover{
+                color: $color-foreground-light-alt;
+            }
         }
 
         .contact-info {
+            position: absolute;
+            right: $spacing-super-large-alt;
+            bottom: calc(#{$spacing-extra-large-alt} + #{$spacing-super-large});
+            background-color: $color-shadow-dark;
+            padding: $spacing-large;
+
             >p {
-                font-size: 16px;
+                margin: $spacing-small 0;
+                font-size: $font-size-large;
 
                 i {
                     width: 32px;
@@ -241,7 +268,7 @@ section {
         .the-map {
             width: 100%;
             min-width: 200px;
-            max-width: 800px;
+            max-width: $width-container;
             height: 100%;
             min-height: 200px;
             max-height: 600px;
@@ -254,12 +281,13 @@ section {
             }
         }
     }
-    &.footer{
-        position: relative;
+
+    &.footer {
         display: flex;
-        flex-direction: row;
-        background-color: #555555;
-        color: #fff;
-        min-height: 50vh;
+        position: relative;
+        flex-direction: column;
+        background-color: $color-foreground-alt;
+        padding: $spacing-super-large-alt 0;
+        color: $color-text;
     }
 }

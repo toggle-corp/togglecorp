@@ -7,8 +7,9 @@ import LoadingAnimation from '#rscv/LoadingAnimation';
 
 import logo from '#resources/img/logo-white-01.png';
 import Background from '#resources/img/header-bg.png';
-import scroll from '#resources/img/scroll-down.png';
+import scroll from '#resources/img/scroll.png';
 import overlay from '#resources/img/polka-bg.png';
+import List from '#rscv/List';
 
 import {
     setMembersAction,
@@ -78,6 +79,25 @@ const mapDispatchToProps = dispatch => ({
     setTechnologySections: params => dispatch(setTechnologySectionsAction(params)),
 });
 
+const linkListKeyExtractor = link => link.id;
+
+const linkListRendererParams = (key, link) => {
+    console.log('key and link', key, link);
+    return ({ link });
+};
+
+const linkListRender = ({ link }) => {
+    console.warn('link', link);
+    return (
+        <li>
+            <AnchorLink
+                href={`#${link.sectionLink}`}
+            >
+                {link.sectionTitle}
+            </AnchorLink>
+        </li>
+    );
+};
 
 @connect(undefined, mapDispatchToProps)
 export default class Home extends React.PureComponent {
@@ -150,15 +170,12 @@ export default class Home extends React.PureComponent {
             <div className={styles.containerBlock}>
                 <nav>
                     <ul>
-                        {linkList.map(link => (
-                            <li key={link.id}>
-                                <AnchorLink
-                                    href={`#${link.sectionLink}`}
-                                >
-                                    {link.sectionTitle}
-                                </AnchorLink>
-                            </li>
-                        ))}
+                        <List
+                            keyExtractor={linkListKeyExtractor}
+                            data={linkList}
+                            renderer={linkListRender}
+                            rendererParams={linkListRendererParams}
+                        />
                     </ul>
                 </nav>
                 <div className={styles.titleBlock}>
@@ -171,7 +188,7 @@ export default class Home extends React.PureComponent {
                 </div>
                 <div className={styles.bottomBlock}>
                     <AnchorLink
-                        href="#Home"
+                        href="#services"
                     >
                         <img src={scroll} alt="Scroll Down" />
                     </AnchorLink>
@@ -185,31 +202,33 @@ export default class Home extends React.PureComponent {
             id="contact"
             className={styles.contact}
         >
-            <div className={styles.contactInfo}>
+            <div className={styles.containerBlock}>
                 <h2>Contact Us</h2>
-                <p>
-                    <i className="fa fa-envelope" />
-                    <a href="mailto:info@togglecorp.com">
-                        info@togglecorp.com
-                    </a>
-                </p>
-                <p>
-                    <i className="fa fa-phone" />
-                    +977-9841969697, +977-9841919399
-                </p>
-                <p>
-                    <i className="fa fa-map-o" />
-                    Jawalakhel, Patan, Nepal
-                </p>
-            </div>
-            <div className={styles.theMap}>
-                <iframe
-                    title="map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1485.5855254843193!2d85.31556386076223!3d27.675954023000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19cc62b59c8f%3A0xe38fc6d7cff6e8e8!2sTogglecorp!5e0!3m2!1sen!2snp!4v1481449564568"
-                    frameBorder="0"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                />
+                <div className={styles.contactInfo}>
+                    <p>
+                        <i className="fa fa-envelope" />
+                        <a href="mailto:info@togglecorp.com">
+                            info@togglecorp.com
+                        </a>
+                    </p>
+                    <p>
+                        <i className="fa fa-phone" />
+                        +977-9841969697, +977-9841919399
+                    </p>
+                    <p>
+                        <i className="fa fa-map-o" />
+                        Jawalakhel, Patan, Nepal
+                    </p>
+                </div>
+                <div className={styles.theMap}>
+                    <iframe
+                        title="map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1485.5855254843193!2d85.31556386076223!3d27.675954023000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19cc62b59c8f%3A0xe38fc6d7cff6e8e8!2sTogglecorp!5e0!3m2!1sen!2snp!4v1481449564568"
+                        frameBorder="0"
+                        style={{ border: 0 }}
+                        allowFullScreen
+                    />
+                </div>
             </div>
         </section>
     )

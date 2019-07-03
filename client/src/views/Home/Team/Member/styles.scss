@@ -1,40 +1,20 @@
 @import '~base-scss/base';
 
 .member {
-    position: relative;
     display: flex;
+    position: relative;
     flex-basis: 100vw;
     border-bottom: 1px solid $color-separator;
-    padding: 12px;
-    .overlay-member{
+    padding: $spacing-medium-alt;
+
+    .overlay-member {
         display: none;
         position: absolute;
-        bottom: 0;
         right: 0;
+        bottom: 0;
         width: 25px;
         height: 25px;
         font-weight:$font-weight-bold;
-        &::before{
-            display: none;
-            position:absolute;
-            content: '';
-            bottom: 0;
-            right: 0;
-            border-width: 25px;
-            border-style: solid;
-            border-color: transparent #fff #fff transparent;
-            z-index: 1;
-        }
-        &::after{
-            position: absolute;
-            display: none;
-            content: '+';
-            color: #f15928;
-            font-size: $font-size-large-alt;
-            bottom: 5px;
-            right: 10px;
-            z-index: 9;
-        }
     }
 
     .image {
@@ -46,11 +26,12 @@
     }
 
     .description {
-        padding: 8px 12px;
+        padding: $spacing-small-alt $spacing-medium-alt;
 
         .links {
+
             .link {
-                padding-right: 6px;
+                padding-right: $spacing-small;
             }
         }
     }
@@ -61,7 +42,7 @@
         display: block;
         position: relative;
         flex-basis: auto;
-        margin: 10px 8px;
+        margin: $spacing-medium $spacing-small-alt;
         outline: none;
         border: 0;
         border-bottom: 0;
@@ -70,24 +51,15 @@
         padding: 0;
         height: 240px;
         overflow: hidden;
-        .overlay-member{
+
+        .overlay-member {
             display: block;
-            color: #f15928;
-            &::before{
-                display: block;
-            }
-            &::after{
-                display: block;
-                &:hover{
-                    content: '-';
-                }
-            }
-            
+            color: $color-accent-light;
         }
 
         .image {
-            border-radius: 0;
             transition: 10s transform ease-in-out;
+            border-radius: 0;
             width: 160px;
             height: 100%;
             object-fit: cover;
@@ -95,37 +67,26 @@
         }
 
         .description {
-            position: absolute;
             display: flex;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 100%;
+            align-items: center;
             flex-direction: column;
             justify-content: center;
-            top: 0;
-            left: 100%;
-            right: 0;
-            right: 0;
+            transition: .3s all ease-in;
+            opacity: 0;
+            background: rgba(163, 18, 18, 0.8);
+            padding: 0 8px 4px 8px;
             width: 100%;
             height: 100%;
-            background: -moz-linear-gradient(left, 
-                rgba(241,89,40,0.7) 0%, 
-                rgba(244,0,0,0.89) 100%); /* FF3.6-15 */
-            background: -webkit-linear-gradient(left, 
-                rgba(241,89,40,0.7) 0%,
-                rgba(244,0,0,0.89) 100%); /* Chrome10-25,Safari5.1-6 */
-            background: linear-gradient(to right, 
-                rgba(241,89,40,0.7) 0%,
-                rgba(244,0,0,0.89) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-            filter: progid:DXImageTransform.Microsoft.gradient( 
-                startColorstr='#b3f15928', 
-                endColorstr='#e3f40000',GradientType=1 ); /* IE6-9 */
-            
-            padding: 0 8px 4px 8px;
-            opacity: 0;
-            transition: .3s all ease-in;
-            color: #fff;
+            color: $color-text;
 
             .name {
                 padding: $spacing-small 0;
-                color: #fff;
+                text-align: center;
+                color: $color-text;
                 font-size: $font-size-large-alt;
                 font-weight: $font-weight-bold;
             }
@@ -148,22 +109,25 @@
         }
 
         &:hover {
+
             .overlay-member{
+
                 &::after{
                     content: '-';
                 }
             }
+
             .image {
                 transform: scale(1.1);
             }
 
             .description {
-                left: 0;
                 bottom: 0;
+                left: 0;
                 opacity: 1;
 
                 .name {
-                    color: #ffffff;
+                    color: $color-text;
                 }
 
                 .designation {

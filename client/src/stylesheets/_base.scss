@@ -2,8 +2,9 @@
 @import 'dimens';
 @import 'utils';
 
-$font-family-sans-serif: 'Source Sans Pro', sans-serif;
+$font-family-sans-serif: 'Lato', sans-serif;
 $font-family-monospace: 'Oxygen Mono', monospace;
+$font-family-handwritten: 'Pacifico', cursive;
 $font-family-icons: 'Ionicons';
 
 * {
@@ -77,12 +78,18 @@ body {
     }
 }
 .container-block {
+    display: flex;
     position: relative;
-    width: 1170px;
-    max-width: 100%;
-    margin-left: auto;
+    flex-direction: column;
     margin-right: auto;
-    padding-left: $spacing-medium-alt;
-    padding-right: $spacing-medium-alt;
-    text-align: center;
+    margin-left: auto;
+    width: 100%;
+    max-width: $width-container;
+
+    h2 {
+        display: block;
+        text-transform: capitalize;
+        color: $color-accent-light;
+        font-weight: $font-weight-bold;
+    }
 }

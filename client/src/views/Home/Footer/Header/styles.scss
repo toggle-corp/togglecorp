@@ -1,21 +1,26 @@
 @import '~base-scss/base';
 
-.menu-title{
+.menu-title {
     position: relative;
-    color: #ffffff;
+    text-transform: capitalize;
+    color: $color-text;
     font-size: $font-size-extra-large;
     font-weight: $font-weight-bold;
-    text-transform: capitalize;
-    &:before{
-        position: absolute;
+
+    &:before {
         display: block;
-        content: '';
-        bottom: -2px;
+        position: absolute;
+        bottom: -3px;
         left: 0;
-        min-width: 100px;
-        width: 50%;
-        max-width: 70%;
-        height: 2px;
-        background-color: #f15928;
+        background-color: $color-accent-light;
+        width: 70%;
+        min-width: $width-underline-large;
+        max-width: 100%;
+        height: $width-separator-medium;
+        content: '';
+
+        @media screen and (max-width: 480px) {
+            width: 100%;            
+        }
     }
 }
