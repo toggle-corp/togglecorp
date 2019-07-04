@@ -91,5 +91,9 @@ body {
         text-transform: capitalize;
         color: $color-accent-light;
         font-weight: $font-weight-bold;
+
+        @media screen and (max-width: 720px) {
+            font-size: $font-size-super-large-alt;
+        }
     }
 }

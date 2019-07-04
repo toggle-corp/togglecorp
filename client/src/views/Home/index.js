@@ -30,7 +30,6 @@ import ServicesGetRequest from './requests/ServicesGetRequest';
 import TechnologySectionsGetRequest from './requests/TechnologySectionsGetRequest';
 
 import styles from './styles.scss';
-// import ListView from 'src/vendor/react-store/components/View/List/ListView';
 
 const linkList = [
     {
@@ -86,17 +85,23 @@ const linkListRendererParams = (key, link) => {
     return ({ link });
 };
 
-const linkListRender = ({ link }) => {
-    console.warn('link', link);
-    return (
-        <li>
-            <AnchorLink
-                href={`#${link.sectionLink}`}
-            >
-                {link.sectionTitle}
-            </AnchorLink>
-        </li>
-    );
+const linkListRender = ({
+    link: {
+        sectionLink,
+        sectionTitle,
+    },
+}) => (
+    <li>
+        <AnchorLink
+            href={`#${sectionLink}`}
+        >
+            {sectionTitle}
+        </AnchorLink>
+    </li>
+);
+
+linkListRender.propTypes = {
+    link: PropTypes.object.isRequired,
 };
 
 @connect(undefined, mapDispatchToProps)
@@ -165,7 +170,10 @@ export default class Home extends React.PureComponent {
             style={{ backgroundImage: `url(${Background})` }}
         >
             <div className={styles.backgroundOverlay}>
-                <img src={overlay} alt="Polka Dots" />
+                <img
+                    src={overlay}
+                    alt="Polka Dots"
+                />
             </div>
             <div className={styles.containerBlock}>
                 <nav>
@@ -180,17 +188,21 @@ export default class Home extends React.PureComponent {
                 </nav>
                 <div className={styles.titleBlock}>
                     <div className={styles.siteBranding}>
-                        <img src={logo} alt="Togglecorp logo" />
+                        <img
+                            src={logo}
+                            alt="Togglecorp logo"
+                        />
                     </div>
                     <p className={styles.postMessage}>
                         We build <span> tech</span> for your <span>ideas</span>
                     </p>
                 </div>
                 <div className={styles.bottomBlock}>
-                    <AnchorLink
-                        href="#services"
-                    >
-                        <img src={scroll} alt="Scroll Down" />
+                    <AnchorLink href="#services">
+                        <img
+                            src={scroll}
+                            alt="Scroll Down"
+                        />
                     </AnchorLink>
                 </div>
             </div>

@@ -43,10 +43,16 @@ export default class Team extends React.PureComponent {
         return (
             <section
                 id="team"
-                className={_cs(className, styles.teamSection)}
+                className={_cs(
+                    className,
+                    styles.teamSection,
+                )}
             >
                 <div className={styles.overlayBlock}>
-                    <img src={teamOverlay} alt="abstract overlay" />
+                    <img
+                        src={teamOverlay}
+                        alt="abstract overlay"
+                    />
                 </div>
                 <div className={styles.containerBlock}>
                     <h2>

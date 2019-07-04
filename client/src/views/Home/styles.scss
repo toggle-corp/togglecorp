@@ -53,8 +53,16 @@ section {
                         font-size: $font-size-large-alt;
                         font-weight: $font-weight-bold;
 
+                        @media screen and (max-width: 720px) {
+                            font-size: $font-size-large;
+                            padding: 0 $spacing-large;
+                        }
+
                         &:first-child {
                             padding-left: 0;
+                            @media screen and (max-width: 720px) {
+                                padding-left: $spacing-large;
+                            }
                         }
 
                         a{

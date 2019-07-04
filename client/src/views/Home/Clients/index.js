@@ -27,25 +27,35 @@ const defaultProps = {
 const keyExtractor = member => member.id;
 const rendererParams = (key, client) => ({ client });
 
-const Client = ({ client }) => (
-    <div key={client.id} className={styles.client}>
+const Client = ({
+    client: {
+        id,
+        url,
+        image,
+        name,
+    },
+}) => (
+    <div
+        key={id}
+        className={styles.client}
+    >
         <div className={styles.clientInner}>
             <a
-                href={client.url}
+                href={url}
                 rel="noopener noreferrer"
                 target="_blank"
             >
                 <img
-                    src={client.image}
-                    alt={client.name}
-                    title={client.name}
+                    src={image}
+                    alt={name}
+                    title={name}
                 />
             </a>
         </div>
     </div>
 );
 Client.propTypes = {
-    client: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+    client: PropTypes.object.isRequired,
 };
 
 
@@ -63,10 +73,16 @@ export default class Clients extends React.PureComponent {
         return (
             <section
                 id="clients"
-                className={_cs(className, styles.clientsSection)}
+                className={_cs(
+                    className,
+                    styles.clientsSection,
+                )}
             >
                 <div className={styles.overlayBlock}>
-                    <img src={clientsOverlay} alt="spike background" />
+                    <img
+                        src={clientsOverlay}
+                        alt="spike background"
+                    />
                 </div>
                 <div className={styles.containerBlock}>
                     <h2>

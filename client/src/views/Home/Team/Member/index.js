@@ -11,21 +11,27 @@ import styles from './styles.scss';
 const propTypes = {
     member: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
-
+const emptyObject = {};
 const keyExtractor = member => member.id;
 const rendererParams = (key, memberUrl) => ({ memberUrl });
 
-const MemberUrl = ({ memberUrl }) => (
+const MemberUrl = ({
+    memberUrl: {
+        id,
+        url,
+        type,
+    },
+}) => (
     <AnchorLink
-        key={memberUrl.id}
-        href={memberUrl.url}
+        key={id}
+        href={url}
         target="_blank"
         rel="noopener noreferrer"
     >
         <span className={_cs(
             styles.link,
             'fa',
-            `fa-${memberUrl.type.name}`,
+            `fa-${(type || emptyObject).name}`,
         )}
         />
     </AnchorLink>
@@ -50,8 +56,12 @@ export default class Member extends React.PureComponent {
                     alt={member.name}
                 />
                 <div className={styles.description} >
-                    <div className={styles.name}>{member.name}</div>
-                    <div className={styles.designation}>{member.designation}</div>
+                    <div className={styles.name}>
+                        {member.name}
+                    </div>
+                    <div className={styles.designation}>
+                        {member.designation}
+                    </div>
                     <ListView
                         className={styles.links}
                         data={member.membersUrls}

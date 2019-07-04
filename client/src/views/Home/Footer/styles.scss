@@ -14,11 +14,16 @@
 
     .footer-inner {
         display: flex;
+        flex-wrap: wrap;
 
         .footer-item {
+            margin: $spacing-large 0;
             padding: 0 $spacing-medium-alt;
-            width: 33.3%;
+            max-width: 100%;
             text-align: left;
+            @media screen and (max-width: 545px) {
+                width: 100%;
+            }
 
             p {
                 display: flex;
@@ -36,7 +41,6 @@
                             color: $color-accent-light;
                         }
                     }
-
                 }
                 .mail {
                     font-size: $font-size-large;
@@ -54,10 +58,6 @@
                 text-align: center;
                 line-height: 40px;
                 font-size: $font-size-extra-large-alt;
-
-                &:hover{
-                    background-color: transparent;
-                }
             }
 
             ul {
@@ -77,6 +77,9 @@
                     }
                     &:hover{
                         color: $color-accent-light;
+                    }
+                    i:hover{
+                        background-color: transparent;
                     }
                 }
 

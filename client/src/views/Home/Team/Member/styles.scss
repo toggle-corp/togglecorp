@@ -35,7 +35,7 @@
                 padding-right: $spacing-small;
 
                 &:hover{
-                    color: $color-background-dark;
+                    color: $color-accent-light;
                 }
             }
         }
@@ -109,6 +109,10 @@
                 .link {
                     cursor: pointer;
                     padding-right: 12px;
+
+                    &:hover{
+                        color: $color-background-dark;
+                    }
                 }
             }
         }

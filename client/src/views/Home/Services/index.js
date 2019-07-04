@@ -11,7 +11,7 @@ import styles from './styles.scss';
 
 const propTypes = {
     className: PropTypes.string,
-    services: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
+    services: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state, props) => ({
@@ -25,21 +25,31 @@ const defaultProps = {
 const keyExtractor = member => member.id;
 const rendererParams = (key, service) => ({ service });
 
-const Service = ({ service }) => (
-    <div key={service.id} className={styles.service}>
+const Service = ({
+    service: {
+        id,
+        image,
+        title,
+        description,
+    },
+}) => (
+    <div key={id} className={styles.service}>
         <div className={styles.servicesInner}>
-            <img src={service.image} alt={service.title} />
+            <img
+                src={image}
+                alt={title}
+            />
             <h3>
-                {service.title}
+                {title}
             </h3>
             <p>
-                {service.description}
+                {description}
             </p>
         </div>
     </div>
 );
 Service.propTypes = {
-    service: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+    service: PropTypes.object.isRequired,
 };
 
 
@@ -57,7 +67,10 @@ export default class Services extends React.PureComponent {
         return (
             <section
                 id="services"
-                className={_cs(className, styles.servicesSection)}
+                className={_cs(
+                    className,
+                    styles.servicesSection,
+                )}
             >
                 <div className={styles.containerBlock}>
                     <h2>

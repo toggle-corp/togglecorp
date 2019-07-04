@@ -12,7 +12,7 @@ import styles from './styles.scss';
 
 const propTypes = {
     className: PropTypes.string,
-    title: PropTypes.string.isRequired, // eslint-disable-line react/forbid-prop-types
+    title: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
@@ -76,29 +76,43 @@ const footerMenuRendererParams = (key, footerMenu) => ({
 
 const socialKeyExtractor = social => social.id;
 const socialRendererParams = (key, social) => ({ social });
-const socialRenderer = ({ social }) => (
-    <AnchorLink
-        href={social.link}
-    >
-        <i className={social.icon} />
+const socialRenderer = ({
+    social: {
+        link,
+        icon,
+    },
+}) => (
+    <AnchorLink href={link}>
+        <i className={icon} />
     </AnchorLink>
 );
-
+socialRenderer.propTypes = {
+    social: PropTypes.object.isRequired,
+};
 
 export default class Footer extends React.PureComponent {
     static propTypes = propTypes;
     static defaultProps = defaultProps;
 
     render() {
-        const { className, title } = this.props;
+        const {
+            className,
+            title,
+        } = this.props;
 
         return (
             <section
                 id="team"
-                className={_cs(className, styles.footerSection)}
+                className={_cs(
+                    className,
+                    styles.footerSection,
+                )}
             >
                 <div className={styles.overlayBlock}>
-                    <img src={footerOverlay} alt="abstract overlay" />
+                    <img
+                        src={footerOverlay}
+                        alt="abstract overlay"
+                    />
                 </div>
                 <div className={styles.containerBlock}>
                     <div className={styles.footerInner}>

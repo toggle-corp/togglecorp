@@ -16,38 +16,38 @@ const tRendererParams = (key, technology) => ({ technology });
 // Technology Section Renderer Params
 const tsRendererParams = (key, technologySection) => ({ technologySection });
 
-const Technology = ({ technology }) => (
-    <li>
-        <div className={styles.listInner}>
-            <a
-                href={technology.url}
-                rel="noopener noreferrer"
-                target="_blank"
-            >
-                <img
-                    src={technology.image}
-                    alt={technology.name}
-                    title={technology.name}
-                />
-            </a>
-        </div>
-    </li>
+const Technology = ({
+    technology: {
+        url,
+        name,
+        image,
+    },
+}) => (
+    <div className={styles.listInner}>
+        <a
+            href={url}
+            rel="noopener noreferrer"
+            target="_blank"
+        >
+            <img
+                src={image}
+                alt={name}
+                title={name}
+            />
+        </a>
+    </div>
 );
 Technology.propTypes = {
-    technology: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+    technology: PropTypes.object.isRequired,
 };
 
 const TechnologySection = ({ technologySection }) => (
-    <div className={styles.expertiseGroup} >
-        <ul>
-            <List
-                data={technologySection.technologies}
-                keyExtractor={keyExtractor}
-                renderer={Technology}
-                rendererParams={tRendererParams}
-            />
-        </ul>
-    </div>
+    <List
+        data={technologySection.technologies}
+        keyExtractor={keyExtractor}
+        renderer={Technology}
+        rendererParams={tRendererParams}
+    />
 );
 TechnologySection.propTypes = {
     technologySection: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
