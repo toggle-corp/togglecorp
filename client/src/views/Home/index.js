@@ -81,16 +81,14 @@ const mapDispatchToProps = dispatch => ({
 const linkListKeyExtractor = link => link.id;
 
 const linkListRendererParams = (key, link) => {
-    console.log('key and link', key, link);
-    return ({ link });
-};
-
-const linkListRender = ({
-    link: {
+    const {
         sectionLink,
         sectionTitle,
-    },
-}) => (
+    } = link;
+    return { sectionLink, sectionTitle };
+};
+
+const linkListRender = ({ sectionLink, sectionTitle }) => (
     <li>
         <AnchorLink
             href={`#${sectionLink}`}
@@ -101,7 +99,8 @@ const linkListRender = ({
 );
 
 linkListRender.propTypes = {
-    link: PropTypes.object.isRequired,
+    sectionLink: PropTypes.string.isRequired,
+    sectionTitle: PropTypes.string.isRequired,
 };
 
 @connect(undefined, mapDispatchToProps)

@@ -75,19 +75,21 @@ const footerMenuRendererParams = (key, footerMenu) => ({
 });
 
 const socialKeyExtractor = social => social.id;
-const socialRendererParams = (key, social) => ({ social });
-const socialRenderer = ({
-    social: {
+const socialRendererParams = (key, social) => {
+    const {
         link,
         icon,
-    },
-}) => (
+    } = social;
+    return { link, icon };
+};
+const socialRenderer = ({ link, icon }) => (
     <AnchorLink href={link}>
         <i className={icon} />
     </AnchorLink>
 );
 socialRenderer.propTypes = {
-    social: PropTypes.object.isRequired,
+    link: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
 };
 
 export default class Footer extends React.PureComponent {

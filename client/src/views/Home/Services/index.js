@@ -23,16 +23,17 @@ const defaultProps = {
 };
 
 const keyExtractor = member => member.id;
-const rendererParams = (key, service) => ({ service });
-
-const Service = ({
-    service: {
+const rendererParams = (key, value) => {
+    const {
         id,
         image,
         title,
         description,
-    },
-}) => (
+    } = value;
+    return { id, image, title, description };
+};
+
+const Service = ({ id, image, title, description }) => (
     <div key={id} className={styles.service}>
         <div className={styles.servicesInner}>
             <img
@@ -49,7 +50,10 @@ const Service = ({
     </div>
 );
 Service.propTypes = {
-    service: PropTypes.object.isRequired,
+    id: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
 };
 
 

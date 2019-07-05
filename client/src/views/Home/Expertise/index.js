@@ -12,16 +12,21 @@ import styles from './styles.scss';
 
 const keyExtractor = row => row.id;
 // Technology Renderer Params
-const tRendererParams = (key, technology) => ({ technology });
+const tRendererParams = (key, value) => {
+    const {
+        url,
+        image,
+        name,
+    } = value;
+    return { url, image, name };
+};
 // Technology Section Renderer Params
 const tsRendererParams = (key, technologySection) => ({ technologySection });
 
 const Technology = ({
-    technology: {
-        url,
-        name,
-        image,
-    },
+    url,
+    name,
+    image,
 }) => (
     <div className={styles.listInner}>
         <a
@@ -38,7 +43,9 @@ const Technology = ({
     </div>
 );
 Technology.propTypes = {
-    technology: PropTypes.object.isRequired,
+    url: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
 };
 
 const TechnologySection = ({ technologySection }) => (

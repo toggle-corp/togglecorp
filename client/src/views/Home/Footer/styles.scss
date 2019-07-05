@@ -19,6 +19,7 @@
         .footer-item {
             margin: $spacing-large 0;
             padding: 0 $spacing-medium-alt;
+            min-width: 33.33%;
             max-width: 100%;
             text-align: left;
             @media screen and (max-width: 545px) {
@@ -34,7 +35,7 @@
                     width: calc(100% - 65px);
 
                     a {
-                        display: block;
+                        display: inline-block;
                         transition: color 0.5s ease;
 
                         &:hover{
@@ -69,6 +70,7 @@
                 font-size: $font-size-large;
 
                 a {
+                    display: inline-block;
                     transition: color 0.5s ease;
                     margin-top: $spacing-medium;
 
@@ -78,8 +80,13 @@
                     &:hover{
                         color: $color-accent-light;
                     }
-                    i:hover{
-                        background-color: transparent;
+                    i{
+                        transition: all 0.5s ease;
+                        color: $color-background-light;
+                        &:hover{
+                            background-color: transparent;
+                            color: $color-accent-light;
+                        }
                     }
                 }
 

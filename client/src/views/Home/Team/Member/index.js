@@ -13,15 +13,16 @@ const propTypes = {
 };
 const emptyObject = {};
 const keyExtractor = member => member.id;
-const rendererParams = (key, memberUrl) => ({ memberUrl });
-
-const MemberUrl = ({
-    memberUrl: {
+const rendererParams = (key, memberUrl) => {
+    const {
         id,
         url,
         type,
-    },
-}) => (
+    } = memberUrl;
+    return { id, url, type };
+};
+
+const MemberUrl = ({ id, url, type }) => (
     <AnchorLink
         key={id}
         href={url}
@@ -37,7 +38,9 @@ const MemberUrl = ({
     </AnchorLink>
 );
 MemberUrl.propTypes = {
-    memberUrl: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+    id: PropTypes.number.isRequired,
+    url: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
 };
 
 

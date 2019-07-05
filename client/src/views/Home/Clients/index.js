@@ -25,16 +25,17 @@ const defaultProps = {
 };
 
 const keyExtractor = member => member.id;
-const rendererParams = (key, client) => ({ client });
-
-const Client = ({
-    client: {
+const rendererParams = (key, value) => {
+    const {
         id,
         url,
         image,
         name,
-    },
-}) => (
+    } = value;
+    return { id, url, image, name };
+};
+
+const Client = ({ id, url, image, name }) => (
     <div
         key={id}
         className={styles.client}
@@ -55,7 +56,10 @@ const Client = ({
     </div>
 );
 Client.propTypes = {
-    client: PropTypes.object.isRequired,
+    id: PropTypes.number.isRequired,
+    url: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
 };
 
 
