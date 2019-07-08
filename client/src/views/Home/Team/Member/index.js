@@ -22,7 +22,11 @@ const rendererParams = (key, memberUrl) => {
     return { id, url, type };
 };
 
-const MemberUrl = ({ id, url, type }) => (
+const MemberUrl = ({
+    id,
+    url,
+    type,
+}) => (
     <AnchorLink
         key={id}
         href={url}
@@ -48,26 +52,33 @@ export default class Member extends React.PureComponent {
     static propTypes = propTypes;
 
     render() {
-        const { member } = this.props;
+        const {
+            member: {
+                image,
+                name,
+                designation,
+                membersUrls,
+            },
+        } = this.props;
 
         return (
             <div className={styles.member} >
                 <span className={styles.overlayMember} />
                 <img
                     className={styles.image}
-                    src={member.image}
-                    alt={member.name}
+                    src={image}
+                    alt={name}
                 />
                 <div className={styles.description} >
                     <div className={styles.name}>
-                        {member.name}
+                        {name}
                     </div>
                     <div className={styles.designation}>
-                        {member.designation}
+                        {designation}
                     </div>
                     <ListView
                         className={styles.links}
-                        data={member.membersUrls}
+                        data={membersUrls}
                         keyExtractor={keyExtractor}
                         renderer={MemberUrl}
                         rendererParams={rendererParams}

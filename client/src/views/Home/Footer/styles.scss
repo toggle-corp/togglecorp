@@ -22,7 +22,7 @@
             min-width: 33.33%;
             max-width: 100%;
             text-align: left;
-            @media screen and (max-width: 545px) {
+            @media screen and (max-width: $width-device-mobile-medium) {
                 width: 100%;
             }
 

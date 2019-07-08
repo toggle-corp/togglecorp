@@ -78,9 +78,9 @@ const mapDispatchToProps = dispatch => ({
     setTechnologySections: params => dispatch(setTechnologySectionsAction(params)),
 });
 
-const linkListKeyExtractor = link => link.id;
+const LinkListExtractor = link => link.id;
 
-const linkListRendererParams = (key, link) => {
+const LinkListRendererParams = (key, link) => {
     const {
         sectionLink,
         sectionTitle,
@@ -88,7 +88,10 @@ const linkListRendererParams = (key, link) => {
     return { sectionLink, sectionTitle };
 };
 
-const linkListRender = ({ sectionLink, sectionTitle }) => (
+const LinkListRender = ({
+    sectionLink,
+    sectionTitle,
+}) => (
     <li>
         <AnchorLink
             href={`#${sectionLink}`}
@@ -98,7 +101,7 @@ const linkListRender = ({ sectionLink, sectionTitle }) => (
     </li>
 );
 
-linkListRender.propTypes = {
+LinkListRender.propTypes = {
     sectionLink: PropTypes.string.isRequired,
     sectionTitle: PropTypes.string.isRequired,
 };
@@ -178,10 +181,10 @@ export default class Home extends React.PureComponent {
                 <nav>
                     <ul>
                         <List
-                            keyExtractor={linkListKeyExtractor}
+                            keyExtractor={LinkListExtractor}
                             data={linkList}
-                            renderer={linkListRender}
-                            rendererParams={linkListRendererParams}
+                            renderer={LinkListRender}
+                            rendererParams={LinkListRendererParams}
                         />
                     </ul>
                 </nav>

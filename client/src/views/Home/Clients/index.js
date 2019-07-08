@@ -24,8 +24,8 @@ const defaultProps = {
     className: '',
 };
 
-const keyExtractor = member => member.id;
-const rendererParams = (key, value) => {
+const KeyExtractor = member => member.id;
+const RendererParams = (key, value) => {
     const {
         id,
         url,
@@ -35,7 +35,12 @@ const rendererParams = (key, value) => {
     return { id, url, image, name };
 };
 
-const Client = ({ id, url, image, name }) => (
+const Client = ({
+    id,
+    url,
+    image,
+    name,
+}) => (
     <div
         key={id}
         className={styles.client}
@@ -95,9 +100,9 @@ export default class Clients extends React.PureComponent {
                     <ListView
                         className={styles.clientList}
                         data={clients}
-                        keyExtractor={keyExtractor}
+                        keyExtractor={KeyExtractor}
                         renderer={Client}
-                        rendererParams={rendererParams}
+                        rendererParams={RendererParams}
                     />
                 </div>
             </section>

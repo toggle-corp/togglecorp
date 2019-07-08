@@ -92,7 +92,7 @@ body {
         color: $color-accent-light;
         font-weight: $font-weight-bold;
 
-        @media screen and (max-width: 720px) {
+        @media screen and (max-width: $width-device-phablet) {
             font-size: $font-size-super-large-alt;
         }
     }

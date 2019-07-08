@@ -19,7 +19,7 @@
         height: $width-separator-medium;
         content: '';
 
-        @media screen and (max-width: 480px) {
+        @media screen and (max-width: $width-device-mobile-small) {
             width: 100%;            
         }
     }

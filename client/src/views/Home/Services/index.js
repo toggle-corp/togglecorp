@@ -22,8 +22,8 @@ const defaultProps = {
     className: '',
 };
 
-const keyExtractor = member => member.id;
-const rendererParams = (key, value) => {
+const KeyExtractor = member => member.id;
+const RendererParams = (key, value) => {
     const {
         id,
         image,
@@ -33,7 +33,12 @@ const rendererParams = (key, value) => {
     return { id, image, title, description };
 };
 
-const Service = ({ id, image, title, description }) => (
+const Service = ({
+    id,
+    image,
+    title,
+    description,
+}) => (
     <div key={id} className={styles.service}>
         <div className={styles.servicesInner}>
             <img
@@ -83,9 +88,9 @@ export default class Services extends React.PureComponent {
                     <ListView
                         className={styles.serviceList}
                         data={services}
-                        keyExtractor={keyExtractor}
+                        keyExtractor={KeyExtractor}
                         renderer={Service}
-                        rendererParams={rendererParams}
+                        rendererParams={RendererParams}
                     />
                 </div>
             </section>

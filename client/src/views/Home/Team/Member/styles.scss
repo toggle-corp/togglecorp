@@ -42,7 +42,7 @@
     }
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: $width-device-mobile-small) {
     .member {
         display: block;
         position: relative;

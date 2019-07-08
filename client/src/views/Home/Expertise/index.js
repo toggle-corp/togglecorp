@@ -10,9 +10,9 @@ import { technologySectionsSelector } from '#redux';
 
 import styles from './styles.scss';
 
-const keyExtractor = row => row.id;
+const KeyExtractor = row => row.id;
 // Technology Renderer Params
-const tRendererParams = (key, value) => {
+const TRendererParams = (key, value) => {
     const {
         url,
         image,
@@ -21,7 +21,7 @@ const tRendererParams = (key, value) => {
     return { url, image, name };
 };
 // Technology Section Renderer Params
-const tsRendererParams = (key, technologySection) => ({ technologySection });
+const TsRendererParams = (key, technologySection) => ({ technologySection });
 
 const Technology = ({
     url,
@@ -51,9 +51,9 @@ Technology.propTypes = {
 const TechnologySection = ({ technologySection }) => (
     <List
         data={technologySection.technologies}
-        keyExtractor={keyExtractor}
+        keyExtractor={KeyExtractor}
         renderer={Technology}
-        rendererParams={tRendererParams}
+        rendererParams={TRendererParams}
     />
 );
 TechnologySection.propTypes = {
@@ -98,9 +98,9 @@ export default class Expertise extends React.PureComponent {
                     <ListView
                         className={styles.expertiseGroupList}
                         data={technologySections}
-                        keyExtractor={keyExtractor}
+                        keyExtractor={KeyExtractor}
                         renderer={TechnologySection}
-                        rendererParams={tsRendererParams}
+                        rendererParams={TsRendererParams}
                     />
                 </div>
             </section>

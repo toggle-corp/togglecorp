@@ -68,26 +68,26 @@ const socialList = [
     },
 ];
 
-const footerMenuKeyExtractor = footerMenu => footerMenu.id;
-const footerMenuRendererParams = (key, footerMenu) => ({
+const FooterMenuKeyExtractor = footerMenu => footerMenu.id;
+const FooterRendererParams = (key, footerMenu) => ({
     children: footerMenu.title,
     href: footerMenu.link,
 });
 
-const socialKeyExtractor = social => social.id;
-const socialRendererParams = (key, social) => {
+const SocialKeyExtractor = social => social.id;
+const SocialRendererParams = (key, social) => {
     const {
         link,
         icon,
     } = social;
     return { link, icon };
 };
-const socialRenderer = ({ link, icon }) => (
+const SocialLinks = ({ link, icon }) => (
     <AnchorLink href={link}>
         <i className={icon} />
     </AnchorLink>
 );
-socialRenderer.propTypes = {
+SocialLinks.propTypes = {
     link: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,
 };
@@ -119,9 +119,7 @@ export default class Footer extends React.PureComponent {
                 <div className={styles.containerBlock}>
                     <div className={styles.footerInner}>
                         <div className={styles.footerItem}>
-                            <Header
-                                title="Contact Information"
-                            />
+                            <Header title="Contact Information" />
                             <p>
                                 <i className="fa fa-map-marker" />
                                 <span>
@@ -129,7 +127,10 @@ export default class Footer extends React.PureComponent {
                                 </span>
                             </p>
                             <p>
-                                <i className={_cs('fa fa-envelope', styles.mails)} />
+                                <i className={_cs(
+                                    'fa fa-envelope',
+                                    styles.mails)}
+                                />
                                 <span>
                                     <a href="mailto:info@togglecorp.com">
                                         info@togglecorp.com
@@ -146,30 +147,26 @@ export default class Footer extends React.PureComponent {
                             </p>
                         </div>
                         <div className={styles.footerItem}>
-                            <Header
-                                title="Quick Links"
-                            />
+                            <Header title="Quick Links" />
                             <ul>
                                 <List
                                     data={footerMenuList}
-                                    keyExtractor={footerMenuKeyExtractor}
+                                    keyExtractor={FooterMenuKeyExtractor}
                                     renderer={AnchorLink}
-                                    rendererParams={footerMenuRendererParams}
+                                    rendererParams={FooterRendererParams}
                                 />
                             </ul>
 
                         </div>
                         <div className={styles.footerItem}>
-                            <Header
-                                title="Follow US"
-                            />
+                            <Header title="Follow US" />
                             <ul className={styles.horizontalList}>
                                 <List
                                     className={styles.socialList}
                                     data={socialList}
-                                    keyExtractor={socialKeyExtractor}
-                                    renderer={socialRenderer}
-                                    rendererParams={socialRendererParams}
+                                    keyExtractor={SocialKeyExtractor}
+                                    renderer={SocialLinks}
+                                    rendererParams={SocialRendererParams}
                                 />
                             </ul>
                         </div>

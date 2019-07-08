@@ -53,14 +53,14 @@ section {
                         font-size: $font-size-large-alt;
                         font-weight: $font-weight-bold;
 
-                        @media screen and (max-width: 720px) {
+                        @media screen and (max-width: $width-device-phablet) {
                             font-size: $font-size-large;
                             padding: 0 $spacing-large;
                         }
 
                         &:first-child {
                             padding-left: 0;
-                            @media screen and (max-width: 720px) {
+                            @media screen and (max-width: $width-device-phablet) {
                                 padding-left: $spacing-large;
                             }
                         }
@@ -147,7 +147,7 @@ section {
         }
 
 
-        @media screen and (max-width: 720px) {
+        @media screen and (max-width: $width-device-phablet) {
 
             .left-block {
                 flex-grow: 1;
@@ -190,13 +190,13 @@ section {
         font-size: 48px;
         font-weight: $font-weight-bold;
 
-        @media screen and (max-width: 720px) {
+        @media screen and (max-width: $width-device-phablet) {
             margin: 12px 0;
             padding-bottom: 12px;
         }
     }
 
-    @media screen and (max-width: 720px) {
+    @media screen and (max-width: $width-device-phablet) {
         padding: 24px 0;
     }
 
