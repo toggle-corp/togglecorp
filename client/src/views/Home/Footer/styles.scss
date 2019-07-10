@@ -1,0 +1,110 @@
+@import '~base-scss/base';
+.footer-section {
+    background-color: $color-foreground-alt;
+
+    .overlay-block {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        img {
+            width: 40vw;
+        }
+    }
+
+    .footer-inner {
+        display: flex;
+        flex-wrap: wrap;
+
+        .footer-item {
+            margin: $spacing-large 0;
+            padding: 0 $spacing-medium-alt;
+            min-width: 33.33%;
+            max-width: 100%;
+            text-align: left;
+            @media screen and (max-width: $width-device-mobile-medium) {
+                width: 100%;
+            }
+
+            p {
+                display: flex;
+                align-items: center;
+                font-size:$font-size-large-alt;
+
+                span {
+                    width: calc(100% - 65px);
+
+                    a {
+                        display: inline-block;
+                        transition: color 0.5s ease;
+
+                        &:hover{
+                            color: $color-accent-light;
+                        }
+                    }
+                }
+                .mail {
+                    font-size: $font-size-large;
+                }
+            }
+
+            i {
+                transition: background-color 0.5s ease;
+                margin-right: $spacing-large-alt;
+                border: 2px solid $color-accent-light;
+                border-radius: 100%;
+                background-color: $color-accent-light;
+                width: 40px;
+                height: 40px;
+                text-align: center;
+                line-height: 40px;
+                font-size: $font-size-extra-large-alt;
+            }
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                margin: $spacing-large-alt 0 0;
+                padding: 0;
+                list-style-type: none;
+                font-size: $font-size-large;
+
+                a {
+                    display: inline-block;
+                    transition: color 0.5s ease;
+                    margin-top: $spacing-medium;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                    &:hover{
+                        color: $color-accent-light;
+                    }
+                    i{
+                        transition: all 0.5s ease;
+                        color: $color-background-light;
+                        &:hover{
+                            background-color: transparent;
+                            color: $color-accent-light;
+                        }
+                    }
+                }
+
+                &.horizontal-list {
+                    flex-direction: row;
+
+                    a, li {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+.foot-note{
+    margin-top: $spacing-large-alt;
+    background-color: $color-background-dark-alt;
+    padding: $spacing-medium-alt 0;
+    text-align: center;
+    font-size: $font-size-large;
+}

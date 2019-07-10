@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { _cs } from '@togglecorp/fujs';
 
+import teamOverlay from '#resources/img/triangular-spikes-bg.png';
 import ListView from '#rscv/List/ListView';
 
 import { membersSelector } from '#redux';
@@ -41,18 +43,29 @@ export default class Team extends React.PureComponent {
         return (
             <section
                 id="team"
-                className={className}
+                className={_cs(
+                    className,
+                    styles.teamSection,
+                )}
             >
-                <h2>
-                    Our team
-                </h2>
-                <ListView
-                    className={styles.members}
-                    data={members}
-                    keyExtractor={keyExtractor}
-                    renderer={Member}
-                    rendererParams={rendererParams}
-                />
+                <div className={styles.overlayBlock}>
+                    <img
+                        src={teamOverlay}
+                        alt="abstract overlay"
+                    />
+                </div>
+                <div className={styles.containerBlock}>
+                    <h2>
+                        Our team
+                    </h2>
+                    <ListView
+                        className={styles.members}
+                        data={members}
+                        keyExtractor={keyExtractor}
+                        renderer={Member}
+                        rendererParams={rendererParams}
+                    />
+                </div>
             </section>
         );
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { _cs } from '@togglecorp/fujs';
 
 import ListView from '#rscv/List/ListView';
 
@@ -10,7 +11,7 @@ import styles from './styles.scss';
 
 const propTypes = {
     className: PropTypes.string,
-    services: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
+    services: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state, props) => ({
@@ -21,22 +22,43 @@ const defaultProps = {
     className: '',
 };
 
-const keyExtractor = member => member.id;
-const rendererParams = (key, service) => ({ service });
+const KeyExtractor = member => member.id;
+const RendererParams = (key, value) => {
+    const {
+        id,
+        image,
+        title,
+        description,
+    } = value;
+    return { id, image, title, description };
+};
 
-const Service = ({ service }) => (
-    <div key={service.id} className={styles.service}>
-        <img src={service.image} alt={service.title} />
-        <h3>
-            {service.title}
-        </h3>
-        <p>
-            {service.description}
-        </p>
+const Service = ({
+    id,
+    image,
+    title,
+    description,
+}) => (
+    <div key={id} className={styles.service}>
+        <div className={styles.servicesInner}>
+            <img
+                src={image}
+                alt={title}
+            />
+            <h3>
+                {title}
+            </h3>
+            <p>
+                {description}
+            </p>
+        </div>
     </div>
 );
 Service.propTypes = {
-    service: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+    id: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
 };
 
 
@@ -50,21 +72,27 @@ export default class Services extends React.PureComponent {
             className,
             services,
         } = this.props;
+
         return (
             <section
                 id="services"
-                className={className}
+                className={_cs(
+                    className,
+                    styles.servicesSection,
+                )}
             >
-                <h2>
-                    What we do
-                </h2>
-                <ListView
-                    className={styles.serviceList}
-                    data={services}
-                    keyExtractor={keyExtractor}
-                    renderer={Service}
-                    rendererParams={rendererParams}
-                />
+                <div className={styles.containerBlock}>
+                    <h2>
+                        What we do
+                    </h2>
+                    <ListView
+                        className={styles.serviceList}
+                        data={services}
+                        keyExtractor={KeyExtractor}
+                        renderer={Service}
+                        rendererParams={RendererParams}
+                    />
+                </div>
             </section>
         );
     }

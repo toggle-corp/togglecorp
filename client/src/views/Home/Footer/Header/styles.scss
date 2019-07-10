@@ -1,0 +1,26 @@
+@import '~base-scss/base';
+
+.menu-title {
+    position: relative;
+    text-transform: capitalize;
+    color: $color-text;
+    font-size: $font-size-extra-large;
+    font-weight: $font-weight-bold;
+
+    &:before {
+        display: block;
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        background-color: $color-accent-light;
+        width: 70%;
+        min-width: $width-underline-large;
+        max-width: 100%;
+        height: $width-separator-medium;
+        content: '';
+
+        @media screen and (max-width: $width-device-mobile-small) {
+            width: 100%;            
+        }
+    }
+}

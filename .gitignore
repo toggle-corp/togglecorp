@@ -140,3 +140,6 @@ typings/
 !.env-dev.enc
 !.env-prod.enc
 !.env-nightly.enc
+
+.vscode
+jsconfig.json

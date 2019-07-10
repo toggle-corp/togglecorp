@@ -1,28 +1,55 @@
 @import '~base-scss/base';
 
-.client-list {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    max-width: 920px;
-
-    .client {
-        padding: 36px 24px;
+.clients-section {
+    position: relative;
+    background-color: $color-foreground-dark-alt;
+    
+    .overlay-block {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
 
         img {
-            width: 180px;
-            height: 120px;
-            object-fit: contain;
-            object-position: center center;
+            width: 100%;
+        }
+    }
+
+    .container-block{
+        justify-content: center;
+        padding: $spacing-super-large-alt 0;
+        min-height: 100vh;
+    }
+    .client-list {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    
+        .client {
+            padding: $spacing-large-alt;
+
+            .client-inner {
+                background-color: $color-background-overlay-alt;
+                padding: $spacing-extra-large-alt;
+
+                img {
+                    width: 144px;
+                    height: 64px;
+                    object-fit: contain;
+                    object-position: center center;
+                }
+            }
         }
     }
 }
 
-@media screen and (max-width: 720px) {
+
+@media screen and (max-width: $width-device-phablet) {
     .client-list {
+        
         .client {
-            padding: 8px 12px;
+            padding: $spacing-small-alt $spacing-medium-alt;
 
             img {
                 width: 150px;

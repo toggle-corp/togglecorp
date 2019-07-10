@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { _cs } from '@togglecorp/fujs';
+
+import clientsOverlay from '#resources/img/spikes-building-bg.png';
 
 import ListView from '#rscv/List/ListView';
 
@@ -21,26 +24,47 @@ const defaultProps = {
     className: '',
 };
 
-const keyExtractor = member => member.id;
-const rendererParams = (key, client) => ({ client });
+const KeyExtractor = member => member.id;
+const RendererParams = (key, value) => {
+    const {
+        id,
+        url,
+        image,
+        name,
+    } = value;
+    return { id, url, image, name };
+};
 
-const Client = ({ client }) => (
-    <div key={client.id} className={styles.client}>
-        <a
-            href={client.url}
-            rel="noopener noreferrer"
-            target="_blank"
-        >
-            <img
-                src={client.image}
-                alt={client.name}
-                title={client.name}
-            />
-        </a>
+const Client = ({
+    id,
+    url,
+    image,
+    name,
+}) => (
+    <div
+        key={id}
+        className={styles.client}
+    >
+        <div className={styles.clientInner}>
+            <a
+                href={url}
+                rel="noopener noreferrer"
+                target="_blank"
+            >
+                <img
+                    src={image}
+                    alt={name}
+                    title={name}
+                />
+            </a>
+        </div>
     </div>
 );
 Client.propTypes = {
-    client: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+    id: PropTypes.number.isRequired,
+    url: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
 };
 
 
@@ -58,18 +82,29 @@ export default class Clients extends React.PureComponent {
         return (
             <section
                 id="clients"
-                className={className}
+                className={_cs(
+                    className,
+                    styles.clientsSection,
+                )}
             >
-                <h2>
-                    {'Organizations we\'ve worked with'}
-                </h2>
-                <ListView
-                    className={styles.clientList}
-                    data={clients}
-                    keyExtractor={keyExtractor}
-                    renderer={Client}
-                    rendererParams={rendererParams}
-                />
+                <div className={styles.overlayBlock}>
+                    <img
+                        src={clientsOverlay}
+                        alt="spike background"
+                    />
+                </div>
+                <div className={styles.containerBlock}>
+                    <h2>
+                        {'Organizations we\'ve worked with'}
+                    </h2>
+                    <ListView
+                        className={styles.clientList}
+                        data={clients}
+                        keyExtractor={KeyExtractor}
+                        renderer={Client}
+                        rendererParams={RendererParams}
+                    />
+                </div>
             </section>
         );
     }
