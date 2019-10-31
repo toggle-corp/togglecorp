@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy
 
+from .receivers import *  # noqa
 
 site = admin.site
 # Text to put at the end of each page's <title>.
