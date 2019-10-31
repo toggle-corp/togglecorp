@@ -63,13 +63,15 @@ export default class Clients extends React.PureComponent {
                 <h2>
                     {'Organizations we\'ve worked with'}
                 </h2>
-                <ListView
-                    className={styles.clientList}
-                    data={clients}
-                    keyExtractor={keyExtractor}
-                    renderer={Client}
-                    rendererParams={rendererParams}
-                />
+                {clients.length > 0 && (
+                    <ListView
+                        className={styles.clientList}
+                        data={clients}
+                        keyExtractor={keyExtractor}
+                        renderer={Client}
+                        rendererParams={rendererParams}
+                    />
+                )}
             </section>
         );
     }

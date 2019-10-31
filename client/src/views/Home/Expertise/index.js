@@ -84,13 +84,15 @@ export default class Expertise extends React.PureComponent {
                 <h2>
                     Our expertise
                 </h2>
-                <ListView
-                    className={styles.expertiseGroupList}
-                    data={technologySections}
-                    keyExtractor={keyExtractor}
-                    renderer={TechnologySection}
-                    rendererParams={tsRendererParams}
-                />
+                {technologySections.length > 0 && (
+                    <ListView
+                        className={styles.expertiseGroupList}
+                        data={technologySections}
+                        keyExtractor={keyExtractor}
+                        renderer={TechnologySection}
+                        rendererParams={tsRendererParams}
+                    />
+                )}
             </section>
         );
     }

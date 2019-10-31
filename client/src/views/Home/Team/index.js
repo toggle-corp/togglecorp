@@ -46,13 +46,15 @@ export default class Team extends React.PureComponent {
                 <h2>
                     Our team
                 </h2>
-                <ListView
-                    className={styles.members}
-                    data={members}
-                    keyExtractor={keyExtractor}
-                    renderer={Member}
-                    rendererParams={rendererParams}
-                />
+                {members.length > 0 && (
+                    <ListView
+                        className={styles.members}
+                        data={members}
+                        keyExtractor={keyExtractor}
+                        renderer={Member}
+                        rendererParams={rendererParams}
+                    />
+                )}
             </section>
         );
     }
