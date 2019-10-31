@@ -1,24 +1,46 @@
 sudo: required
+language: generic
 
 services:
-    - docker
+  - docker
 
 before_install:
-    - sudo pip install --upgrade awscli
-    - sudo pip install --upgrade awsebcli
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-
-    - docker pull devtc/togglecorp:client-latest || true
-    - docker pull devtc/togglecorp:server-latest || true
-    - ./deploy/scripts/build_client.sh
-    - ./deploy/scripts/build_server.sh
+  - echo "$GP_PASSWORD" | docker login docker.pkg.github.com -u "$GP_USERNAME" --password-stdin
+  - if [[ "$TC_BRANCH_NAME" = "develop" ]] ; then export TC_BRANCH_NAME=; fi
+  - touch .env
+  - docker-compose pull || TC_BRANCH_NAME= docker-compose pull || true
 
 before_script:
-    - echo 'before_script'
+  - mkdir -p $(dirname "$REACT_STORE_DIR")
+  - git clone --branch=togglecorp https://github.com/toggle-corp/react-store ${REACT_STORE_DIR}
+  - cp ${REACT_STORE_DIR}/stylesheets/_user-imports-sample.scss ${REACT_STORE_DIR}/stylesheets/_user-imports.scss
+  - git --git-dir=$REACT_STORE_DIR/.git --no-pager show --pretty=fuller --quiet
+  - docker-compose build
 
 script:
-    - ./deploy/travis/deploy.sh
+  - docker-compose run --rm server bash /code/scripts/run_tests.sh
+  - echo "
+    REACT_APP_API_END=${REACT_APP_API_END}
+    " > .env
+  - docker-compose run --rm client bash -c 'yarn install && CI=false yarn build'
 
 after_success:
-    - docker push devtc/togglecorp:client-latest
-    - docker push devtc/togglecorp:server-latest
+  - docker-compose push
+
+deploy:
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  bucket: $TOGGLECORP_S3_BUCKET
+  skip_cleanup: true
+  local_dir: ./client/build
+  acl: public_read
+  region: $DEPLOYMENT_REGION
+  on:
+    branch: release
+
+
+env:
+  global:
+  - REACT_STORE_DIR=client/src/vendor/react-store
+  - TC_BRANCH_NAME=`echo ${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH} | tr / _`
