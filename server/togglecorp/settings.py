@@ -213,6 +213,3 @@ CORS_ALLOW_HEADERS = (
     'x-csrftoken',
     'x-requested-with',
 )
-
-# 1 Hour
-TG_VIEW_CACHE_TIMEOUT = 60 * 60

@@ -6,7 +6,7 @@ from django.views.decorators.http import condition
 
 
 def get_last_modified_key(model):
-    return '{}__last_modified'.format(model.objects.model._meta.db_table)
+    return f'{model.objects.model._meta.db_table}__last_modified'
 
 
 def last_modified_func(request, *args, **kwargs):

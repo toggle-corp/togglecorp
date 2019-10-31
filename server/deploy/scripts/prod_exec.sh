@@ -1,12 +1,5 @@
 #! /bin/bash
 
-# /code/deploy/scripts/
-BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-# /code/
-ROOT_DIR=$(dirname "$(dirname "$BASE_DIR")")
-
-. /venv/bin/activate
-
-python3 $ROOT_DIR/manage.py collectstatic --no-input &
-python3 $ROOT_DIR/manage.py migrate --no-input
-uwsgi --ini $ROOT_DIR/deploy/configs/uwsgi.ini # Start uwsgi server
+python3 /code/manage.py collectstatic --no-input &
+python3 /code/manage.py migrate --no-input
+/usr/local/bin/uwsgi --ini /code/deploy/configs/uwsgi.ini # Start uwsgi server

@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 
 from togglecorp.views import CacheListMixin
-from .models import Technology, TechnologySection
-from .serializers import TechnologySerializer, TechnologySectionSerializer
+from .models import TechnologySection
+from .serializers import TechnologySectionSerializer
 
 
 class TechnologySectionViewSet(CacheListMixin, viewsets.ModelViewSet):
@@ -10,8 +10,3 @@ class TechnologySectionViewSet(CacheListMixin, viewsets.ModelViewSet):
 
     def get_queryset(self):
         return TechnologySection.objects.prefetch_related('technologies').all()
-
-
-class TechnologyViewSet(CacheListMixin, viewsets.ModelViewSet):
-    queryset = Technology.objects.all()
-    serializer_class = TechnologySerializer
