@@ -3,9 +3,12 @@ Django settings for togglecorp project.
 """
 
 import os
+import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+APPS_DIR = os.path.join(BASE_DIR, 'apps')
+sys.path.append(APPS_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -21,6 +24,12 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
+LOCAL_APPS = [
+    'client',
+    'member',
+    'technology',
+    'service',
+]
 
 INSTALLED_APPS = [
     'jet.dashboard',
@@ -36,11 +45,12 @@ INSTALLED_APPS = [
     'djangorestframework_camel_case',
     'corsheaders',
     'storages',
-
-    'client',
-    'member',
-    'technology',
-    'service',
+] + [
+    '{}.{}.apps.{}Config'.format(
+        APPS_DIR.split('/')[-1],
+        app,
+        ''.join([word.title() for word in app.split('_')]),
+    ) for app in LOCAL_APPS
 ]
 
 MIDDLEWARE = [
@@ -59,7 +69,7 @@ ROOT_URLCONF = 'togglecorp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(APPS_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -203,3 +213,6 @@ CORS_ALLOW_HEADERS = (
     'x-csrftoken',
     'x-requested-with',
 )
+
+# 1 Hour
+TG_VIEW_CACHE_TIMEOUT = 60 * 60
