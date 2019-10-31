@@ -227,12 +227,6 @@ export default class Home extends React.PureComponent {
             technologySectionLoading ||
             memberLoading;
 
-        if (loading) {
-            return (
-                <LoadingAnimation large />
-            );
-        }
-
         return (
             <div className={styles.home}>
                 {this.renderHeader()}

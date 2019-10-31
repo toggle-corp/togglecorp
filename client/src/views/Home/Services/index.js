@@ -50,6 +50,7 @@ export default class Services extends React.PureComponent {
             className,
             services,
         } = this.props;
+
         return (
             <section
                 id="services"
@@ -58,13 +59,15 @@ export default class Services extends React.PureComponent {
                 <h2>
                     What we do
                 </h2>
-                <ListView
-                    className={styles.serviceList}
-                    data={services}
-                    keyExtractor={keyExtractor}
-                    renderer={Service}
-                    rendererParams={rendererParams}
-                />
+                {services.length > 0 && (
+                    <ListView
+                        className={styles.serviceList}
+                        data={services}
+                        keyExtractor={keyExtractor}
+                        renderer={Service}
+                        rendererParams={rendererParams}
+                    />
+                )}
             </section>
         );
     }
