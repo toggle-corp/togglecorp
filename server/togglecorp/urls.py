@@ -11,7 +11,7 @@ from togglecorp import admin as tg_admin  # noqa: F401
 from member.views import MemberViewSet
 from client.views import ClientViewSet
 from service.views import ServiceViewSet
-from technology.views import TechnologyViewSet, TechnologySectionViewSet
+from technology.views import TechnologySectionViewSet
 
 
 router = routers.DefaultRouter()
@@ -19,7 +19,6 @@ router = routers.DefaultRouter()
 router.register(r'members', MemberViewSet, base_name='member')
 router.register(r'clients', ClientViewSet, base_name='client')
 router.register(r'services', ServiceViewSet, base_name='service')
-router.register(r'technologies', TechnologyViewSet, base_name='technology')
 router.register(
     r'technology-sections',
     TechnologySectionViewSet,

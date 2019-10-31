@@ -1,41 +1,43 @@
 version: '3.2'
 
 services:
-    db:
-        image: postgres:9.6
-        volumes:
-            - postgres-data:/var/lib/postgresql/data
+  db:
+    image: postgres:9.6
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
 
-    server:
-        image: devtc/togglecorp:server-latest
-        build:
-          context: ./server/
-          cache_from:
-            - devtc/togglecorp:server-latest
-        env_file:
-            - .env
-        command: bash -c '/code/scripts/wait-for-it.sh db:5432 && /code/scripts/run_develop.sh'
-        volumes:
-            - ./server/:/code
-            - media:/media
-        ports:
-            - '8006:8006'
-        depends_on:
-            - db
+  server:
+    image: "docker.pkg.github.com/toggle-corp/togglecorp/tc-server:${TC_BRANCH_NAME:-develop}"
+    build:
+      context: ./server/
+      cache_from:
+        - "docker.pkg.github.com/toggle-corp/togglecorp/tc-server:${TC_BRANCH_NAME}"
+        - docker.pkg.github.com/toggle-corp/togglecorp/tc-server:develop
+    env_file:
+      - .env
+    command: bash -c '/code/scripts/wait-for-it.sh db:5432 && /code/scripts/run_develop.sh'
+    volumes:
+      - ./server/:/code
+      - media:/media
+    ports:
+      - '8006:8006'
+    depends_on:
+      - db
 
-    client:
-        image: devtc/togglecorp:client-latest
-        build:
-          context: ./client/
-          cache_from:
-            - devtc/togglecorp:client-latest
-        env_file:
-            - .env
-        command: bash -c '/code/scripts/run_develop.sh'
-        volumes:
-            - ./client/:/code
-        ports:
-            - '3006:3006'
+  client:
+    image: "docker.pkg.github.com/toggle-corp/togglecorp/tc-client:${TC_BRANCH_NAME:-develop}"
+    build:
+      context: ./client/
+      cache_from:
+        - "docker.pkg.github.com/toggle-corp/togglecorp/tc-client:${TC_BRANCH_NAME}"
+        - docker.pkg.github.com/toggle-corp/togglecorp/tc-client:develop
+    env_file:
+      - .env
+    command: bash -c '/code/scripts/run_develop.sh'
+    volumes:
+      - ./client/:/code
+    ports:
+      - '3006:3006'
 
 volumes:
   media:

@@ -1,6 +1,5 @@
 #!/bin/bash -x
 
-. /venv/bin/activate
-pip3 install -r requirements.txt
+export PYTHONUNBUFFERED=1
 python manage.py migrate --no-input
 python manage.py runserver 0.0.0.0:8006
