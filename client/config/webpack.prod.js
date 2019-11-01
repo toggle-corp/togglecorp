@@ -124,7 +124,7 @@ module.exports = (env) => {
             new HtmlWebpackPlugin({
                 template: appIndexHtml,
                 filename: './index.html',
-                title: 'DEEP',
+                title: 'Togglecorp',
                 favicon: path.resolve(appFavicon),
                 chunksSortMode: 'none',
             }),
@@ -133,9 +133,9 @@ module.exports = (env) => {
                 chunkFilename: 'css/[id].[hash].css',
             }),
             new WebpackPwaManifest({
-                name: 'DEEP',
-                short_name: 'DEEP',
-                description: 'DEEP is an open source, community driven web application to intelligently collect, tag, analyze and export secondary data.',
+                name: 'Togglecorp',
+                short_name: 'TC',
+                description: 'Togglecorp Landing Page',
                 background_color: '#e0e0e0',
                 start_url: '.',
                 display: 'standalone',
