@@ -43,13 +43,15 @@ export default class Member extends React.PureComponent {
                 <div className={styles.description} >
                     <div className={styles.name}>{member.name}</div>
                     <div className={styles.designation}>{member.designation}</div>
-                    <ListView
-                        className={styles.links}
-                        data={member.membersUrls}
-                        keyExtractor={keyExtractor}
-                        renderer={MemberUrl}
-                        rendererParams={rendererParams}
-                    />
+                    {member.membersUrls.length > 0 && (
+                        <ListView
+                            className={styles.links}
+                            data={member.membersUrls}
+                            keyExtractor={keyExtractor}
+                            renderer={MemberUrl}
+                            rendererParams={rendererParams}
+                        />
+                    )}
                 </div>
             </div>
         );
