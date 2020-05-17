@@ -42,21 +42,12 @@ body {
     font-size: $font-size-default;
     font-weight: $font-weight-default;
 
-    a {
-        outline: none;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: inherit;
-    }
-
     h1,
     h2,
     h3,
     h4,
     h5 {
         margin: 0;
-        text-transform: uppercase;
-        font-weight: $font-weight-light;
     }
 }
 

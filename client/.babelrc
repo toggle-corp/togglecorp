@@ -47,6 +47,7 @@
                     "#redux": "./src/redux",
                     "#resources": "./src/resources",
                     "#rest": "./src/rest",
+                    "#request": "./src/request",
                     "#schema": "./src/schema",
                     "#utils": "./src/utils",
                     "#notify": "./src/notify",

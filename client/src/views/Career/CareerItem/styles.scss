@@ -1,0 +1,49 @@
+@import '~base-scss/base';
+
+.career-item {
+    .career-header {
+        display: flex;
+        align-items: center;
+        padding: $spacing-large;
+
+        &:last-child {
+            border-bottom: $width-separator-thin solid $color-separator;
+        }
+
+        .career-heading {
+            flex-grow: 1;
+            text-align: left;
+            text-transform: unset;
+            color: $color-accent;
+            font-size: 1.5em;
+            font-weight: $font-weight-bold;
+        }
+
+        .button {
+            flex-shrink: 0;
+        }
+    }
+
+    .description {
+        padding: $spacing-small $spacing-large;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: flex-end;
+        padding: $spacing-small $spacing-large $spacing-medium;
+
+        .apply-link {
+            @extend %button-like-link;
+            background-color: $color-accent;
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+
+    &:not(:last-child) {
+        .footer {
+            border-bottom: $width-separator-thin solid $color-separator;
+        }
+    }
+}

@@ -62,6 +62,7 @@ const userDefinedSchemas = [];
             name: { type: 'string', required: true },
             image: { type: 'string', required: true },
             designation: { type: 'string', required: true },
+            hidden: { type: 'boolean' },
             membersUrls: { type: 'array.memberUrl', required: true },
         },
     };
