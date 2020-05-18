@@ -10,6 +10,7 @@ from rest_framework import routers
 from togglecorp import admin as tg_admin  # noqa: F401
 from member.views import MemberViewSet
 from client.views import ClientViewSet
+from career.views import CareerViewSet
 from service.views import ServiceViewSet
 from technology.views import TechnologySectionViewSet
 
@@ -18,6 +19,7 @@ router = routers.DefaultRouter()
 
 router.register(r'members', MemberViewSet, base_name='member')
 router.register(r'clients', ClientViewSet, base_name='client')
+router.register(r'careers', CareerViewSet, base_name='career')
 router.register(r'services', ServiceViewSet, base_name='service')
 router.register(
     r'technology-sections',

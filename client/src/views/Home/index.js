@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import AnchorLink from '#components/AnchorLink';
 
-import LoadingAnimation from '#rscv/LoadingAnimation';
+import {
+    RequestCoordinator,
+    RequestClient,
+    methods,
+} from '#utils/Request';
 
 import {
     setMembersAction,
@@ -16,11 +21,6 @@ import Services from './Services';
 import Expertise from './Expertise';
 import Clients from './Clients';
 import Team from './Team';
-
-import MembersGetRequest from './requests/MembersGetRequest';
-import ClientsGetRequest from './requests/ClientsGetRequest';
-import ServicesGetRequest from './requests/ServicesGetRequest';
-import TechnologySectionsGetRequest from './requests/TechnologySectionsGetRequest';
 
 import styles from './styles.scss';
 
@@ -58,9 +58,10 @@ const linkList = [
 ];
 
 const propTypes = {
-    setMembers: PropTypes.func.isRequired,
-    setClients: PropTypes.func.isRequired,
-    setServices: PropTypes.func.isRequired,
+    setMembers: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
+    setClients: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
+    setServices: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
+    // eslint-disable-next-line react/no-unused-prop-types
     setTechnologySections: PropTypes.func.isRequired,
 };
 
@@ -71,53 +72,71 @@ const mapDispatchToProps = dispatch => ({
     setTechnologySections: params => dispatch(setTechnologySectionsAction(params)),
 });
 
+const requestOptions = {
+    membersGet: {
+        url: '/members/',
+        method: methods.GET,
+        onMount: true,
+        onSuccess: ({
+            props: { setMembers },
+            response,
+        }) => {
+            setMembers(response);
+        },
+        extras: {
+            schemaName: 'array.member',
+        },
+    },
+    clientsGet: {
+        url: '/clients/',
+        method: methods.GET,
+        onMount: true,
+        onSuccess: ({
+            props: { setClients },
+            response,
+        }) => {
+            setClients(response);
+        },
+        extras: {
+            schemaName: 'array.client',
+        },
+    },
+    servicesGet: {
+        url: '/services/',
+        method: methods.GET,
+        onMount: true,
+        onSuccess: ({
+            props: { setServices },
+            response,
+        }) => {
+            setServices(response);
+        },
+        extras: {
+            schemaName: 'array.service',
+        },
+    },
+    technologiesGet: {
+        url: '/technology-sections/',
+        method: methods.GET,
+        onMount: true,
+        onSuccess: ({
+            props: { setTechnologySections },
+            response,
+        }) => {
+            setTechnologySections(response);
+        },
+        extras: {
+            schemaName: 'array.technologySection',
+        },
+    },
+};
+
 
 @connect(undefined, mapDispatchToProps)
+@RequestCoordinator
+@RequestClient(requestOptions)
 export default class Home extends React.PureComponent {
     static propTypes = propTypes;
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            serviceLoading: true,
-            clientLoading: true,
-            technologySectionLoading: true,
-            memberLoading: true,
-        };
-
-        // Requests
-        this.membersGetRequest = new MembersGetRequest({
-            setState: v => this.setState(v),
-            setMembers: this.props.setMembers,
-        });
-        this.clientsGetRequest = new ClientsGetRequest({
-            setState: v => this.setState(v),
-            setClients: this.props.setClients,
-        });
-        this.servicesGetRequest = new ServicesGetRequest({
-            setState: v => this.setState(v),
-            setServices: this.props.setServices,
-        });
-        this.technologySectionsGetRequest = new TechnologySectionsGetRequest({
-            setState: v => this.setState(v),
-            setTechnologySections: this.props.setTechnologySections,
-        });
-    }
-
-    componentDidMount() {
-        this.membersGetRequest.init().start();
-        this.clientsGetRequest.init().start();
-        this.servicesGetRequest.init().start();
-        this.technologySectionsGetRequest.init().start();
-    }
-
-    componentWillUnmount() {
-        this.membersGetRequest.stop();
-        this.clientsGetRequest.stop();
-        this.servicesGetRequest.stop();
-        this.technologySectionsGetRequest.stop();
-    }
 
     handleDownButtonClick = (section) => {
         const servicesContainer = document.getElementsByClassName(styles[section])[0];
@@ -161,6 +180,13 @@ export default class Home extends React.PureComponent {
                                 </AnchorLink>
                             </li>
                         ))}
+                        <li key="career">
+                            <Link
+                                to="/career/"
+                            >
+                                Career
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
                 <button
@@ -215,18 +241,6 @@ export default class Home extends React.PureComponent {
     )
 
     render() {
-        const {
-            serviceLoading,
-            clientLoading,
-            technologySectionLoading,
-            memberLoading,
-        } = this.state;
-
-        const loading = serviceLoading ||
-            clientLoading ||
-            technologySectionLoading ||
-            memberLoading;
-
         return (
             <div className={styles.home}>
                 {this.renderHeader()}

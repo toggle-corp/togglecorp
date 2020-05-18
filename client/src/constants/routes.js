@@ -18,6 +18,12 @@ export const routes = {
         path: '/',
         loader: () => import('../views/Home'),
     },
+    career: {
+        order: 2,
+        type: ROUTE.public,
+        path: '/career/',
+        loader: () => import('../views/Career'),
+    },
 };
 
 export const pathNames = mapObjectToObject(routes, route => route.path);

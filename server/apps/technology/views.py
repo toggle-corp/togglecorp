@@ -5,7 +5,7 @@ from .models import TechnologySection
 from .serializers import TechnologySectionSerializer
 
 
-class TechnologySectionViewSet(CacheListMixin, viewsets.ModelViewSet):
+class TechnologySectionViewSet(CacheListMixin, viewsets.ReadOnlyModelViewSet):
     serializer_class = TechnologySectionSerializer
 
     def get_queryset(self):

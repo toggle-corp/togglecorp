@@ -7,6 +7,22 @@
     width: 100%;
     overflow: hidden;
 
+    a {
+        outline: none;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        text-transform: uppercase;
+        font-weight: $font-weight-light;
+    }
+
     nav {
         ul {
             display: flex;

@@ -29,6 +29,7 @@ LOCAL_APPS = [
     'member',
     'technology',
     'service',
+    'career',
 ]
 
 INSTALLED_APPS = [
