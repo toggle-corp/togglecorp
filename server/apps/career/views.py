@@ -5,6 +5,6 @@ from .models import Career
 from .serializers import CareerSerializer
 
 
-class CareerViewSet(CacheListMixin, viewsets.ModelViewSet):
+class CareerViewSet(CacheListMixin, viewsets.ReadOnlyModelViewSet):
     queryset = Career.objects.all()
     serializer_class = CareerSerializer
