@@ -56,6 +56,7 @@ function Career(props) {
     const careerItemsRendererParams = useCallback((key, data) => ({
         dataKey: data.id,
         title: data.title,
+        url: data.url,
         isActive: data.id === active,
         setActive,
         description: data.description,
