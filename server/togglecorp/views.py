@@ -1,8 +1,8 @@
 import hashlib
-import datetime
 from django.core.cache import cache
 from django.utils.decorators import method_decorator
 from django.views.decorators.http import condition
+from django.utils import timezone
 
 
 def get_last_modified_key(model):
@@ -14,7 +14,7 @@ def last_modified_func(request, *args, **kwargs):
     model_key = get_last_modified_key(model)
     last_modified = cache.get(model_key)
     if not last_modified:
-        last_modified = datetime.datetime.now()
+        last_modified = timezone.now()
         cache.set(model_key, last_modified, None)
     return last_modified
 

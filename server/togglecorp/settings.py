@@ -18,7 +18,7 @@ sys.path.append(APPS_DIR)
 SECRET_KEY = '+c=ii9osx=a^h#m$s%@sql2pyj_#xq%3p(0=r&#+3+hjq@tsis'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', True)
 
 ALLOWED_HOSTS = ['*']
 
