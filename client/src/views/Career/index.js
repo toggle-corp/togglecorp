@@ -79,7 +79,7 @@ function Career(props) {
                     Work with us
                 </h1>
                 <p className={styles.description}>
-                    Togglecorp is changing the way softwares are built.
+                    Togglecorp is changing the way software is built.
                     We are looking to hire smart people to be a part of our team.
                     If you are passionate about quality softwares and love the minimalist
                     approach to problem solving,

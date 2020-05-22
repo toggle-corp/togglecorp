@@ -24,7 +24,7 @@ const CareerItem = ({
 
     const finalUrl = isDefined(url)
         ? url
-        : `mailto:hr@togglecorp?subject=Application for ${title}`;
+        : `mailto:hr@togglecorp.com?subject=Application for ${title}`;
 
     return (
         <div className={styles.careerItem}>
