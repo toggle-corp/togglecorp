@@ -6,7 +6,7 @@ from .models import Career
 
 @admin.register(Career)
 class CareerAdmin(admin.ModelAdmin):
-    fields = ('title', 'description', 'url', 'image', 'image_tag',)
+    fields = ('title', 'description', 'url', 'image', 'image_tag', 'hidden')
     readonly_fields = ('image_tag',)
 
     def image_tag(self, instance):

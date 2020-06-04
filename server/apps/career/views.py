@@ -6,5 +6,7 @@ from .serializers import CareerSerializer
 
 
 class CareerViewSet(CacheListMixin, viewsets.ReadOnlyModelViewSet):
-    queryset = Career.objects.all()
     serializer_class = CareerSerializer
+
+    def get_queryset(self):
+        return Career.objects.filter(hidden=False)
