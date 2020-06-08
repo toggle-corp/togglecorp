@@ -26,11 +26,21 @@ script:
 
 after_success:
   - docker-compose push
+    # TODO: IF and migrate
+  - docker pull $ZAPPA_IMG || true
+  - docker build -t $ZAPPA_IMG --cache-from $ZAPPA_IMG -f ./server/zappa.dockerfile ./server/
+  - |
+    docker run --rm \
+        -e AWS_ACCESS_KEY_ID=$ZAPPA_AWS_ACCESS_KEY_ID \
+        -e AWS_SECRET_ACCESS_KEY=$ZAPPA_AWS_SECRET_ACCESS_KEY \
+        -e AWS_DEFAULT_REGION=$ZAPPA_AWS_DEFAULT_REGION \
+      $ZAPPA_IMG \
+      bash -c 'source /venv/bin/activate && zappa update prod'
 
 deploy:
   provider: s3
-  access_key_id: $AWS_ACCESS_KEY_ID
-  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  access_key_id: $S3_AWS_ACCESS_KEY_ID
+  secret_access_key: $S3_AWS_SECRET_ACCESS_KEY
   bucket: $TOGGLECORP_S3_BUCKET
   skip_cleanup: true
   local_dir: ./client/build
@@ -44,3 +54,4 @@ env:
   global:
   - REACT_STORE_DIR=client/src/vendor/react-store
   - TC_BRANCH_NAME=`echo ${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH} | tr / _`
+  - ZAPPA_IMG=docker.pkg.github.com/toggle-corp/togglecorp/zappa:latest

@@ -8,7 +8,7 @@ import sys
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 APPS_DIR = os.path.join(BASE_DIR, 'apps')
-sys.path.append(APPS_DIR)
+sys.path.insert(0, APPS_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -18,7 +18,7 @@ sys.path.append(APPS_DIR)
 SECRET_KEY = '+c=ii9osx=a^h#m$s%@sql2pyj_#xq%3p(0=r&#+3+hjq@tsis'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', True)
+DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
 ALLOWED_HOSTS = ['*']
 
@@ -97,6 +97,9 @@ DATABASES = {
         'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'postgres'),
         'PORT': os.environ.get('DATABASE_PORT', '5432'),
         'HOST': os.environ.get('DATABASE_HOST', 'db'),
+        'OPTIONS': {
+            'connect_timeout': 5,
+        }
     }
 }
 
