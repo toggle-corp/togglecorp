@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import ListView from '#rscv/List/ListView';
+import LoadingAnimation from '#rscv/LoadingAnimation';
 
 import {
     RequestCoordinator,
@@ -46,6 +47,7 @@ function Career(props) {
     const {
         requests: {
             careerGet: {
+                pending,
                 response = [],
             },
         },
@@ -87,14 +89,18 @@ function Career(props) {
                 </p>
             </div>
             <div className={styles.content}>
-                <ListView
-                    className={styles.career}
-                    emptyComponent={EmptyComponent}
-                    keyExtractor={careerKeySelector}
-                    data={response}
-                    renderer={CareerItem}
-                    rendererParams={careerItemsRendererParams}
-                />
+                {pending ? (
+                    <LoadingAnimation />
+                ) : (
+                    <ListView
+                        className={styles.career}
+                        emptyComponent={EmptyComponent}
+                        keyExtractor={careerKeySelector}
+                        data={response}
+                        renderer={CareerItem}
+                        rendererParams={careerItemsRendererParams}
+                    />
+                )}
             </div>
             <div className={styles.footer}>
                 <div className={styles.innerChild}>
