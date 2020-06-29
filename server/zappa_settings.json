@@ -7,6 +7,7 @@
         "s3_bucket": "zappa-togglecorp",
         "certificate_arn": "arn:aws:acm:us-east-1:182509255933:certificate/64de3375-63d6-4118-89e0-f1b08fab91b8",
         "domain": "api.togglecorp.com",
+        "keep_warm": false,
         "vpc_config" : {
             "SubnetIds": ["subnet-930078d9", "subnet-5f9b3038"],
             "SecurityGroupIds": [ "sg-00085d77439843e85" ]

@@ -169,6 +169,7 @@ if os.environ.get('DJANGO_USE_S3', 'False').lower() == 'true':
     AWS_SECRET_ACCESS_KEY = os.environ['S3_AWS_SECRET_ACCESS_KEY']
     AWS_S3_REGION_NAME = os.environ['S3_AWS_REGION_NAME']
 
+    AWS_S3_ADDRESSING_STYLE = 'path'
     AWS_S3_FILE_OVERWRITE = False
     AWS_DEFAULT_ACL = 'private'
     AWS_QUERYSTRING_AUTH = False
