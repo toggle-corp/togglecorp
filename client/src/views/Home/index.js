@@ -221,11 +221,11 @@ export default class Home extends React.PureComponent {
                 </p>
                 <p>
                     <i className="fa fa-phone" />
-                    +977-9841969697, +977-9841919399
+                    +977-9841331922, +977-9841919399
                 </p>
                 <p>
                     <i className="fa fa-map-o" />
-                    Pulchowk, Patan, Nepal
+                    Bhanimandal, Patan, Nepal
                 </p>
             </div>
             <div className={styles.theMap}>
