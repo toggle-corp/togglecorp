@@ -1,16 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ListView from '#rscv/List/ListView';
-
 import styles from './styles.scss';
 
 const propTypes = {
     member: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
-
-const keyExtractor = member => member.id;
-const rendererParams = (key, memberUrl) => ({ memberUrl });
 
 const MemberUrl = ({ memberUrl }) => (
     <a
@@ -44,13 +39,14 @@ export default class Member extends React.PureComponent {
                     <div className={styles.name}>{member.name}</div>
                     <div className={styles.designation}>{member.designation}</div>
                     {member.membersUrls.length > 0 && (
-                        <ListView
-                            className={styles.links}
-                            data={member.membersUrls}
-                            keyExtractor={keyExtractor}
-                            renderer={MemberUrl}
-                            rendererParams={rendererParams}
-                        />
+                        <div className={styles.links}>
+                            {member.membersUrls.map(memberUrl => (
+                                <MemberUrl
+                                    key={memberUrl.id}
+                                    memberUrl={memberUrl}
+                                />
+                            ))}
+                        </div>
                     )}
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import Helmet from 'react-helmet';
 import React, { Fragment } from 'react';
 
-import Bundle from '#rscg/Bundle';
+import Bundle from '#components/Bundle';
 
 export default ({ name, ...otherProps }) => (
     <Fragment>

@@ -1,28 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-import ListView from '#rscv/List/ListView';
-
-import { servicesSelector } from '#redux';
+import cs from '#resources/img/cs.png';
+import ds from '#resources/img/ds.png';
+import se from '#resources/img/se.png';
 
 import styles from './styles.scss';
 
+const services = [
+    {
+        id: 1,
+        title: 'Consultancy',
+        description: 'We provide consultancy services regarding software architecture design, database design, programming practices and various technologies.',
+        image: cs,
+    },
+    {
+        id: 2,
+        title: 'Data Science',
+        description: 'We specialize in data analysis and visualization using statistics and machine learning technologies.',
+        image: ds,
+    },
+    {
+        id: 3,
+        title: 'Software Engineering',
+        description: 'We design and develop systems of various complexities that run on web, mobile and desktop platforms.',
+        image: se,
+    },
+];
+
 const propTypes = {
     className: PropTypes.string,
-    services: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
 };
-
-const mapStateToProps = (state, props) => ({
-    services: servicesSelector(state, props),
-});
 
 const defaultProps = {
     className: '',
 };
-
-const keyExtractor = member => member.id;
-const rendererParams = (key, service) => ({ service });
 
 const Service = ({ service }) => (
     <div key={service.id} className={styles.service}>
@@ -40,16 +52,12 @@ Service.propTypes = {
 };
 
 
-@connect(mapStateToProps)
 export default class Services extends React.PureComponent {
     static propTypes = propTypes;
     static defaultProps = defaultProps;
 
     render() {
-        const {
-            className,
-            services,
-        } = this.props;
+        const { className } = this.props;
 
         return (
             <section
@@ -59,15 +67,14 @@ export default class Services extends React.PureComponent {
                 <h2>
                     What we do
                 </h2>
-                {services.length > 0 && (
-                    <ListView
-                        className={styles.serviceList}
-                        data={services}
-                        keyExtractor={keyExtractor}
-                        renderer={Service}
-                        rendererParams={rendererParams}
-                    />
-                )}
+                <div className={styles.serviceList}>
+                    {services.map(service => (
+                        <Service
+                            key={service.id}
+                            service={service}
+                        />
+                    ))}
+                </div>
             </section>
         );
     }

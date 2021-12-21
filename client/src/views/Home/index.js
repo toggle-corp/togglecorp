@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import AnchorLink from '#components/AnchorLink';
 
@@ -10,12 +9,7 @@ import {
     methods,
 } from '#utils/Request';
 
-import {
-    setMembersAction,
-    setClientsAction,
-    setServicesAction,
-    setTechnologySectionsAction,
-} from '#redux';
+import tcLogo from '#resources/img/tc.png';
 
 import Services from './Services';
 import Expertise from './Expertise';
@@ -58,81 +52,22 @@ const linkList = [
 ];
 
 const propTypes = {
-    setMembers: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
-    setClients: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
-    setServices: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
-    // eslint-disable-next-line react/no-unused-prop-types
-    setTechnologySections: PropTypes.func.isRequired,
+    // eslint-disable-next-line react/forbid-prop-types
+    requests: PropTypes.object.isRequired,
 };
-
-const mapDispatchToProps = dispatch => ({
-    setMembers: params => dispatch(setMembersAction(params)),
-    setClients: params => dispatch(setClientsAction(params)),
-    setServices: params => dispatch(setServicesAction(params)),
-    setTechnologySections: params => dispatch(setTechnologySectionsAction(params)),
-});
 
 const requestOptions = {
     membersGet: {
         url: '/members/',
         method: methods.GET,
         onMount: true,
-        onSuccess: ({
-            props: { setMembers },
-            response,
-        }) => {
-            setMembers(response);
-        },
         extras: {
             schemaName: 'array.member',
-        },
-    },
-    clientsGet: {
-        url: '/clients/',
-        method: methods.GET,
-        onMount: true,
-        onSuccess: ({
-            props: { setClients },
-            response,
-        }) => {
-            setClients(response);
-        },
-        extras: {
-            schemaName: 'array.client',
-        },
-    },
-    servicesGet: {
-        url: '/services/',
-        method: methods.GET,
-        onMount: true,
-        onSuccess: ({
-            props: { setServices },
-            response,
-        }) => {
-            setServices(response);
-        },
-        extras: {
-            schemaName: 'array.service',
-        },
-    },
-    technologiesGet: {
-        url: '/technology-sections/',
-        method: methods.GET,
-        onMount: true,
-        onSuccess: ({
-            props: { setTechnologySections },
-            response,
-        }) => {
-            setTechnologySections(response);
-        },
-        extras: {
-            schemaName: 'array.technologySection',
         },
     },
 };
 
 
-@connect(undefined, mapDispatchToProps)
 @RequestCoordinator
 @RequestClient(requestOptions)
 export default class Home extends React.PureComponent {
@@ -160,9 +95,11 @@ export default class Home extends React.PureComponent {
                     <p className={styles.preMessage}>
                         Hi, we are
                     </p>
-                    <h1>
-                        <span>Toggle</span><span>corp</span>
-                    </h1>
+                    <img
+                        className={styles.logo}
+                        alt="togglecorp"
+                        src={tcLogo}
+                    />
                     <p className={styles.postMessage}>
                         We build tech for your idea.
                     </p>
@@ -221,11 +158,11 @@ export default class Home extends React.PureComponent {
                 </p>
                 <p>
                     <i className="fa fa-phone" />
-                    +977-9841331922, +977-9841919399
+                    +977-9841331922, +977-9849831936
                 </p>
                 <p>
                     <i className="fa fa-map-o" />
-                    Bhanimandal, Patan, Nepal
+                    Manbhawan, Lalitpur, Nepal
                 </p>
             </div>
             <div className={styles.theMap}>
@@ -241,6 +178,14 @@ export default class Home extends React.PureComponent {
     )
 
     render() {
+        const {
+            requests: {
+                membersGet: {
+                    response: members = [],
+                } = {},
+            } = {},
+        } = this.props;
+
         return (
             <div className={styles.home}>
                 {this.renderHeader()}
@@ -255,6 +200,7 @@ export default class Home extends React.PureComponent {
                 />
                 <Team
                     className={styles.team}
+                    members={members}
                 />
                 {this.renderContact()}
             </div>

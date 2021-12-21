@@ -1,4 +1,3 @@
-import { compose } from 'redux';
 import {
     createRequestCoordinator,
     createRequestClient,
@@ -6,8 +5,12 @@ import {
 } from '@togglecorp/react-rest-request';
 
 import { sanitizeResponse } from '#utils/common';
-import { wsEndpoint } from '#config/rest';
 import schema from '#schema';
+
+export const wsEndpoint = !process.env.REACT_APP_API_END
+    ? 'http://localhost:8006/api/v1'
+    : `${process.env.REACT_APP_API_END}/api/v1`;
+
 
 export { methods, RequestHandler } from '@togglecorp/react-rest-request';
 
@@ -116,9 +119,7 @@ const coordinatorOptions = {
     transformErrors: response => ({ response }),
 };
 
-export const RequestCoordinator = compose(
-    createRequestCoordinator(coordinatorOptions),
-);
+export const RequestCoordinator = createRequestCoordinator(coordinatorOptions);
 
 export const RequestClient = createRequestClient;
 

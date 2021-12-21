@@ -1,9 +1,6 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
-import ListView from '#rscv/List/ListView';
-import LoadingAnimation from '#rscv/LoadingAnimation';
 
 import {
     RequestCoordinator,
@@ -33,8 +30,6 @@ const propTypes = {
     requests: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-const careerKeySelector = d => d.id;
-
 const requestOptions = {
     careerGet: {
         url: '/careers/',
@@ -54,15 +49,6 @@ function Career(props) {
     } = props;
 
     const [active, setActive] = useState();
-
-    const careerItemsRendererParams = useCallback((key, data) => ({
-        dataKey: data.id,
-        title: data.title,
-        url: data.url,
-        isActive: data.id === active,
-        setActive,
-        description: data.description,
-    }), [active, setActive]);
 
     return (
         <div className={styles.careerPage}>
@@ -89,18 +75,22 @@ function Career(props) {
                 </p>
             </div>
             <div className={styles.content}>
-                {pending ? (
-                    <LoadingAnimation />
-                ) : (
-                    <ListView
-                        className={styles.career}
-                        emptyComponent={EmptyComponent}
-                        keyExtractor={careerKeySelector}
-                        data={response}
-                        renderer={CareerItem}
-                        rendererParams={careerItemsRendererParams}
-                    />
-                )}
+                <div className={styles.career}>
+                    {response.length > 0 && response.map(career => (
+                        <CareerItem
+                            key={career.id}
+                            dataKey={career.id}
+                            title={career.title}
+                            url={career.url}
+                            isActive={career.id === active}
+                            setActive={setActive}
+                            description={career.description}
+                        />
+                    ))}
+                    {response.length < 1 && !pending && (
+                        <EmptyComponent />
+                    )}
+                </div>
             </div>
             <div className={styles.footer}>
                 <div className={styles.innerChild}>

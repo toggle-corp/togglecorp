@@ -6,8 +6,6 @@ import {
 } from '@togglecorp/fujs';
 import ReactMarkdown from 'react-markdown';
 
-import Button from '#rsca/Button';
-
 import styles from './styles.scss';
 
 const CareerItem = ({
@@ -28,7 +26,7 @@ const CareerItem = ({
 
     return (
         <div className={styles.careerItem}>
-            <Button
+            <button
                 className={styles.careerHeader}
                 transparent
                 onClick={handleExpandClick}
@@ -42,7 +40,7 @@ const CareerItem = ({
                         isActive ? 'ion-chevron-up' : 'ion-chevron-down',
                     )}
                 />
-            </Button>
+            </button>
             {isActive && (
                 <React.Fragment>
                     <ReactMarkdown

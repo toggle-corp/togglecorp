@@ -4,9 +4,13 @@
     .career-header {
         display: flex;
         align-items: center;
+        outline: none;
+        border: 0;
+        background-color: transparent;
         padding: $spacing-large;
         width: 100%;
         text-transform: unset;
+        font-family: inherit;
         font-size: unset;
 
         &:last-child {
@@ -24,6 +28,8 @@
 
         .button {
             flex-shrink: 0;
+            background-color: transparent;
+            font-family: inherit;
         }
     }
 
