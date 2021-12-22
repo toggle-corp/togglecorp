@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import cs from '#resources/img/cs.png';
 import ds from '#resources/img/ds.png';
 import se from '#resources/img/se.png';
+import re from '#resources/img/re.png';
 
 import styles from './styles.scss';
 
@@ -25,6 +26,12 @@ const services = [
         title: 'Software Engineering',
         description: 'We design and develop systems of various complexities that run on web, mobile and desktop platforms.',
         image: se,
+    },
+    {
+        id: 4,
+        title: 'Research & Data Analysis',
+        description: 'We carryout humanitarian - driven SDR through web application and also focus on qualitative data research, report writing and data analysis.',
+        image: re,
     },
 ];
 
