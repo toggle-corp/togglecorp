@@ -1,26 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import AnchorLink from '#components/AnchorLink';
 
-import LoadingAnimation from '#rscv/LoadingAnimation';
-
 import {
-    setMembersAction,
-    setClientsAction,
-    setServicesAction,
-    setTechnologySectionsAction,
-} from '#redux';
+    RequestCoordinator,
+    RequestClient,
+    methods,
+} from '#utils/Request';
+
+import tcLogo from '#resources/img/tc.png';
 
 import Services from './Services';
 import Expertise from './Expertise';
 import Clients from './Clients';
 import Team from './Team';
-
-import MembersGetRequest from './requests/MembersGetRequest';
-import ClientsGetRequest from './requests/ClientsGetRequest';
-import ServicesGetRequest from './requests/ServicesGetRequest';
-import TechnologySectionsGetRequest from './requests/TechnologySectionsGetRequest';
 
 import styles from './styles.scss';
 
@@ -58,66 +52,26 @@ const linkList = [
 ];
 
 const propTypes = {
-    setMembers: PropTypes.func.isRequired,
-    setClients: PropTypes.func.isRequired,
-    setServices: PropTypes.func.isRequired,
-    setTechnologySections: PropTypes.func.isRequired,
+    // eslint-disable-next-line react/forbid-prop-types
+    requests: PropTypes.object.isRequired,
 };
 
-const mapDispatchToProps = dispatch => ({
-    setMembers: params => dispatch(setMembersAction(params)),
-    setClients: params => dispatch(setClientsAction(params)),
-    setServices: params => dispatch(setServicesAction(params)),
-    setTechnologySections: params => dispatch(setTechnologySectionsAction(params)),
-});
+const requestOptions = {
+    membersGet: {
+        url: '/members/',
+        method: methods.GET,
+        onMount: true,
+        extras: {
+            schemaName: 'array.member',
+        },
+    },
+};
 
 
-@connect(undefined, mapDispatchToProps)
+@RequestCoordinator
+@RequestClient(requestOptions)
 export default class Home extends React.PureComponent {
     static propTypes = propTypes;
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            serviceLoading: true,
-            clientLoading: true,
-            technologySectionLoading: true,
-            memberLoading: true,
-        };
-
-        // Requests
-        this.membersGetRequest = new MembersGetRequest({
-            setState: v => this.setState(v),
-            setMembers: this.props.setMembers,
-        });
-        this.clientsGetRequest = new ClientsGetRequest({
-            setState: v => this.setState(v),
-            setClients: this.props.setClients,
-        });
-        this.servicesGetRequest = new ServicesGetRequest({
-            setState: v => this.setState(v),
-            setServices: this.props.setServices,
-        });
-        this.technologySectionsGetRequest = new TechnologySectionsGetRequest({
-            setState: v => this.setState(v),
-            setTechnologySections: this.props.setTechnologySections,
-        });
-    }
-
-    componentDidMount() {
-        this.membersGetRequest.init().start();
-        this.clientsGetRequest.init().start();
-        this.servicesGetRequest.init().start();
-        this.technologySectionsGetRequest.init().start();
-    }
-
-    componentWillUnmount() {
-        this.membersGetRequest.stop();
-        this.clientsGetRequest.stop();
-        this.servicesGetRequest.stop();
-        this.technologySectionsGetRequest.stop();
-    }
 
     handleDownButtonClick = (section) => {
         const servicesContainer = document.getElementsByClassName(styles[section])[0];
@@ -141,9 +95,11 @@ export default class Home extends React.PureComponent {
                     <p className={styles.preMessage}>
                         Hi, we are
                     </p>
-                    <h1>
-                        <span>Toggle</span><span>corp</span>
-                    </h1>
+                    <img
+                        className={styles.logo}
+                        alt="togglecorp"
+                        src={tcLogo}
+                    />
                     <p className={styles.postMessage}>
                         We build tech for your idea.
                     </p>
@@ -161,6 +117,13 @@ export default class Home extends React.PureComponent {
                                 </AnchorLink>
                             </li>
                         ))}
+                        <li key="career">
+                            <Link
+                                to="/career/"
+                            >
+                                Career
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
                 <button
@@ -195,11 +158,11 @@ export default class Home extends React.PureComponent {
                 </p>
                 <p>
                     <i className="fa fa-phone" />
-                    +977-9841969697, +977-9841919399
+                    +977-9841331922, +977-9849831936
                 </p>
                 <p>
                     <i className="fa fa-map-o" />
-                    Pulchowk, Patan, Nepal
+                    Manbhawan, Lalitpur, Nepal
                 </p>
             </div>
             <div className={styles.theMap}>
@@ -216,16 +179,12 @@ export default class Home extends React.PureComponent {
 
     render() {
         const {
-            serviceLoading,
-            clientLoading,
-            technologySectionLoading,
-            memberLoading,
-        } = this.state;
-
-        const loading = serviceLoading ||
-            clientLoading ||
-            technologySectionLoading ||
-            memberLoading;
+            requests: {
+                membersGet: {
+                    response: members = [],
+                } = {},
+            } = {},
+        } = this.props;
 
         return (
             <div className={styles.home}>
@@ -241,6 +200,7 @@ export default class Home extends React.PureComponent {
                 />
                 <Team
                     className={styles.team}
+                    members={members}
                 />
                 {this.renderContact()}
             </div>

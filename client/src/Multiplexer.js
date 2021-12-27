@@ -5,11 +5,6 @@ import {
     withRouter,
 } from 'react-router-dom';
 
-import ExclusivelyPublicRoute from '#rscg/ExclusivelyPublicRoute';
-import PrivateRoute from '#rscg/PrivateRoute';
-
-// import Navbar from '#components/Navbar';
-
 import {
     pathNames,
     routesOrder,
@@ -18,9 +13,7 @@ import {
 } from '#constants';
 
 const ROUTE = {
-    exclusivelyPublic: 'exclusively-public',
     public: 'public',
-    private: 'private',
 };
 
 // NOTE: withRouter is required here so that link change are updated
@@ -35,34 +28,9 @@ export default class Multiplexer extends React.PureComponent {
                 return null;
             }
             const path = pathNames[routeId];
-            const { redirectTo, type } = routes[routeId];
-
-            // FIXME: Use actual authenticated status from redux
-            const authenticated = false;
+            const { type } = routes[routeId];
 
             switch (type) {
-                case ROUTE.exclusivelyPublic:
-                    return (
-                        <ExclusivelyPublicRoute
-                            component={view}
-                            key={routeId}
-                            path={path}
-                            authenticated={authenticated}
-                            redirectLink={redirectTo}
-                            exact
-                        />
-                    );
-                case ROUTE.private:
-                    return (
-                        <PrivateRoute
-                            component={view}
-                            key={routeId}
-                            path={path}
-                            authenticated={authenticated}
-                            redirectLink={redirectTo}
-                            exact
-                        />
-                    );
                 case ROUTE.public:
                     return (
                         <Route

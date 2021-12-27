@@ -1,97 +1,160 @@
-import { RestRequest } from '#rsu/rest';
+import {
+    createRequestCoordinator,
+    createRequestClient,
+    methods,
+} from '@togglecorp/react-rest-request';
+
+import { sanitizeResponse } from '#utils/common';
 import schema from '#schema';
-import { alterResponseErrorToFaramError } from '#rest';
 
-const requestNotCreatedForStartMessage = 'REQUEST: start() called before init()';
-// const requestNotCreatedForStopMessage = 'REQUEST: stop() called before init()';
-const validationNotDefinedMessage = 'REQUEST: Validation is not defined';
+export const wsEndpoint = !process.env.REACT_APP_API_END
+    ? 'http://localhost:8006/api/v1'
+    : `${process.env.REACT_APP_API_END}/api/v1`;
 
-export default class Request {
-    constructor(parent, { delay = 50, retryTime = 1000, maxRetryAttempts = 5 } = {}) {
-        this.parent = parent;
 
-        this.delay = delay;
+export { methods, RequestHandler } from '@togglecorp/react-rest-request';
 
-        this.retryTime = retryTime;
-        this.maxRetryAttempts = maxRetryAttempts;
-
-        this.schemaName = undefined;
-    }
-
-    handleFatal = () => {
-        // console.warn(error);
-    }
-
-    start = () => {
-        if (this.request) {
-            this.request.start();
-        } else {
-            console.error(requestNotCreatedForStartMessage);
-        }
-    }
-
-    stop = () => {
-        if (this.request) {
-            this.request.stop();
-        }
-        /*
-        else {
-            console.error(requestNotCreatedForStopMessage);
-        }
-        */
-    }
-
-    successInterceptor = (response) => {
-        if (this.schemaName !== undefined) {
-            try {
-                schema.validate(response, this.schemaName);
-            } catch (e) {
-                console.error('NETWORK ERROR:', e);
-                this.handleFatal({ errorMessage: e, errroCode: null });
-                return;
+const getFormData = (jsonData) => {
+    const formData = new FormData();
+    Object.keys(jsonData || {}).forEach(
+        (key) => {
+            const value = jsonData[key] || {};
+            if (value.prop && value.prop.constructor === Array) {
+                value.forEach(v => formData.append(key, v));
+            } else {
+                formData.append(key, value);
             }
-        } else {
-            console.warn(validationNotDefinedMessage);
+        },
+    );
+    return formData;
+};
+
+export function getVersionedUrl(endpoint, url) {
+    const oldVersionString = '/v1';
+    const versionString = '/v2';
+    if (!url.startsWith(versionString)) {
+        return `${endpoint}${url}`;
+    }
+    const startIndex = 0;
+    const endIndex = endpoint.search(oldVersionString);
+    const newEndpoint = endpoint.slice(startIndex, endIndex);
+    return `${newEndpoint}${url}`;
+}
+
+const coordinatorOptions = {
+    transformParams: (data) => {
+        const {
+            body,
+            method,
+            extras = {},
+        } = data;
+
+        const newBody = extras.hasFile
+            ? getFormData(body)
+            : JSON.stringify(body);
+
+        const newHeaders = extras.hasFile
+            ? {
+                Accept: 'application/json',
+            }
+            : {
+                Accept: 'application/json',
+                'Content-Type': 'application/json; charset=utf-8',
+            };
+
+        const params = {
+            method: method || methods.GET,
+            body: newBody,
+            headers: newHeaders,
+        };
+
+        // NOTE: This is a hack to bypass auth for S3 requests
+        // Need to fix this through use of new react-rest-request@2
+        // FIXME: react-rest-request@2 has been used
+        // need to fix this using extras
+
+        return params;
+    },
+
+    transformProps: (props) => {
+        const {
+            myToken, // eslint-disable-line no-unused-vars
+            ...otherProps
+        } = props;
+        return otherProps;
+    },
+
+    transformUrl: (url) => {
+        if (/^https?:\/\//i.test(url)) {
+            return url;
         }
+        return getVersionedUrl(wsEndpoint, url);
+    },
 
-        this.handleSuccess(response);
-    }
-
-    failureInterceptor = (response) => {
-        const newResponse = alterResponseErrorToFaramError(response.errors);
-        this.handleFailure(newResponse);
-    }
-
-    createDefault = (createOptions) => {
-        this.stop();
-
-        this.createOptions = createOptions;
-
+    transformResponse: (body, request) => {
         const {
             url,
-            params,
-        } = createOptions;
+            method,
+            extras = {},
+        } = request;
 
-        const request = new RestRequest(
-            url,
-            params,
-            this.handleSuccess ? this.successInterceptor : undefined,
-            this.handleFailure ? this.failureInterceptor : undefined,
-            this.handleFatal,
-            this.handleAbort,
-            this.handlePreLoad,
-            this.handlePostLoad,
-            this.handleAfterLoad,
-            this.retryTime,
-            this.maxRetryTime,
-            this.decayVal,
-            this.maxRetryAttempts,
-            this.pollTime,
-            this.maxPollAttempts,
-            this.shouldPoll,
-            this.delay,
-        );
+        // TODO: add null sanitization here
 
-        this.request = request;
+        if (extras.schemaName === undefined) {
+            // NOTE: usually there is no response body for DELETE
+            if (method !== methods.DELETE) {
+                console.error(`Schema is not defined for ${url} ${method}`);
+            }
+        } else {
+            try {
+                schema.validate(body, extras.schemaName);
+            } catch (e) {
+                console.error(url, method, body, e.message);
+                throw (e);
+            }
+        }
+        return sanitizeResponse(body);
+    },
+
+    transformErrors: response => ({ response }),
+};
+
+export const RequestCoordinator = createRequestCoordinator(coordinatorOptions);
+
+export const RequestClient = createRequestClient;
+
+export const getResponse = (requests, key, defaultValue = {}) => {
+    const { response = defaultValue } = (requests || {})[key];
+    return response;
+};
+
+export const getResults = (requests, key, defaultValue = []) => {
+    const {
+        response: {
+            results = defaultValue,
+        } = {},
+    } = (requests || {})[key];
+
+    return results;
+};
+
+export const getPending = (requests, key) => {
+    const {
+        pending,
+    } = (requests || {})[key];
+
+    return pending;
+};
+
+export const isAnyRequestPending = (requests) => {
+    if (!requests) {
+        return undefined;
     }
-}
+
+    const requestKeys = Object.keys(requests);
+    const pending = requestKeys.some(
+        requestKey => requests[requestKey].pending,
+    );
+
+    return pending;
+};

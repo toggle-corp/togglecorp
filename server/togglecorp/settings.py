@@ -8,7 +8,7 @@ import sys
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 APPS_DIR = os.path.join(BASE_DIR, 'apps')
-sys.path.append(APPS_DIR)
+sys.path.insert(0, APPS_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -18,7 +18,7 @@ sys.path.append(APPS_DIR)
 SECRET_KEY = '+c=ii9osx=a^h#m$s%@sql2pyj_#xq%3p(0=r&#+3+hjq@tsis'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
 ALLOWED_HOSTS = ['*']
 
@@ -29,6 +29,7 @@ LOCAL_APPS = [
     'member',
     'technology',
     'service',
+    'career',
 ]
 
 INSTALLED_APPS = [
@@ -96,6 +97,9 @@ DATABASES = {
         'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'postgres'),
         'PORT': os.environ.get('DATABASE_PORT', '5432'),
         'HOST': os.environ.get('DATABASE_HOST', 'db'),
+        'OPTIONS': {
+            'connect_timeout': 5,
+        }
     }
 }
 
@@ -165,6 +169,7 @@ if os.environ.get('DJANGO_USE_S3', 'False').lower() == 'true':
     AWS_SECRET_ACCESS_KEY = os.environ['S3_AWS_SECRET_ACCESS_KEY']
     AWS_S3_REGION_NAME = os.environ['S3_AWS_REGION_NAME']
 
+    AWS_S3_ADDRESSING_STYLE = 'path'
     AWS_S3_FILE_OVERWRITE = False
     AWS_DEFAULT_ACL = 'private'
     AWS_QUERYSTRING_AUTH = False

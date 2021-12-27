@@ -5,7 +5,7 @@ from .models import Member
 from .serializers import MemberSerializer
 
 
-class MemberViewSet(CacheListMixin, viewsets.ModelViewSet):
+class MemberViewSet(CacheListMixin, viewsets.ReadOnlyModelViewSet):
     serializer_class = MemberSerializer
 
     def get_queryset(self):
