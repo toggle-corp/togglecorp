@@ -30,7 +30,7 @@ const services = [
     {
         id: 4,
         title: 'Research & Data Analysis',
-        description: 'We carryout humanitarian - driven SDR through web application and also focus on qualitative data research, report writing and data analysis.',
+        description: 'We carryout humanitarian driven secondary data review with a focus on qualitative data research, report writing and data analysis.',
         image: re,
     },
 ];
